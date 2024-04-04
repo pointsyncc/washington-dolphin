@@ -18,7 +18,9 @@
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload generate:graphQLSchema",
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
-    "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload"
+    "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload",
+    "env:push": "npx dotenv-vault@latest push",
+    "env:pull": "npx dotenv-vault@latest pull"
   },
   "dependencies": {
     "@payloadcms/bundler-webpack": "^1.0.6",

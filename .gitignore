@@ -6,3 +6,8 @@ node_modules
 .env
 .next
 .vercel
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
