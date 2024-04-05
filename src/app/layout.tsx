@@ -8,8 +8,7 @@ import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
 
-import './_css/app.scss'
-
+import './_css/app.css'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -23,6 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <AdminBar />
           {/* @ts-expect-error */}
           <Header />
+          <div className="bg-red w-full h-[20px]">hello2</div>
           {children}
           {/* @ts-expect-error */}
           <Footer />

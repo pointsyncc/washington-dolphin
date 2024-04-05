@@ -18,15 +18,14 @@ export async function Header() {
   try {
     header = await fetchHeader()
   } catch (error) {
-    // When deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // So swallow the error here and simply render the header without nav items if one occurs
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
-    // console.error(error)
   }
 
   return (
     <>
-      <header className={classes.header}>
+      <header className={` ${classes.header} bg-red`}>
+        <div className='bg-primary'>
+        hello
+        </div>
         <Gutter className={classes.wrap}>
           <Link href="/">
             {/* Cannot use the `<picture>` element here with `srcSet`
