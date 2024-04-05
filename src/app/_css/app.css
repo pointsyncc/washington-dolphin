@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 204 22% 91%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 35%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --tertiary:221 83.2% 53.3%;
+    --tertiary-foreground:0 0% 100%;
+
+    --blue-gray:205 34% 66%;
+    --blue-gray-foreground:0 0% 100%;
+
+    --ring: 215 20.2% 65.1%;
+ 
+    --success:152 69% 31%;
+    --radius: 1.875rem;
+    --col-gap: 1rem;
+    
+    --gray:0 0% 73%;
+    --alt-background:0 0% 100% 1;
+    --gray-2:224, 224, 224, 0.60;
+    --crystal:255, 255, 255, 0.40;
+    --crystal-foreground:0 0% 0%;
+
+    --light-green: 134 100% 95%;
+    --light-green-border: 134 43% 83%;
+    --light-green-foreground:133 33% 46%;
+
+    --light-pink: 319 100% 95%;
+    --light-pink-border: 335 42% 82%;
+    --light-pink-foreground:324 33% 46%;
+
+    --light-yellow: 50 100% 95%;
+    --light-yellow-border: 54 43% 83%;
+    --light-yellow-foreground:50 33% 46%;
+
+    --light-blue: 190 100% 95%;
+    --light-blue-border: 177 43% 83%;
+    --light-blue-foreground:180 33% 46%;
+
+    --light-orange: 22 100% 95%;
+    --light-orange-border: 22, 43%, 83%;
+    --light-orange-foreground:22 33% 46%;
+
+    --light-purple: 300 100% 95%;
+    --light-purple-border: 281 43% 83%;
+    --light-purple-foreground:288 33% 46%;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 0 0 98%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 1.875rem;
+    --tw-shadow-colored: 0 0 #0000;
+    --alt-background:0 0% 100% .1
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-open-sans);
+  }
+  h1,h2,h3,h4,h5,h6{
+    font-family: var(--font-poppins);
+  }
+
+  :after, :before {
+    --tw-content: "";
+}
+}
+
+
+@layer utilities{
+  .row-gap {
+    margin-left: calc(var(--col-gap) * -1);
+    margin-right: calc(var(--col-gap) * -1);
+  }
+  .col-gap {
+    padding-left: var(--col-gap);
+    padding-right: var(--col-gap);
+  }
+  .gap-grid{
+    gap: calc(var(--col-gap) * 2);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+    /* .one-side-container {
+      max-width: calc(((100% - theme('screens.')) / 2) + theme('screens.xs'));
+    } */
+  
+    @media (min-width: theme('screens.sm')) {
+      .one-side-container {
+        max-width: calc(
+          ((100% - theme('screens.sm')) / 2) + theme('screens.sm')
+        );
+      }
+    }
+  
+    @media (min-width: theme('screens.md')) {
+      .one-side-container {
+        max-width: calc(
+          ((100% - theme('screens.md')) / 2) + theme('screens.md')
+        );
+      }
+    }
+    @media (min-width: theme('screens.lg')) {
+      .one-side-container {
+        max-width: calc(
+          ((100% - theme('screens.lg')) / 2) + theme('screens.lg')
+        );
+      }
+    }
+    @media (min-width: theme('screens.xl')) {
+      .one-side-container {
+        max-width: calc(
+          ((100% - theme('screens.xl')) / 2) + theme('screens.xl')
+        );
+      }
+    }
+    @media (min-width: theme('screens.2xl')) {
+      .one-side-container {
+        max-width: calc(
+          ((100% - theme('screens.2xl')) / 2) + theme('screens.2xl')
+        );
+      }
+    }
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+.after\:shadow-highlight:after{
+  content: var(--tw-content);
+  --tw-shadow: inset 0 0 0 1px hsla(0,0%,100%,.05);
+  --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+}
