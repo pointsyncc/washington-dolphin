@@ -19,6 +19,7 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "isolatedModules": true,
+    "baseUrl": "./",
     "plugins": [
       {
         "name": "next"
@@ -26,6 +27,10 @@
     ],
     "paths": {
       "react": ["./node_modules/@types/react"],
+      "@/components/*": ["src/app/_components/*"],
+      "@/utils/*": ["src/app/utils/*"],
+      "@/hooks/*": ["src/app/_hooks/*"],
+      "@/payload/*": ["src/payload/*"],
     }
   },
   "include": [

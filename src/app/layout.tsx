@@ -7,24 +7,48 @@ import { Header } from './_components/Header'
 import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
-
+import { Plus_Jakarta_Sans, Poppins } from 'next/font/google'
 import './_css/app.css'
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap',
+  weight: ['400', '500'],
+})
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta-sans',
+  display: 'swap',
+  weight: ['400', '500'],
+})
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+ 
+
+  // const open_sans = Open_Sans({
+  //   subsets: ['latin'],
+  //   variable: '--font-open-sans',
+  //   display: 'swap',
+  // })
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="hr"
+      suppressHydrationWarning
+      className={`${poppins.variable} ${plusJakartaSans.variable}`}
+    >
       <head>
         <InitTheme />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body>
+      <body className="bg-[#F9EFD7] px-[22px] relative pt-[33px]">
         <Providers>
           <AdminBar />
-          {/* @ts-expect-error */}
+
           <Header />
-          <div className="bg-red w-full h-[20px]">hello2</div>
+          <div className='pb-[200px]'>
           {children}
-          {/* @ts-expect-error */}
+          </div>
+
           <Footer />
         </Providers>
       </body>

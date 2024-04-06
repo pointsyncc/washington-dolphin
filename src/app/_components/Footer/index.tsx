@@ -1,58 +1,68 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-
-import { Footer } from '../../../payload/payload-types'
-import { fetchFooter, fetchGlobals } from '../../_api/fetchGlobals'
-import { ThemeSelector } from '../../_providers/Theme/ThemeSelector'
-import { Gutter } from '../Gutter'
-import { CMSLink } from '../Link'
-
-import classes from './index.module.scss'
-
 export async function Footer() {
-  let footer: Footer | null = null
-
-  try {
-    footer = await fetchFooter()
-  } catch (error) {
-    // When deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // So swallow the error here and simply render the footer without nav items if one occurs
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
-    // console.error(error)
-  }
-
-  const navItems = footer?.navItems || []
+  const contacts = [
+    {
+      text: 'Zagrebačka cesta 45, 10382, Goričica',
+      icon: '/svgs/footer/location.svg',
+      name: 'location',
+      width: 14,
+      height: 20,
+    },
+    {
+      text: 'pekarnamario@gmail.com',
+      icon: '/svgs/footer/message.svg',
+      name: 'message',
+      width: 17.5,
+      height: 14,
+    },
+    {
+      text: '+385 98 139 1548',
+      icon: '/svgs/footer/phone.svg',
+      name: 'phone',
+      width: 18.64,
+      height: 18.64,
+    },
+  ]
 
   return (
-    <footer className={classes.footer}>
-      <Gutter className={classes.wrap}>
-        <Link href="/">
-          <picture>
-            <img
-              className={classes.logo}
-              alt="Payload Logo"
-              src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/payload/src/admin/assets/images/payload-logo-light.svg"
-            />
-          </picture>
-        </Link>
-        <nav className={classes.nav}>
-          <ThemeSelector />
-          {navItems.map(({ link }, i) => {
-            return <CMSLink key={i} {...link} />
-          })}
-          <Link href="/admin">Admin</Link>
-          <Link
-            href="https://github.com/payloadcms/payload/tree/main/templates/website"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Source Code
+    <footer>
+      <div className='bg-[#313131] rounded-[20px] px-[46px] pt-[30px] pb-[60px]'>
+        <Image src={'/logo-footer.png'} alt={'logo'} width={229} height={118} />
+        <div className="flex justify-between">
+          <div className="flex flex-col mt-[50px]">
+            {contacts.map(contact => (
+              <div key={contact.name} className="flex items-center pl-[22px] mt-[20px]">
+                <Image
+                  src={contact.icon}
+                  alt={contact.name}
+                  width={contact.width}
+                  height={contact.height}
+                />
+                <span className="pl-[10px] text-white">{contact.text}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center text-white">
+            <h2 className="text-[32px] font-[700]">Imaš pitanje za nas?</h2>
+            <button className="ml-[50px] border-[2px] border-white rounded-[10px] px-[35px] py-[17px] transition-all hover:bg-primary">
+              Kontaktiraj nas
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-between items-center  px-[40px] py-[14px]">
+        <p className="text-[14px]">Pekarna Mario © 2024. | Sva prava pridržana.</p>
+        <div className="flex items-center">
+          <Link className="text-[14px] hover:text-primary" href={'/privacy-policy'}>
+            Politika privatnosti
           </Link>
-          <Link href="https://payloadcms.com" target="_blank" rel="noopener noreferrer">
-            Payload
+          <Link className="text-[14px] hover:text-primary pl-[16px]" href={'/terms-of-use'}>
+            Uvjeti korištenja
           </Link>
-        </nav>
-      </Gutter>
+        </div>
+      </div>
     </footer>
   )
 }

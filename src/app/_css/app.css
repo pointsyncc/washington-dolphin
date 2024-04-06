@@ -21,11 +21,11 @@
     --card: 0 0% 98%;
     --card-foreground: 0 0% 35%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 36, 100%, 50%;
+    --primary-foreground: 40, 100%, 58%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 20, 77%, 41%;
+    --secondary-foreground: 27, 80%, 57%;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -119,15 +119,19 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: var(--font-open-sans);
-  }
-  h1,h2,h3,h4,h5,h6{
     font-family: var(--font-poppins);
+  }
+  h1,h2,h3,h4,h5,h6,button{
+    font-family: var(--font-plus-jakarta-sans);
   }
 
   :after, :before {
     --tw-content: "";
 }
+}
+
+p{
+  line-height: 38px;
 }
 
 
