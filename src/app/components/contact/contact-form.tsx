@@ -69,8 +69,7 @@ export const ContactForm: React.FC = () => {
   const onSubmit = async (formData: FormData) => {
     const valid = await form.trigger()
     if (!valid) return
-    // const data= await actions.login(formData)
-    console.log(data)
+
   }
   return (
     <div className="sm:w-[480px] w-full">
