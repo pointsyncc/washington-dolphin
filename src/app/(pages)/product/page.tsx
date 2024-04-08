@@ -86,7 +86,7 @@ const Products = () => {
   return (
     <>
       <HeroSection pageTitle="Naši proizvodi" pageName="product" />
-      <div className="flex items-center justify-between  mx-[35px]">
+      <div className="flex lg:flex-row flex-col items-center justify-between md:px-[35px]">
         <CategoriesSection categories={categories} />
         <Search />
       </div>

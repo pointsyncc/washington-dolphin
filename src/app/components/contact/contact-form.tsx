@@ -36,29 +36,30 @@ export const ContactForm: React.FC = () => {
   })
   const inputs = [
     {
-      formControl: Input,
+      component: Input,
       name: 'name',
       placeholder: 'Vaše ime *',
-      inputContainerClass: 'basis-[49%] max-w-[50%] mb-[28px]',
+      inputContainerClass: 'sm:basis-[49%] sm:max-w-[50%] basis-full max-w-full mb-[28px]',
     },
     {
-      formControl: Input,
+      component: Input,
       type: 'email',
       name: 'email',
       placeholder: 'Vaša e-mail adresa *',
-      inputContainerClass: 'basis-[49%] max-w-[50%] mb-[28px]',
+      inputContainerClass: 'sm:basis-[49%] sm:max-w-[50%] basis-full max-w-full mb-[28px]',
     },
     {
-      formControl: Input,
+      component: Input,
       name: 'subject',
       placeholder: 'Predmet poruke *',
       inputContainerClass: 'basis-[100%] max-w-[100%] mb-[28px]',
     },
     {
-      formControl: Textarea,
+      component: Textarea,
       name: 'message',
       placeholder: 'Vaša poruka *',
       inputContainerClass: 'basis-[100%] max-w-[100%]',
+      inputClass:'h-[200px]'
     },
   ]
 
@@ -72,7 +73,7 @@ export const ContactForm: React.FC = () => {
     console.log(data)
   }
   return (
-    <div className="w-[480px] mr-[80px]">
+    <div className="sm:w-[480px] w-full">
       <Form {...form}>
         <form action={onSubmit} className="space-y-8">
           <div className='flex flex-wrap gap-2'>
@@ -80,15 +81,16 @@ export const ContactForm: React.FC = () => {
               <FormField
                 control={form.control}
                 key={input.name}
-                name={input.name}
+                name={input.name as any}
                 render={({ field }) => (
                   <FormItem className={`${input.inputContainerClass} relative`}>
                     {/* <FormLabel className={`${input.labelClass}`}>
                   <input.icon className={input.iconClass} />
                 </FormLabel> */}
+                
                     <FormControl >
-                      <Input
-                        className={`h-[60px] pl-[24px]`}
+                      <input.component
+                        className={`${input.name!=='message'&& 'h-[60px]'} pl-[24px]`}
                         placeholder={input.placeholder}
                         {...field}
                       />
@@ -99,7 +101,7 @@ export const ContactForm: React.FC = () => {
               />
             ))}
           </div>
-          <button className="rounded-[10px] text-[20px] font-[500] w-[205px] h-[60px] text-white bg-primary hover:bg-primary-foreground transition-all">
+          <button className="rounded-[10px] lg:mx-0 mx-auto text-[20px] font-[500] w-[205px] h-[60px] text-white bg-primary hover:bg-primary-foreground transition-all">
             Pošalji poruku
           </button>
         </form>

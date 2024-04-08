@@ -10,7 +10,7 @@ interface Props {
 }
 const product = ({ title, description, energy, weight }: Props) => {
   return (
-    <div className="shadow-lg bg-[#FFFCE3] w-[33%] rounded-[20px] basis-[25%] max-w-[25%] p-[24px] m-[20px] hover:translate-y-[-10px] transition-all cursor-pointer">
+    <div className="shadow-lg bg-[#FFFCE3] w-[33%] rounded-[20px] basis-[100%] max-w-[100%] sm:basis-[45%] sm:max-w-[45%] lg:basis-[25%] lg:max-w-[25%] p-[24px] lg:m-[20px] m-[12px]  hover:translate-y-[-10px] transition-all cursor-pointer">
       <h3 className="font-[500] text-[18px]">{title}</h3>
       <p className="text-[#223333ad]">{description}</p>
       <div className="flex justify-between items-center pt-[49px]">

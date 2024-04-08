@@ -40,12 +40,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-[#F9EFD7] px-[22px] relative pt-[33px]">
+      <body className="bg-[#F9EFD7] px-[22px] relative overflow-x-hidden">
         <Providers>
           <AdminBar />
 
           <Header />
-          <div className='pb-[200px]'>
+          <div className='pb-[200px]  pt-[33px]'>
           {children}
           </div>
 

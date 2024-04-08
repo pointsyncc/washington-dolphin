@@ -6,7 +6,7 @@ const SearchForm = () => {
     console.log(e.target)
   }
   return (
-    <div className="relative w-[305px] h-[48px]">
+    <div className="relative w-full  sm:w-[305px] h-[48px]">
       <FaSearch className="absolute top-[10px] left-[10px] text-[#223333ad]" />
       <Input
         type="text"

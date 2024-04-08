@@ -2,13 +2,13 @@ import HeroSection from '../../components/common/hero-section'
 import { ContactForm } from '../../components/contact/contact-form'
 import { FaLocationDot } from 'react-icons/fa6'
 import { FaPhoneAlt } from 'react-icons/fa'
-import { IoMdMail } from "react-icons/io";
+import { IoMdMail } from 'react-icons/io'
 const Contact = () => {
   return (
     <>
       <HeroSection pageTitle="Kontaktiraj nas" pageName="contact" />
-      <div className="flex justify-between w-full">
-        <p className="text-[20px] flex-[60%] max-w-[60%] pl-[60px] leading-[37px]">
+      <div className="flex justify-center items-center lg:items-start lg:flex-row flex-col lg:justify-between w-full xl:px-[80px] lg:px-[60px] md:px-[40px] sm:px-[20px] px-0">
+        <p className="text-[20px] leading-[37px] xl:w-[50%] lg:w-[60%] w-full pr-[20px] mb-[40px] lg:mb-0">
           Imate savjet ili prijedlog kojeg bi htjeli podijeliti s nama, želite postaviti pitanje u
           vezi s nekim našim proizvodom ili proizvodnim procesom? Želite nam se obratiti radi
           ostvarenja ili unaprijeđenja poslovne suradnje? Nemojte čekati, slobodno nas
@@ -28,19 +28,21 @@ const Contact = () => {
         ></iframe>
       </div>
 
-      <div className="text-white bg-[#CEA66B] rounded-[20px] py-[30px] px-[45px] w-[500px] mt-[84px]">
-        <h2 className="font-[700] text-[32px] text-center ">Pekarna Mario</h2>
+      <div className="text-white bg-[#CEA66B] rounded-[20px] py-[30px] px-[20px] sm:px-[45px] w-full sm:w-[500px] mt-[84px]">
+        <h2 className="font-[700] text-[25px] sm:text-[32px] text-center ">Pekarna Mario</h2>
 
         <div className=" pt-[48px]">
-          <h3 className="font-[700] text-[22px]">Otvoreno danas 6:00 - 20:00</h3>
+          <h3 className="font-[700] text-[18px] sm:text-[22px]">Otvoreno danas 6:00 - 20:00</h3>
           <div className="flex items-center pt-[16px]">
             <FaLocationDot className="" />
-            <p className="pl-[10px] text-[18px]">Zagrebačka cesta 45, 10382, Goričica</p>
+            <p className="pl-[10px] text-[16px] sm:text-[18px] leading-[20px]">
+              Zagrebačka cesta 45, 10382, Goričica
+            </p>
           </div>
         </div>
 
-        <div className=" text-[18px]  pt-[30px]">
-          <h3 className="font-[700] text-[22px]">Redovno radno vrijeme</h3>
+        <div className="text-[16px] sm:text-[18px]  pt-[30px]">
+          <h3 className="font-[700] text-[18px] sm:text-[22px]">Redovno radno vrijeme</h3>
           <div className="flex items-center justify-between pt-[18px]">
             <p>Pon - Pet</p>
             <p>6:00 - 20:00</p>
@@ -49,25 +51,33 @@ const Contact = () => {
             <p>Subota</p>
             <p>6:00 - 20:00</p>
           </div>
-          <p className='pt-[18px] text-[18px]'>Nedjelja</p>
+          <p className="pt-[18px] text-[16px] sm:text-[18px]">Nedjelja</p>
         </div>
 
-        <div className='pt-[30px]'>
-          <h3 className="font-[700] text-[22px]">Broj telefona</h3>
+        <div className="pt-[30px]">
+          <h3 className="font-[700] text-[18px] sm:text-[22px]">Broj telefona</h3>
           <div className="flex items-center">
             <FaPhoneAlt />
-            <p className=" text-[18px] pl-[10px]"><a href="tel:+385 98 139 1548" className='text-[18px]'>+385 98 139 1548</a></p>
+            <p className="  pl-[10px]">
+              <a href="tel:+385 98 139 1548" className="text-[14px] sm:text-[18px]">
+                +385 98 139 1548
+              </a>
+            </p>
           </div>
         </div>
 
-        <div className='pt-[30px]'>
-          <h3 className="font-[700] text-[22px]">E-mail adresa</h3>
+        <div className="pt-[30px]">
+          <h3 className="font-[700] text-[18px] sm:text-[22px]">E-mail adresa</h3>
           <div className="flex items-center">
             <IoMdMail />
-            <p className=" text-[18px] pl-[10px]"><a href="mailto:pekarnamario@gmail.com" className='text-[18px]'>pekarnamario@gmail.com</a></p>
+            <p className="    pl-[10px]">
+              <a href="mailto:pekarnamario@gmail.com" className="text-[14px] sm:text-[18px]">
+                pekarnamario@gmail.com
+              </a>
+            </p>
           </div>
         </div>
-        <button className='border-white text-[20px] text-white '>Posjeti lokaciju</button>
+        <button className="border-white text-[18px] sm:text-[20px] text-white mt-[10px]">Posjeti lokaciju</button>
       </div>
     </>
   )

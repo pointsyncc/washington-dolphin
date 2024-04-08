@@ -1,60 +1,52 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaLocationDot } from 'react-icons/fa6'
+import { IoMdMail } from 'react-icons/io'
+import { FaPhoneAlt } from 'react-icons/fa'
 export async function Footer() {
   const contacts = [
     {
       text: 'Zagrebačka cesta 45, 10382, Goričica',
-      icon: '/svgs/footer/location.svg',
+      icon: <FaLocationDot className="text-[#CEA66B]" />,
       name: 'location',
-      width: 14,
-      height: 20,
     },
     {
       text: 'pekarnamario@gmail.com',
-      icon: '/svgs/footer/message.svg',
+      icon: <IoMdMail className="text-[#CEA66B]" />,
       name: 'message',
-      width: 17.5,
-      height: 14,
     },
     {
       text: '+385 98 139 1548',
-      icon: '/svgs/footer/phone.svg',
+      icon: <FaPhoneAlt className="text-[#CEA66B]" />,
       name: 'phone',
-      width: 18.64,
-      height: 18.64,
     },
   ]
 
   return (
     <footer>
-      <div className='bg-[#313131] rounded-[20px] px-[46px] pt-[30px] pb-[60px]'>
-        <Image src={'/logo-footer.png'} alt={'logo'} width={229} height={118} />
-        <div className="flex justify-between">
-          <div className="flex flex-col mt-[50px]">
+      <div className="bg-[#313131] rounded-[20px] px-[15px] sm:px-[46px] pt-[30px] pb-[60px]">
+        <Image src={'/logo-footer.png'} alt={'logo'} width={229} height={118} className='mx-auto sm:mx-0' />
+        <div className="flex lg:flex-row flex-col-reverse justify-between lg:mt-0 mt-[20px]">
+          <div className="flex flex-col lg:mt-[50px] mt-0">
             {contacts.map(contact => (
-              <div key={contact.name} className="flex items-center pl-[22px] mt-[20px]">
-                <Image
-                  src={contact.icon}
-                  alt={contact.name}
-                  width={contact.width}
-                  height={contact.height}
-                />
-                <span className="pl-[10px] text-white">{contact.text}</span>
+              <div key={contact.name} className="flex items-center lg:pl-[22px] mt-[20px]">
+                {contact.icon}
+                <span className="pl-[10px]  text-white sm:text-[16px] text-[14px]">{contact.text}</span>
               </div>
             ))}
           </div>
-          <div className="flex items-center text-white">
-            <h2 className="text-[32px] font-[700]">Imaš pitanje za nas?</h2>
-            <button className="ml-[50px] border-[2px] border-white rounded-[10px] px-[35px] py-[17px] transition-all hover:bg-primary">
+          <div className="flex sm:flex-row flex-col sm:items-center justify-between text-white mb-[20px] lg:mt-0">
+            <h2 className="lg:text-[32px] sm:text-[25px] text-[20px] font-[700] text-center sm:text-start">Imaš pitanje za nas?</h2>
+            <button className="lg:ml-[30px] sm:ml-[25px] ml-0 sm:mt-[0] mt-[20px]  border-[2px] border-white rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-primary">
               Kontaktiraj nas
             </button>
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center  px-[40px] py-[14px]">
-        <p className="text-[14px]">Pekarna Mario © 2024. | Sva prava pridržana.</p>
-        <div className="flex items-center">
+      <div className="flex md:flex-row flex-col justify-between items-center px-[0px]  md:px-[40px] py-[14px]">
+        <p className="text-[14px] leading-[20px] sm:leading-[38px] text-center md:text-start mt-[20px] md:mt-0">Pekarna Mario © 2024. | Sva prava pridržana.</p>
+        <div className="flex items-center mt-[20px] md:mt-0">
           <Link className="text-[14px] hover:text-primary" href={'/privacy-policy'}>
             Politika privatnosti
           </Link>
