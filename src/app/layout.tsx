@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <AdminBar />
 
           <Header />
-          <div className='pb-[200px]  pt-[33px]'>
+          <div className='pb-[100px] lg:pb-[150px] xl:pb-[200px]  pt-[33px]'>
           {children}
           </div>
 

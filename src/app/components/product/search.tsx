@@ -6,11 +6,11 @@ const SearchForm = () => {
     console.log(e.target)
   }
   return (
-    <div className="relative w-full  sm:w-[305px] h-[48px]">
-      <FaSearch className="absolute top-[10px] left-[10px] text-[#223333ad]" />
+    <div className="relative  mx-auto w-[90%]  lg:w-[305px] mt-[25px] lg:mt-0 ">
+      <FaSearch className="absolute top-[12px] left-[15px] text-[#223333ad]" />
       <Input
         type="text"
-        className="pl-[35px] text-[#223333ad]"
+        className="pl-[40px] text-[#223333ad] rounded-[20px]"
         placeholder={'Pretraži proizvode'}
         onChange={searchHandler}
       />

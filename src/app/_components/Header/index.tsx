@@ -100,7 +100,7 @@ export function Header() {
             </button>
 
             <div
-              className={`md:w-[432px] px-[24px] h-[100vh] md:h-[50px]  md:opacity-[66%] md:rounded-[20px] rounded-[5px] md:py-[0px] py-[10px] md:static ${openMenu ? 'opacity-100 translate-y-0 select-auto pointer-events-auto z-40' : 'opacity-0 translate-y-2 select-none pointer-events-none md:select-auto md:pointer-events-auto'} bg-white absolute top-[-54px] right-0 w-[100vw]  transition-all duration-500  overflow-hidden`}
+              className={`md:w-[432px] px-[24px] h-[100vh] md:h-[50px]  md:opacity-[66%] md:rounded-[20px] rounded-[5px] md:py-[0px] py-[10px] md:static ${openMenu ? 'opacity-100 translate-y-0 select-auto pointer-events-auto z-40' : 'opacity-0 translate-y-2 select-none pointer-events-none md:select-auto md:pointer-events-auto'} md:backdrop-blur-xl bg-white absolute top-[-54px] right-0 w-[100vw]  transition-all duration-500  overflow-hidden`}
             >
               {/* close menu icon */}
               <button
@@ -109,14 +109,14 @@ export function Header() {
               >
                 <IoMdClose className="text-primary text-[40px] text-right ml-auto" />
               </button>
-              <div className="flex flex-col justify-between h-[90%]">
+              <div className="flex flex-col justify-between h-[90%] md:h-full">
                 {/* link */}
                 <div className="flex md:items-center md:flex-row flex-col md:justify-between md:h-full md:mt-0 mt-[20px] ">
                   {links.map(link => (
                     <Link
                       key={link.text}
                       href={link.path}
-                      className={` hover:text-primary font-[plus-jakarta-sans] font-[700] md:py-0 py-[10px] ${pathname === link.path ? 'text-primary' : ''}`}
+                      className={` hover:text-primary font-[700] md:py-0 py-[10px] ${pathname === link.path ? 'text-primary' : ''}`}
                     >
                       {link.text}
                     </Link>

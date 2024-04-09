@@ -1,9 +1,9 @@
 import React from 'react'
+import { Suspense } from 'react'
 import HeroSection from '../../components/common/hero-section'
 import CategoriesSection from '../../components/product/categories'
 import Search from '../../components/product/search'
 import Product from '../../components/product/product'
-
 const Products = () => {
   const categories = [
     {
@@ -86,11 +86,14 @@ const Products = () => {
   return (
     <>
       <HeroSection pageTitle="Naši proizvodi" pageName="product" />
-      <div className="flex lg:flex-row flex-col items-center justify-between md:px-[35px]">
+      <Suspense>
+      <div className="flex lg:flex-row flex-col items-center justify-between md:px-[35px] mt-[60px] w-full">
         <CategoriesSection categories={categories} />
-        <Search />
+       
+          <Search />
+        
       </div>
-      <div className="flex justify-center flex-wrap pt-[80px]">
+      <div className="flex justify-center flex-wrap pt-[20px] lg:pt-[80px]">
         {products.map((product, i) => (
           <Product
             title={product.title}
@@ -101,6 +104,7 @@ const Products = () => {
           />
         ))}
       </div>
+      </Suspense>
     </>
   )
 }

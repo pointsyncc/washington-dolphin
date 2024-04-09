@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { Header as HeaderType } from '../../../../payload/payload-types'
+import type { Header as HeaderType } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
 import { CMSLink } from '../../Link'
 

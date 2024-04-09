@@ -3,7 +3,7 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
 
-import { Comment, Post, Project } from '../../../payload/payload-types'
+import type { Comment, Post, Project } from '../../../payload/payload-types'
 import { Gutter } from '../../_components/Gutter'
 import { HR } from '../../_components/HR'
 import { Message } from '../../_components/Message'

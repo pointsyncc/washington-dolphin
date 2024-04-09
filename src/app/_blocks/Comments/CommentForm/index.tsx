@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { Comment } from '../../../../payload/payload-types'
+import type { Comment } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
 import { Message } from '../../../_components/Message'

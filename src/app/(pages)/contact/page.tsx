@@ -18,7 +18,7 @@ const Contact = () => {
       </div>
 
       <div className="w-full mt-[120px]">
-        <h2 className="font-[700] text-[32px] text-center">Lokacije poslovnica</h2>
+        <h2 className="font-[700] lg:text-[32px] text-[25px] text-center">Lokacije poslovnica</h2>
         <iframe
           className="w-full h-[600px] mt-[33px]"
           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28831.47044823137!2d68.36971185!3d25.40702625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1712383957138!5m2!1sen!2s"
@@ -29,7 +29,7 @@ const Contact = () => {
       </div>
 
       <div className="text-white bg-[#CEA66B] rounded-[20px] py-[30px] px-[20px] sm:px-[45px] w-full sm:w-[500px] mt-[84px]">
-        <h2 className="font-[700] text-[25px] sm:text-[32px] text-center ">Pekarna Mario</h2>
+        <h2 className="font-[700] lg:text-[32px] text-[25px] text-center ">Pekarna Mario</h2>
 
         <div className=" pt-[48px]">
           <h3 className="font-[700] text-[18px] sm:text-[22px]">Otvoreno danas 6:00 - 20:00</h3>
