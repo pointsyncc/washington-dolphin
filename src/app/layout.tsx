@@ -9,6 +9,8 @@ import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
 import { Plus_Jakarta_Sans, Poppins } from 'next/font/google'
 import './_css/app.css'
+import { fetchGlobals } from './_api/fetchGlobals'
+import Link from 'next/link'
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
@@ -29,6 +31,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   //   variable: '--font-open-sans',
   //   display: 'swap',
   // })
+  const {header} = await fetchGlobals()
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/workSundays`)
+  const data = await res.json()
+  console.log(data.sunday)
   return (
     <html
       lang="hr"
@@ -44,8 +50,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers>
           <AdminBar />
 
-          <Header />
-          <div className='pb-[100px] lg:pb-[150px] xl:pb-[200px]  pt-[33px]'>
+          {/* <Header workingSundays={data.sunday} header={header} /> */}
+          <div className='pb-[100px] lg:pb-[150px] xl:pb-[200px]'>
           {children}
           </div>
 

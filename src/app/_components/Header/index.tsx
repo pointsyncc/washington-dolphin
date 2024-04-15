@@ -2,18 +2,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FaLocationDot } from 'react-icons/fa6'
-import { IoMdMail } from 'react-icons/io'
-import { FaPhoneAlt } from 'react-icons/fa'
-import { TiThMenu as MenuIcon } from 'react-icons/ti'
 import { useEffect, useState } from 'react'
-import { IoMdClose } from 'react-icons/io'
-import { FaRegBell } from 'react-icons/fa'
+import { FaPhoneAlt } from 'react-icons/fa'
+import { FaLocationDot } from 'react-icons/fa6'
+import { IoMdClose, IoMdMail } from 'react-icons/io'
+import { TiThMenu as MenuIcon } from 'react-icons/ti'
+import WorkingSundays from './WorkingSunday'
+import { Header as HeaderType, WorkSunday } from '@/payload/payload-types'
+import { HeaderNav } from './Nav'
 {
   /* eslint-disable @next/next/no-img-element */
 }
-export function Header() {
-  const pathname = usePathname()
+
+interface HeaderProps {
+  showWorkingSundays: boolean
+  workingSundays: WorkSunday[]
+  header: HeaderType
+}
+
+export function Header({ showWorkingSundays, workingSundays, header }: HeaderProps) {
   const [openMenu, setOpenMenu] = useState(false)
   const contacts = [
     {
@@ -33,28 +40,10 @@ export function Header() {
     },
   ]
 
-  const links = [
-    {
-      path: '/',
-      text: 'Početna',
-    },
-    {
-      path: '/aboutus',
-      text: 'O nama',
-    },
-    {
-      path: '/product',
-      text: 'Proizvodi',
-    },
-    {
-      path: '/contact',
-      text: 'Kontakt',
-    },
-  ]
   useEffect(() => {
     if (openMenu) {
-      document.body.style.overflow = 'hidden';
-      scrollTo({top:0,behavior:'smooth'})
+      document.body.style.overflow = 'hidden'
+      scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       document.body.style.overflow = 'auto'
     }
@@ -63,6 +52,10 @@ export function Header() {
 
   return (
     <>
+      <div className="flex lg:hidden items-center justify-between text-xs my-3 flex-wrap">
+        <Link href="tel:+385981391548" className='flex items-center gap-2'><FaPhoneAlt className="text-primary md:text-white" /> +385 98 139 1548</Link>
+        <Link href="mailto:pekarna.mario@gmail.com" className='flex items-center gap-2'><IoMdMail className="text-primary md:text-white" /> pekarna.mario@gmail.com</Link>
+      </div>
       <header className="absolute top-[54px] sm:px-[54px] px-[40px] w-full left-0">
         <div className="flex flex-col xl:flex-row  justify-between items-center">
           <div className="items-center xl:justify-start justify-center xl:py-0 py-[5px] xl:rounded-[0px] rounded-[20px]  xl:mb-0 mb-[10px] md:flex hidden w-full xl:w-auto">
@@ -78,14 +71,12 @@ export function Header() {
               </div>
             ))}
           </div>
-          <button className="bg-secondary sm:mb-0 mb-[20px] flex items-center self-center sm:self-end xl:px-[25px] px-[15px]  rounded-[20px] text-white">
-            <FaRegBell className="" />
-            <p className="m-0 pl-[14px]  xl:text-[16px] text-[12px]">OVU NEDJELJU NE RADIMO</p>
-          </button>
+          {showWorkingSundays && <WorkingSundays workingSundays={workingSundays as any} />}
+          {/* <p className='text-white'>08:00 - 21:00</p> */}
         </div>
         <div className="flex items-center justify-between">
           <Image
-            className="max-w-[70%] md:max-w-[100%] translate-x-[-18px]"
+            className="max-w-[45%] md:max-w-[100%] translate-x-[-18px]"
             src={'/logo.png'}
             alt={'logo'}
             width={229}
@@ -94,9 +85,9 @@ export function Header() {
           <div className="">
             <button
               onClick={openMenuHandler}
-              className="p-[10px] bg-white opacity-[66%] rounded-[5px]  block md:hidden"
+              className="p-[10px] bg-white/60 backdrop-blur-xl rounded-full block md:hidden"
             >
-              <MenuIcon className="text-primary font-bold" />
+              <MenuIcon className="text-black font-bold" />
             </button>
 
             <div
@@ -112,15 +103,7 @@ export function Header() {
               <div className="flex flex-col justify-between h-[90%] md:h-full">
                 {/* link */}
                 <div className="flex md:items-center md:flex-row flex-col md:justify-between md:h-full md:mt-0 mt-[20px] ">
-                  {links.map(link => (
-                    <Link
-                      key={link.text}
-                      href={link.path}
-                      className={` hover:text-primary font-[700] md:py-0 py-[10px] ${pathname === link.path ? 'text-primary' : ''}`}
-                    >
-                      {link.text}
-                    </Link>
-                  ))}
+                    <HeaderNav header={header} />
                 </div>
                 {/* contact links */}
                 <div className="flex md:hidden flex-col justify-center ">

@@ -14,23 +14,12 @@ export const ContentBlock: React.FC<
     id?: string
   }
 > = props => {
-  const { columns } = props
+  const { richText } = props
 
   return (
     <Gutter className={classes.content}>
       <div className={classes.grid}>
-        {columns &&
-          columns.length > 0 &&
-          columns.map((col, index) => {
-            const { enableLink, richText, link, size } = col
-
-            return (
-              <div key={index} className={[classes.column, classes[`column--${size}`]].join(' ')}>
-                <RichText content={richText} />
-                {enableLink && <CMSLink className={classes.link} {...link} />}
-              </div>
-            )
-          })}
+        <RichText content={richText} />
       </div>
     </Gutter>
   )

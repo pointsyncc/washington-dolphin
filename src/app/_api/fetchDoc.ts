@@ -19,7 +19,7 @@ const queryMap = {
   projects: {
     query: PROJECT,
     key: 'Projects',
-  },
+  }
 }
 
 export const fetchDoc = async <T>(args: {

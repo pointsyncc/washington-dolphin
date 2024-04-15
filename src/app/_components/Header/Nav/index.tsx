@@ -15,28 +15,11 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
 
   return (
     <nav
-      className={[
-        classes.nav,
-        // fade the nav in on user load to avoid flash of content and layout shift
-        // Vercel also does this in their own website header, see https://vercel.com
-        user === undefined && classes.hide,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className={"flex flex-col sm:flex-row gap-4 sm:gap-8 items-start sm:items-start justify-center sm:justify-start " + classes.nav}
     >
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
-      {user && <Link href="/account">Account</Link>}
-      {/*
-        // Uncomment this code if you want to add a login link to the header
-        {!user && (
-          <React.Fragment>
-            <Link href="/login">Login</Link>
-            <Link href="/create-account">Create Account</Link>
-          </React.Fragment>
-        )}
-      */}
     </nav>
   )
 }
