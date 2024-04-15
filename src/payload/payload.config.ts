@@ -23,6 +23,9 @@ import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
+import { Products } from './collections/Products'
+import { WorkSundays } from './globals/WorkSundays'
+import FormBuilder from '@payloadcms/plugin-form-builder'
 
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
@@ -66,8 +69,8 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
-  globals: [Settings, Header, Footer],
+  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments, Products],
+  globals: [Settings, Header, Footer, WorkSundays],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
@@ -93,10 +96,26 @@ export default buildConfig({
       collections: ['categories'],
     }),
     seo({
-      collections: ['pages', 'posts', 'projects'],
+      collections: ['pages', 'posts'],
       generateTitle,
       uploadsCollection: 'media',
     }),
+    FormBuilder({
+      // ...
+      fields: {
+        text: true,
+        textarea: true,
+        select: true,
+        email: true,
+        state: true,
+        country: true,
+        checkbox: true,
+        number: true,
+        message: true,
+        payment: false
+      },
+      redirectRelationships: ['pages'],    
+    }),    
     payloadCloud(),
   ],
 })

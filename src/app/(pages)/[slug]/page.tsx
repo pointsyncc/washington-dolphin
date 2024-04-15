@@ -1,41 +1,62 @@
-import React from 'react'
 import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { Page } from '../../../payload/payload-types'
-import { staticHome } from '../../../payload/seed/home-static'
-import { fetchDoc } from '../../_api/fetchDoc'
-import { fetchDocs } from '../../_api/fetchDocs'
-import { Blocks } from '../../_components/Blocks'
-import { Hero } from '../../_components/Hero'
-import { generateMeta } from '../../_utilities/generateMeta'
 
-// Payload Cloud caches all files through Cloudflare, so we don't need Next.js to cache them as well
-// This means that we can turn off Next.js data caching and instead rely solely on the Cloudflare CDN
-// To do this, we include the `no-cache` header on the fetch requests used to get the data for this page
-// But we also need to force Next.js to dynamically render this page on each request for preview mode to work
-// See https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
-// If you are not using Payload Cloud then this line can be removed, see `../../../README.md#cache`
+import { PageClient } from './page_client'
+import { Page as PageType } from '@/payload/payload-types'
+import { staticHome } from '@/payload/seed/home-static'
+import { generateMeta } from 'src/app/_utilities/generateMeta'
+import { fetchGlobals } from 'src/app/_api/fetchGlobals'
+
 export const dynamic = 'force-dynamic'
 
-export default async function Page({ params: { slug = 'home' } }) {
+async function fetchPage(slug: string) {
   const { isEnabled: isDraftMode } = draftMode()
-
-  let page: Page | null = null
+  let page: PageType | null = null
 
   try {
-    page = await fetchDoc<Page>({
-      collection: 'pages',
-      slug,
-      draft: isDraftMode,
-    })
+    const pagesQuery: { docs: PageType[] } = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/pages?limit=100&draft=${isDraftMode}`,
+      { next: { tags: [`pages_${slug}`] } },
+    ).then(res => res.json())
+    page = pagesQuery.docs.find(doc => doc.slug === slug)
   } catch (error) {
     // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
     // so swallow the error here and simply render the page with fallback data where necessary
     // in production you may want to redirect to a 404  page or at least log the error somewhere
-    // console.error(error)
+    console.error(error)
   }
+
+  return page
+}
+
+async function fetchPages() {
+  const { isEnabled: isDraftMode } = draftMode()
+  let pages: PageType[] | null = null
+
+  try {
+    const res: { docs: PageType[] } = await fetch(
+      `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/pages?limit=100&draft=${isDraftMode}`,
+    ).then(res => res.json())
+    pages = res.docs
+  } catch (error) {
+    // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
+    // so swallow the error here and simply render the page with fallback data where necessary
+    // in production you may want to redirect to a 404  page or at least log the error somewhere
+    console.error(error)
+  }
+
+  return pages
+}
+
+export default async function Page({ params: { slug = 'home' } }) {
+  let page = await fetchPage(slug)
+
+  const {header} = await fetchGlobals()
+  console.log(JSON.stringify(header.navItems))
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/workSundays`)
+  const data = await res.json()
 
   // if no `home` page exists, render a static one using dummy content
   // you should delete this code once you have a home page in the CMS
@@ -43,53 +64,34 @@ export default async function Page({ params: { slug = 'home' } }) {
   if (!page && slug === 'home') {
     page = staticHome
   }
-
   if (!page) {
+    console.error(`No page found for slug: ${slug}`)
     return notFound()
   }
 
-  const { hero, layout } = page
-
-  return (
-    <React.Fragment>
-      <Hero {...hero} />
-      <Blocks
-        blocks={layout}
-        disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
-      />
-    </React.Fragment>
-  )
+  return <PageClient page={page} header={header} workingSundays={data} />
 }
 
 export async function generateStaticParams() {
   try {
-    const pages = await fetchDocs<Page>('pages')
-    return pages?.map(({ slug }) => slug)
+    const pages = await fetchPages()
+    return pages.map(({ slug }) =>
+      slug !== 'home'
+        ? {
+            slug,
+          }
+        : {},
+    ) // eslint-disable-line function-paren-newline
   } catch (error) {
     return []
   }
 }
 
 export async function generateMetadata({ params: { slug = 'home' } }): Promise<Metadata> {
-  const { isEnabled: isDraftMode } = draftMode()
+  let page = await fetchPage(slug)
 
-  let page: Page | null = null
-
-  try {
-    page = await fetchDoc<Page>({
-      collection: 'pages',
-      slug,
-      draft: isDraftMode,
-    })
-  } catch (error) {
-    // don't throw an error if the fetch fails
-    // this is so that we can render static fallback pages for the demo
-    // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
-  }
-
-  if (!page) {
-    if (slug === 'home') page = staticHome
+  if (!page && slug === 'home') {
+    page = staticHome
   }
 
   return generateMeta({ doc: page })

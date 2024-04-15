@@ -13,6 +13,32 @@ export const PROJECTS = `
   }
 `
 
+export const PRODUCTS = `
+  query Products {
+    Products(limit: 300) {
+      docs {
+        title
+        description
+        price
+        weight
+        categories {
+          title
+        }
+      }
+    }
+  }
+`
+
+export const CATEGORIES = `
+  query Categories {
+    Categories(limit: 300) {
+      docs {
+        title
+      }
+    }
+  }
+`
+
 export const PROJECT = `
   query Project($slug: String, $draft: Boolean) {
     Projects(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {

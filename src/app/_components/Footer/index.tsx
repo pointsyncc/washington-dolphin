@@ -1,58 +1,78 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-
-import { Footer } from '../../../payload/payload-types'
-import { fetchFooter, fetchGlobals } from '../../_api/fetchGlobals'
-import { ThemeSelector } from '../../_providers/Theme/ThemeSelector'
-import { Gutter } from '../Gutter'
-import { CMSLink } from '../Link'
-
-import classes from './index.module.scss'
-
+import { FaLocationDot } from 'react-icons/fa6'
+import { IoMdMail } from 'react-icons/io'
+import { FaPhoneAlt } from 'react-icons/fa'
 export async function Footer() {
-  let footer: Footer | null = null
-
-  try {
-    footer = await fetchFooter()
-  } catch (error) {
-    // When deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // So swallow the error here and simply render the footer without nav items if one occurs
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
-    // console.error(error)
-  }
-
-  const navItems = footer?.navItems || []
+  const contacts = [
+    {
+      text: 'Zagrebačka cesta 45, 10382, Goričica',
+      icon: <FaLocationDot className="text-[#CEA66B]" />,
+      name: 'location',
+    },
+    {
+      text: 'pekarnamario@gmail.com',
+      icon: <IoMdMail className="text-[#CEA66B]" />,
+      name: 'message',
+    },
+    {
+      text: '+385 98 139 1548',
+      icon: <FaPhoneAlt className="text-[#CEA66B]" />,
+      name: 'phone',
+    },
+  ]
 
   return (
-    <footer className={classes.footer}>
-      <Gutter className={classes.wrap}>
-        <Link href="/">
-          <picture>
-            <img
-              className={classes.logo}
-              alt="Payload Logo"
-              src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/payload/src/admin/assets/images/payload-logo-light.svg"
+    <footer>
+      <div className="bg-[#313131] rounded-[20px] px-[15px] sm:px-[46px] pt-[30px] pb-[60px]">
+        <div className="flex lg:flex-row flex-col justify-between lg:mt-0 mt-[20px]">
+          <div className="">
+            {/* image */}
+            <Image
+              src={'/logo-footer.png'}
+              alt={'logo'}
+              width={229}
+              height={118}
+              className="mx-auto sm:mx-0"
             />
-          </picture>
-        </Link>
-        <nav className={classes.nav}>
-          <ThemeSelector />
-          {navItems.map(({ link }, i) => {
-            return <CMSLink key={i} {...link} />
-          })}
-          <Link href="/admin">Admin</Link>
-          <Link
-            href="https://github.com/payloadcms/payload/tree/main/templates/website"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Source Code
+            {/* contacts */}
+            <div className='flex justify-center w-full sm:w-auto sm:block '>
+            <div className="flex flex-col  lg:w-auto lg:mt-[50px] my-[15px]">
+              {contacts.map(contact => (
+                <div key={contact.name} className="flex items-center lg:pl-[22px] mt-[20px]">
+                  {contact.icon}
+                  <span className="pl-[10px]  text-white sm:text-[16px] text-[14px]">
+                    {contact.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+            </div>
+          </div>
+          <div className="flex sm:flex-row flex-col sm:items-center justify-between text-white mt-[30px] lg:mt-0">
+            <h2 className="lg:text-[32px] sm:text-[25px] text-[20px] font-[700] text-center sm:text-start">
+              Imaš pitanje za nas?
+            </h2>
+            <button className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[2px] border-white rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-primary sm:w-auto w-[90%] mx-auto sm:mr-0">
+              Kontaktiraj nas
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="flex md:flex-row flex-col justify-between items-center px-[0px]  md:px-[40px] py-[14px]">
+        <p className="text-[14px] leading-[20px] sm:leading-[38px] text-center md:text-start mt-[20px] md:mt-0">
+          Pekarna Mario © 2024. | Sva prava pridržana.
+        </p>
+        <div className="flex items-center mt-[20px] md:mt-0">
+          <Link className="text-[14px] hover:text-primary" href={'/privacy-policy'}>
+            Politika privatnosti
           </Link>
-          <Link href="https://payloadcms.com" target="_blank" rel="noopener noreferrer">
-            Payload
+          <Link className="text-[14px] hover:text-primary pl-[16px]" href={'/terms-of-use'}>
+            Uvjeti korištenja
           </Link>
-        </nav>
-      </Gutter>
+        </div>
+      </div>
     </footer>
   )
 }

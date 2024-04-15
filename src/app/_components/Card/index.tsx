@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
 
-import { Post, Project } from '../../../payload/payload-types'
+import type { Post, Project } from '../../../payload/payload-types'
 import { Media } from '../Media'
 
 import classes from './index.module.scss'
