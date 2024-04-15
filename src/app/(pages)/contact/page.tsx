@@ -6,7 +6,6 @@ import { IoMdMail } from 'react-icons/io'
 const Contact = () => {
   return (
     <>
-      <HeroSection pageTitle="Kontaktiraj nas" pageName="contact" />
       <div className="flex justify-center items-center lg:items-start lg:flex-row flex-col lg:justify-between w-full xl:px-[80px] lg:px-[60px] md:px-[40px] sm:px-[20px] px-0">
         <p className="text-[20px] leading-[37px] xl:w-[50%] lg:w-[60%] w-full pr-[20px] mb-[40px] lg:mb-0">
           Imate savjet ili prijedlog kojeg bi htjeli podijeliti s nama, želite postaviti pitanje u

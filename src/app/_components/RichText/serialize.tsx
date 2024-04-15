@@ -63,9 +63,17 @@ const serialize = (children?: Children): React.ReactNode[] =>
 
     switch (node.type) {
       case 'h1':
-        return <h1 key={i}>{serialize(node?.children)}</h1>
+        return (
+          <h1 className="text-3xl" key={i}>
+            {serialize(node?.children)}
+          </h1>
+        )
       case 'h2':
-        return <h2 key={i}>{serialize(node?.children)}</h2>
+        return (
+          <h2 className="text-3xl" key={i}>
+            {serialize(node?.children)}
+          </h2>
+        )
       case 'h3':
         return <h3 key={i}>{serialize(node?.children)}</h3>
       case 'h4':
@@ -85,6 +93,7 @@ const serialize = (children?: Children): React.ReactNode[] =>
       case 'link':
         return (
           <CMSLink
+            className="text-primary underline"
             key={i}
             type={node.linkType === 'internal' ? 'reference' : 'custom'}
             url={node.url}

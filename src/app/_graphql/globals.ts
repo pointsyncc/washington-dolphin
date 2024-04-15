@@ -44,3 +44,22 @@ query Settings {
   ${SETTINGS}
 }
 `
+
+
+export const WORK_SUNDAY = `
+WorkSunday {
+  sunday {
+    date
+    open
+    from
+    to
+    description
+  }
+}
+`
+
+export const WORKING_SUNDAYS_QUERY = `
+query WorkSunday {
+  ${WORK_SUNDAY}
+}
+`
