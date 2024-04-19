@@ -27,6 +27,7 @@ export interface Config {
     header: Header;
     footer: Footer;
     workSundays: WorkSunday;
+    topbar: Topbar;
   };
 }
 /**
@@ -800,6 +801,82 @@ export interface WorkSunday {
         id?: string | null;
       }[]
     | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "topbar".
+ */
+export interface Topbar {
+  id: string;
+  location: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    url?: string | null;
+    label: string;
+  };
+  email: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    url?: string | null;
+    label: string;
+  };
+  phone: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    url?: string | null;
+    label: string;
+  };
+  timmings: {
+    sunday: {
+      closed?: boolean | null;
+      openningTime: string;
+      closingTime: string;
+    };
+    monday: {
+      closed?: boolean | null;
+      openningTime: string;
+      closingTime: string;
+    };
+    tuesday: {
+      closed?: boolean | null;
+      openningTime: string;
+      closingTime: string;
+    };
+    wednesday: {
+      closed?: boolean | null;
+      openningTime: string;
+      closingTime: string;
+    };
+    thursday: {
+      closed?: boolean | null;
+      openningTime: string;
+      closingTime: string;
+    };
+    friday: {
+      closed?: boolean | null;
+      openningTime: string;
+      closingTime: string;
+    };
+    saturday: {
+      closed?: boolean | null;
+      openningTime: string;
+      closingTime: string;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
