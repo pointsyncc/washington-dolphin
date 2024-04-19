@@ -19,7 +19,7 @@ export const appearanceOptions = {
 
 export type LinkAppearances = 'primary' | 'secondary' | 'default'
 
-type LinkType = (options?: {
+export type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
   disableLabel?: boolean
   overrides?: Record<string, unknown>

@@ -6,16 +6,17 @@ import { FaEnvelope, FaPhone } from 'react-icons/fa6'
 import { Topbar } from '@/payload/payload-types'
 
 import { Container } from '@/components/grid/Container'
-import { FaMapMarker } from 'react-icons/fa'
-import { Text } from '@/components/typography/text/Text'
+import { FaMapMarkerAlt } from 'react-icons/fa'
+
 import { Timmings } from './Timmings'
+import { ContactInfo } from './ContactInfo'
 
 type TTopbarProps = Topbar
 
 const TopBar = async (topbar: TTopbarProps) => {
   const links: TLinkWithIconProps[] = [
     {
-      icon: FaMapMarker,
+      icon: FaMapMarkerAlt,
       href: topbar?.location?.url ?? 'https://maps.app.goo.gl/Tow1vwwy4AweQLMh8',
       children: topbar?.location?.label ?? 'Zagrebačka cesta 45, 10382, Goričica',
     },
@@ -32,18 +33,12 @@ const TopBar = async (topbar: TTopbarProps) => {
   ]
 
   return (
-    <Container className="py-4">
+    <div className="py-4">
       <div className="gap-2 lg:gap-0 items-center flex-col lg:flex-row flex lg:justify-between">
-        <ul className="flex-col sm:flex-row flex gap-0 sm:gap-4">
-          {links.map(link => (
-            <li key={link.children.toString()}>
-              <LinkWithIcon {...link} />
-            </li>
-          ))}
-        </ul>
-          <Timmings timmings={topbar?.timmings}/>
+        <ContactInfo links={links} />
+        <Timmings timmings={topbar?.timmings} />
       </div>
-    </Container>
+    </div>
   )
 }
 export { TopBar }

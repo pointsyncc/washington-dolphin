@@ -48,7 +48,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-[#F9EFD7] px-[22px] relative overflow-x-hidden">
+      <body className="px-[22px] relative overflow-x-hidden">
         <Providers>
           {/* <AdminBar /> */}
           <TopBar {...topbar}/>
@@ -57,7 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           </div>
 
-          <Footer />
+          <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />
         </Providers>
       </body>
     </html>
