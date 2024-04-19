@@ -25,7 +25,6 @@ export const PageClient: React.FC<{
 
   return (
     <React.Fragment>
-     
      <Header showWorkingSundays={data.showWorkingSundays} workingSundays={workingSundays.sunday} header={header} />
      <HeroSection pageTitle={data.title} bgURL={bgURL} />
      {/* <Hero {...data.hero} /> */}
