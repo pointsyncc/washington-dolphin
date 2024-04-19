@@ -7,9 +7,11 @@ import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding/inde
 
 import { Page } from '@/payload/payload-types'
 import { ContentBlock } from '../../_blocks/Content'
+import { ProductsBlock } from '../../_blocks/ProductsBlock'
 
 const blockComponents = {
   galleryBlock: GalleryBock,
+  productsBlock: ProductsBlock,
   content: ContentBlock,
 }
 

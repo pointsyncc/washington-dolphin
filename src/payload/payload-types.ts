@@ -40,61 +40,47 @@ export interface Page {
   publishedAt?: string | null;
   featuredImage: string | Media;
   showWorkingSundays: boolean;
-  hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText: {
-      [k: string]: unknown;
-    }[];
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?: {
-              relationTo: 'pages';
-              value: string | Page;
-            } | null;
-            url?: string | null;
-            label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-    media?: string | Media | null;
-  };
-  layout: (
-    | {
-        richText: {
-          [k: string]: unknown;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'content';
-      }
-    | {
-        form: string | Form;
-        enableIntro?: boolean | null;
-        introContent: {
-          [k: string]: unknown;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'formBlock';
-      }
-    | {
-        images?:
-          | {
-              image: string | Media;
-              caption?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'galleryBlock';
-      }
-  )[];
+  layout?:
+    | (
+        | {
+            richText: {
+              [k: string]: unknown;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
+        | {
+            form: string | Form;
+            enableIntro?: boolean | null;
+            introContent: {
+              [k: string]: unknown;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'formBlock';
+          }
+        | {
+            images?:
+              | {
+                  image: string | Media;
+                  caption?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'galleryBlock';
+          }
+        | {
+            products: (string | Product)[];
+            categories: (string | Category)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'productsBlock';
+          }
+      )[]
+    | null;
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -259,6 +245,40 @@ export interface Form {
               [k: string]: unknown;
             }[]
           | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: string;
+  title: string;
+  description: string;
+  categories?: (string | Category)[] | null;
+  price?: number | null;
+  weight?: number | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: string;
+  title: string;
+  parent?: (string | null) | Category;
+  breadcrumbs?:
+    | {
+        doc?: (string | null) | Category;
+        url?: string | null;
+        label?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -480,25 +500,6 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: string;
-  title: string;
-  parent?: (string | null) | Category;
-  breadcrumbs?:
-    | {
-        doc?: (string | null) | Category;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -647,21 +648,6 @@ export interface Comment {
   };
   doc?: (string | null) | Post;
   comment?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "products".
- */
-export interface Product {
-  id: string;
-  title: string;
-  description: string;
-  categories?: (string | Category)[] | null;
-  price?: number | null;
-  weight?: number | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
