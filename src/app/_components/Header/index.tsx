@@ -52,10 +52,10 @@ export function Header({ showWorkingSundays, workingSundays, header }: HeaderPro
 
   return (
     <>
-      <div className="flex lg:hidden items-center justify-between text-xs my-3 flex-wrap">
+      {/* <div className="flex lg:hidden items-center justify-between text-xs my-3 flex-wrap">
         <Link href="tel:+385981391548" className='flex items-center gap-2'><FaPhoneAlt className="text-primary md:text-white" /> +385 98 139 1548</Link>
         <Link href="mailto:pekarna.mario@gmail.com" className='flex items-center gap-2'><IoMdMail className="text-primary md:text-white" /> pekarna.mario@gmail.com</Link>
-      </div>
+      </div> */}
       <header className="absolute top-[54px] sm:px-[54px] px-[40px] w-full left-0">
         <div className="flex flex-col xl:flex-row  justify-between items-center">
           <div className="items-center xl:justify-start justify-center xl:py-0 py-[5px] xl:rounded-[0px] rounded-[20px]  xl:mb-0 mb-[10px] md:flex hidden w-full xl:w-auto">

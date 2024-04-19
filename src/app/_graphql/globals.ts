@@ -45,7 +45,6 @@ query Settings {
 }
 `
 
-
 export const WORK_SUNDAY = `
 WorkSunday {
   sunday {
@@ -63,3 +62,35 @@ query WorkSunday {
   ${WORK_SUNDAY}
 }
 `
+
+const timmingFields = `{
+    closed
+    openningTime
+    closingTime
+  }`
+
+export function TOPBAR(locale: string = 'hr') {
+  return `
+    Topbar {
+      email ${LINK_FIELDS({ disableAppearance: true })}
+      phone ${LINK_FIELDS({ disableAppearance: true })}
+      location ${LINK_FIELDS({ disableAppearance: true })}
+      timmings {
+        sunday ${timmingFields}
+        monday ${timmingFields}
+        tuesday ${timmingFields}
+        wednesday ${timmingFields}
+        friday ${timmingFields}
+        saturday ${timmingFields}
+      }
+    }
+  `
+}
+
+export function TOPBAR_QUERY(locale: string = 'hr') {
+  return `
+  query Topbar {
+    ${TOPBAR(locale)}
+  }
+ `
+}
