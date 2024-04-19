@@ -22,6 +22,7 @@ import BeforeLogin from './components/BeforeLogin'
 import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
+import { Topbar } from './globals/Topbar'
 import { Settings } from './globals/Settings'
 import { Products } from './collections/Products'
 import { WorkSundays } from './globals/WorkSundays'
@@ -70,7 +71,7 @@ export default buildConfig({
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Posts, Projects, Media, Categories, Users, Comments, Products],
-  globals: [Settings, Header, Footer, WorkSundays],
+  globals: [Settings, Header, Footer, WorkSundays,Topbar],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
