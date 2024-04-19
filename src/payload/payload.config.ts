@@ -27,10 +27,26 @@ import { Settings } from './globals/Settings'
 import { Products } from './collections/Products'
 import { WorkSundays } from './globals/WorkSundays'
 import FormBuilder from '@payloadcms/plugin-form-builder'
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
 
 const generateTitle: GenerateTitle = () => {
-  return 'My Website'
+  return 'Pekarna Mario'
 }
+
+const adapter = s3Adapter({
+  config: {
+    credentials: {
+      accessKeyId: process.env.S3_ACCESS_KEY_ID,
+      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    },
+    region: process.env.S3_REGION,
+    // ... Other S3 configuration
+    endpoint: process.env.S3_ENDPOINT,
+  },
+  bucket: process.env.S3_BUCKET,
+})
+
 
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
@@ -117,6 +133,13 @@ export default buildConfig({
       },
       redirectRelationships: ['pages'],    
     }),    
-    payloadCloud(),
+    cloudStorage({
+      collections: {
+        media: {
+          adapter: adapter, // see docs for the adapter you want to use
+          prefix: 'web-media',
+        },
+      },
+    }),
   ],
 })
