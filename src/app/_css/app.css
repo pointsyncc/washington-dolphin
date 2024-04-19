@@ -6,6 +6,7 @@
 
 @layer base {
   :root {
+
     --body:42, 74%, 91%;
     --body-foreground:36, 100%, 17%;
     --background: 0 0% 100%;

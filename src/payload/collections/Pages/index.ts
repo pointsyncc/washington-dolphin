@@ -10,6 +10,7 @@ import { slugField } from '../../fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
 import { ProductsBlock } from '../../blocks/ProductsBlock'
+import { Hero } from '../../blocks/Hero'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -123,7 +124,7 @@ export const Pages: CollectionConfig = {
               },
               type: 'blocks',
               required: false,
-              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock],
+              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock,Hero],
             },
           ],
         },

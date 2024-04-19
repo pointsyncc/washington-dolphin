@@ -2,12 +2,12 @@ import React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
 
-const classes = cva('!leading-[1.3]', {
+const classes = cva('!leading-[1.8]', {
   variants: {
     level: {
-      1: 'text-sm md:text-lg xl:text-base',
-      2: 'text-xs md:text-sm xl:text-base',
-      3: 'text-xs md:text-sm xl:text-sm',
+      1: 'text-base md:text-lg xl:text-xl',
+      2: 'text-sm md:text-base xl:text-lg',
+      3: 'text-xs md:text-sm xl:text-base',
       4: 'text-xs md:text-sm',
       12: 'text-xs xl:text-base',
       13: 'text-xs md:text-sm xl:text-sm',
@@ -29,7 +29,7 @@ const classes = cva('!leading-[1.3]', {
   defaultVariants: {
     weight: 'normal',
     color: 'dark',
-    level: 2,
+    level: 3,
   },
 })
 
