@@ -9,6 +9,7 @@ import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
+import { ProductsBlock } from '../../blocks/ProductsBlock'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -104,10 +105,10 @@ export const Pages: CollectionConfig = {
   {
       type: 'tabs',
       tabs: [
-        {
+  /*       {
           label: 'Hero',
           fields: [hero],
-        },
+        }, */
         {
           label: {
             en: 'Content',
@@ -121,8 +122,8 @@ export const Pages: CollectionConfig = {
                 hr: 'Raspored',
               },
               type: 'blocks',
-              required: true,
-              blocks: [Content, FormBlock, GalleryBlock],
+              required: false,
+              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock],
             },
           ],
         },
