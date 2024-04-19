@@ -32,9 +32,12 @@ const Contact = () => {
             ostvarenja ili unaprijeđenja poslovne suradnje? Nemojte čekati, slobodno nas
             kontaktirajte!
           </p>
+          <div className="xl:hidden block mb-[50px]">
+          <ContactForm />
+        </div>
           <div className="flex flex-col">
-            {contacts.map((contact,i) => (
-              <div key={contact.name} className={`flex items-center ${i!==0 && 'mt-[20px]'}`}>
+            {contacts.map((contact, i) => (
+              <div key={contact.name} className={`flex items-center ${i !== 0 && 'mt-[20px]'}`}>
                 {contact.icon}
                 <span className="pl-[10px]  text-primary sm:text-[16px] text-[14px]">
                   {contact.text}
@@ -50,7 +53,10 @@ const Contact = () => {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <ContactForm />
+
+        <div className="xl:block hidden">
+          <ContactForm />
+        </div>
       </div>
     </>
   )
