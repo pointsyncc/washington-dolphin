@@ -26,7 +26,7 @@ const Contact = () => {
     <>
       <div className="flex xl:flex-row flex-col justify-center items-start xl:items-center lg:justify-between w-full xl:px-[80px] lg:px-[60px] md:px-[40px] sm:px-[20px] px-0 pt-[60px]">
         <div className="xl:basis-[40%] xl:max-w-[40%] sm:max-w-[100%] sm:basis-[100%] pr-[15px]">
-          <p className="text-[20px] text-primary leading-[37px] w-full  xl:pr-[20px] mb-[50px] lg:mb-0">
+          <p className="text-[20px] text-primary leading-[37px] w-full  xl:pr-[20px] mb-[50px]">
             Imate savjet ili prijedlog kojeg bi htjeli podijeliti s nama, želite postaviti pitanje u
             vezi s nekim našim proizvodom ili proizvodnim procesom? Želite nam se obratiti radi
             ostvarenja ili unaprijeđenja poslovne suradnje? Nemojte čekati, slobodno nas
