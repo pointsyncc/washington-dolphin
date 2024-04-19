@@ -41,11 +41,17 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
             type: 'radio',
             options: [
               {
-                label: 'Internal link',
+                label: {
+                  en: 'Document Reference',
+                  hr: 'Referenca dokumenta',
+                },
                 value: 'reference',
               },
               {
-                label: 'Custom URL',
+                label: {
+                  en: 'Custom URL',
+                  hr: 'Prilagođeni URL',
+                },
                 value: 'custom',
               },
             ],
@@ -57,7 +63,10 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
           },
           {
             name: 'newTab',
-            label: 'Open in new tab',
+            label: {
+              en: 'Open in new tab',
+              hr: 'Otvori u novom prozoru',
+            },
             type: 'checkbox',
             admin: {
               width: '50%',
@@ -74,7 +83,10 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
   const linkTypes: Field[] = [
     {
       name: 'reference',
-      label: 'Document to link to',
+      label: {
+        en: 'Reference',
+        hr: 'Referenca',
+      },
       type: 'relationship',
       relationTo: ['pages'],
       required: true,
@@ -85,7 +97,10 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
     },
     {
       name: 'url',
-      label: 'Custom URL',
+      label: {
+        en: 'Custom URL',
+        hr: 'Prilagođeni URL',
+      },
       type: 'text',
       required: true,
       admin: {
@@ -109,7 +124,10 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
         ...linkTypes,
         {
           name: 'label',
-          label: 'Label',
+          label: {
+            en: 'Label',
+            hr: 'Oznaka',
+          },
           type: 'text',
           required: true,
           admin: {
