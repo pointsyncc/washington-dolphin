@@ -27,6 +27,7 @@
     "@payloadcms/db-mongodb": "^1.4.4",
     "@payloadcms/live-preview-react": "^0.2.0",
     "@payloadcms/plugin-cloud": "^3.0.0",
+    "@payloadcms/plugin-cloud-storage": "^1.1.2",
     "@payloadcms/plugin-form-builder": "^1.2.1",
     "@payloadcms/plugin-nested-docs": "^1.0.12",
     "@payloadcms/plugin-redirects": "^1.0.1",
