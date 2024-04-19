@@ -53,7 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* <AdminBar /> */}
           <TopBar {...topbar}/>
           {/* <Header workingSundays={data.sunday} header={header} /> */}
-          <div className='pb-[100px] lg:pb-[150px] xl:pb-[200px]'>
+          <div className='pb-[50px] lg:pb-[150px] xl:pb-[200px]'>
           {children}
           </div>
 
