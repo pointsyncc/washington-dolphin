@@ -209,10 +209,6 @@ p{
   box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
 }
 
-p{
- 
-}
-
 @media (max-width: 575px) {
   p {
       font-size: 1rem !important;
