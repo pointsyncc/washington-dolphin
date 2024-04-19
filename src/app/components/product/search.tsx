@@ -46,11 +46,11 @@ const SearchForm = () => {
       <FaSearch className="absolute top-[12px] left-[15px] text-[#223333ad]" />
       <Input
         type="text"
-        className="pl-[40px] text-[#223333ad] rounded-[20px]"
+        className="pl-[40px] text-[#223333ad] rounded-[0px]"
         placeholder={'Pretraži proizvode...'}
         onChange={searchHandler}
       />
-{/*        {products.map((product, i) => (
+      {products.map((product, i) => (
           <Product
             title={product.title}
             description={product.description}
@@ -58,7 +58,7 @@ const SearchForm = () => {
             weight={product.weight}
             key={product.title + i}
           />
-        ))} */}
+        ))} 
     </div>
   );
 };

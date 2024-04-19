@@ -11,6 +11,7 @@ import { Plus_Jakarta_Sans, Poppins } from 'next/font/google'
 import './_css/app.css'
 import { fetchGlobals } from './_api/fetchGlobals'
 import Link from 'next/link'
+import { TopBar } from './(pages)/components/navigation/Topbar'
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
@@ -31,10 +32,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   //   variable: '--font-open-sans',
   //   display: 'swap',
   // })
-  const {header} = await fetchGlobals()
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/workSundays`)
-  const data = await res.json()
-  console.log(data.sunday)
+  const {header,topbar} = await fetchGlobals()
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/workSundays`)
+  // const data = await res.json()
+  console.log(topbar)
+
   return (
     <html
       lang="hr"
@@ -46,16 +48,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-[#F9EFD7] px-[22px] relative overflow-x-hidden">
+      <body className="px-[22px] relative overflow-x-hidden">
         <Providers>
-          <AdminBar />
-
+          {/* <AdminBar /> */}
+          <TopBar {...topbar}/>
           {/* <Header workingSundays={data.sunday} header={header} /> */}
           <div className='pb-[50px] lg:pb-[150px] xl:pb-[200px]'>
           {children}
           </div>
 
-          <Footer />
+          <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />
         </Providers>
       </body>
     </html>

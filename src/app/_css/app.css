@@ -6,6 +6,8 @@
 
 @layer base {
   :root {
+    --body:42, 74%, 91%;
+    --body-foreground:36, 100%, 17%;
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -24,8 +26,9 @@
     --primary: 36 100% 17%;
     --primary-foreground: 40 100% 58%;
 
-    --secondary: 35 58% 68%;
-    --secondary-foreground: 35 58% 68%;
+
+    --secondary: 36, 50%, 61%;
+    --secondary-foreground: 36, 50%, 61%;
 
     --accent: 43 93% 95%;
     --accent-foreground: 43 93% 95%;
@@ -117,7 +120,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-body text-body-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     font-family: var(--font-poppins);
   }

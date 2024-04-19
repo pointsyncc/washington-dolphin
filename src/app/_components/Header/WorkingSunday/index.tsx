@@ -43,14 +43,6 @@ export default function WorkingSundays({ workingSundays }: WorkingSundaysProps) 
     <Fragment>
         <button className="bg-secondary sm:mb-0 mb-[20px] flex items-center self-center sm:self-end xl:px-[25px] px-[15px]  rounded-[20px] text-white" onClick={() => setShowInfo(!showInfo)}>
     <FaRegBell className="" />
-    <p className="m-0 pl-[14px]  xl:text-[16px] text-[11.5px]"> Provjeri radne nedjelje</p>
-{/*    {showInfo && (
-    <div className='flex flex-col gap-2 items-center justify-center'>
-            {workingSundays.map((sunday, i) => (
-      <p key={i} className="m-0 pl-[14px]  xl:text-[16px] text-[11.5px]">{sunday.date} {sunday.from} - {sunday.to}</p>
-    ))}
-    </div>
-  )}  */}
   </button>
     </Fragment>
   )
