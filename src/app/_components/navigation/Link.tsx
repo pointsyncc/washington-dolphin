@@ -24,7 +24,7 @@ const Link = React.forwardRef<HTMLAnchorElement, TLinkProps>(
   ) => {
     const pathname = usePathname()
     const classes = twMerge(
-      'text-base 3xl:text-lg  font-medium hover:text-primary active:text-primary font-medium',
+      'text-base 3xl:text-lg   hover:text-primary active:text-primary ',
       pathname === href.toString() || pathname === href.toString() ? activeClassName : '',
       applyLinkStyles ? 'link' : '',
       className,

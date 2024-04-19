@@ -106,6 +106,10 @@ module.exports = {
           DEFAULT: 'rgba(var(--crystal))',
           foreground: 'hsl(var(--crystal-foreground))',
         },
+        body: {
+          DEFAULT: 'hsl(var(--body))',
+          foreground: 'hsl(var(--body-foreground))',
+        },
       },
       borderRadius: {
         xl: 'calc(var(--radius) + 6px)',

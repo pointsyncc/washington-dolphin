@@ -1,25 +1,36 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaLocationDot } from 'react-icons/fa6'
-import { IoMdMail } from 'react-icons/io'
-import { FaPhoneAlt } from 'react-icons/fa'
-export async function Footer() {
-  const contacts = [
+import { FaEnvelope, FaLocationDot, FaPhone } from 'react-icons/fa6'
+// import { IoMdMail } from 'react-icons/io'
+import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
+import { ContactInfo } from 'src/app/(pages)/components/navigation/ContactInfo'
+import { TLinkWithIconProps } from '../navigation/LinkWithIcon'
+// import { Field } from 'payload/types'
+import { Topbar } from '@/payload/payload-types'
+export async function Footer({location,email,phone}:{
+  location:Topbar['location'],
+  email:Topbar['email'],
+  phone:Topbar['phone'],
+}) {
+  const links: TLinkWithIconProps[] = [
     {
-      text: 'Zagrebačka cesta 45, 10382, Goričica',
-      icon: <FaLocationDot className="text-[#CEA66B]" />,
-      name: 'location',
+      icon: FaMapMarkerAlt,
+      href: location?.url ?? 'https://maps.app.goo.gl/Tow1vwwy4AweQLMh8',
+      children: location?.label ?? 'Zagrebačka cesta 45, 10382, Goričica',
+      className:'text-accent hover:text-accent'
     },
     {
-      text: 'pekarnamario@gmail.com',
-      icon: <IoMdMail className="text-[#CEA66B]" />,
-      name: 'message',
+      icon: FaEnvelope,
+      href: `mailto:${email?.url ?? 'pekarnamario@gmail.com'}`,
+      children: email?.label ?? 'pekarnamario@gmail.com',
+      className:'text-accent hover:text-accent'
     },
     {
-      text: '+385 98 139 1548',
-      icon: <FaPhoneAlt className="text-[#CEA66B]" />,
-      name: 'phone',
+      icon: FaPhone,
+      href: `tel:${phone?.url ?? '+385 98 139 1548'}`,
+      children: phone?.label ?? '+385 98 139 1548',
+      className:'text-accent hover:text-accent'
     },
   ]
 
@@ -38,16 +49,18 @@ export async function Footer() {
             />
             {/* contacts */}
             <div className="flex justify-center w-full sm:w-auto sm:block ">
-              <div className="flex flex-col  lg:w-auto lg:mt-[50px] my-[15px]">
-                {contacts.map(contact => (
+              {/* <div className="flex flex-col  lg:w-auto lg:mt-[50px] my-[15px]"> */}
+
+              <ContactInfo links={links} className='sm:flex-col w-full sm:w-auto gap-6 sm:gap-6 mt-12'/>
+              {/* {contacts.map(contact => (
                   <div key={contact.name} className="flex items-center lg:pl-[22px] mt-[20px]">
                     {contact.icon}
                     <span className="pl-[10px]  text-accent sm:text-[16px] text-[14px]">
                       {contact.text}
                     </span>
                   </div>
-                ))}
-              </div>
+                ))} */}
+              {/* </div> */}
             </div>
           </div>
           <div className="flex sm:flex-row flex-col sm:items-center justify-between text-secondary mt-[30px] lg:mt-0">
