@@ -64,7 +64,7 @@
     "string-similarity-js": "^2.1.4",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
-    "yet-another-react-lightbox": "^3.17.2",
+    "yet-another-react-lightbox": "^3.17.3",
     "yup": "^1.4.0"
   },
   "devDependencies": {

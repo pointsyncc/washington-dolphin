@@ -15,7 +15,7 @@ const Link = React.forwardRef<HTMLAnchorElement, TLinkProps>(
       children,
       href = '',
       className,
-      activeClassName = 'active !text-primary',
+      activeClassName = 'active !text-secondary',
       applyLinkStyles = true,
       onClick,
       ...rest
@@ -25,7 +25,7 @@ const Link = React.forwardRef<HTMLAnchorElement, TLinkProps>(
     const pathname = usePathname()
     const classes = twMerge(
       'text-base 3xl:text-lg   hover:text-primary active:text-primary ',
-      pathname === href.toString() || pathname === href.toString() ? activeClassName : '',
+      pathname === href?.toString() || pathname === href?.toString() ? activeClassName : '',
       applyLinkStyles ? 'link' : '',
       className,
     )
@@ -34,7 +34,7 @@ const Link = React.forwardRef<HTMLAnchorElement, TLinkProps>(
       <a
         onClick={onClick}
         target="_blank"
-        href={href.toString()}
+        href={href?.toString()}
         rel="noreferrer"
         className={classes}
         ref={ref}

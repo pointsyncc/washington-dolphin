@@ -20,9 +20,9 @@ const LinkWithIcon = ({
   const Icon = icon
   return (
     <Link className={cn('flex items-center gap-2', className)} {...rest}>
-      {iconPosition === 'prepend' && <Icon className={cn('text-secondary',iconClassName)}/>}
+      {iconPosition === 'prepend' && <Icon className={cn('text-secondary text-xl',iconClassName)}/>}
       {children}
-      {iconPosition === 'append' && <Icon className={cn('text-secondary',iconClassName)}/>}
+      {iconPosition === 'append' && <Icon className={cn('text-secondary text-xl',iconClassName)}/>}
     </Link>
   )
 }

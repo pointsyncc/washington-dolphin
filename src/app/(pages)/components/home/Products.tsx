@@ -1,9 +1,12 @@
 import { Image } from '@/components/Media/Image'
 import { Section } from '@/components/layout/Section'
+import { Link } from '@/components/navigation/Link'
+import { LinkWithIcon } from '@/components/navigation/LinkWithIcon'
 import { Heading } from '@/components/typography/heading/Heading'
 import { Text } from '@/components/typography/text/Text'
 import { cn } from '@/utils/classMerge'
 import React from 'react'
+import { MdArrowOutward } from 'react-icons/md'
 import product from 'src/app/components/product/product'
 
 const Products = () => {
@@ -27,7 +30,7 @@ const Products = () => {
         alt: 'product 2',
       },
       justification: 'right',
-      alignment:'top-center'
+      alignment: 'top-center',
     },
     {
       name: 'Kruhovi',
@@ -49,22 +52,42 @@ const Products = () => {
           vezi s nekim našim proizvodom ili proizvodnim procesom.
         </Text>
       </div>
-      <ul>
+      <ul className='mb-6'>
         {products.map(product => {
-            const justification = product.justification === 'right' ? 'items-end text-right ' : product.justification === 'center-left' ? 'mx-auto max-w-max -translate-x-[12%]' : ''
-            const imgContainerClass = product.justification === 'right' ? 'flex justify-end' : product.justification === 'center-left' ? 'flex justify-center ' : ''
-            const alignment = product.alignment === 'top-center' ? '-mt-[20%]' : ''
+          const justification =
+            product.justification === 'right'
+              ? 'items-end text-right '
+              : product.justification === 'center-left'
+                ? 'mx-auto max-w-max -translate-x-[12%]'
+                : ''
+          const imgContainerClass =
+            product.justification === 'right'
+              ? 'flex justify-end'
+              : product.justification === 'center-left'
+                ? 'flex justify-center '
+                : ''
+          const alignment = product.alignment === 'top-center' ? '-mt-[20%]' : ''
           return (
-            <li className={cn('flex flex-col space-y-5', justification,alignment)} key={product.name}>
-              <Image {...product.image} containerClassName={imgContainerClass} src={product?.image?.url} />
-                <div>
+            <li
+              className={cn('flex flex-col space-y-5', justification, alignment)}
+              key={product.name}
+            >
+              <Image
+                {...product.image}
+                containerClassName={imgContainerClass}
+                src={product?.image?.url}
+              />
+              <div>
                 <Heading level={3}>{product.name}</Heading>
-              <Text>{product.description}</Text>
-                </div>
+                <Text>{product.description}</Text>
+              </div>
             </li>
           )
         })}
       </ul>
+      <LinkWithIcon href="/products" icon={MdArrowOutward} iconPosition='append' className='justify-end'>
+        Pogledaj ostale proizvode
+      </LinkWithIcon>
     </Section>
   )
 }

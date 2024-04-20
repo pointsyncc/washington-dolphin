@@ -12,7 +12,9 @@ type TSectionProps<T extends ElementType> = ComponentPropsWithoutRef<'section'> 
   sectionPrepend?: React.ReactNode
   sectionAppend?: React.ReactNode
   asChild?: T
-  variant?: 'dark' | 'light'
+  variant?: 'dark' | 'light',
+  
+
 }
 
 export const Section = <T extends ElementType>({
@@ -20,6 +22,7 @@ export const Section = <T extends ElementType>({
   children,
   withContainer = true,
   className,
+  containerProps,
   variant = 'light',
 }: TSectionProps<T>) => {
   const classes = cn(
@@ -28,5 +31,5 @@ export const Section = <T extends ElementType>({
     className,
   )
   const Comp = asChild ? Slot : 'section'
-  return <Comp className={classes}>{withContainer ? <Container>{children}</Container> : children}</Comp>
+  return <Comp className={classes}>{withContainer ? <Container {...containerProps}>{children}</Container> : children}</Comp>
 }
