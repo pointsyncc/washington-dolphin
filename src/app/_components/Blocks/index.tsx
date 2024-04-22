@@ -10,13 +10,15 @@ import { ContentBlock } from '../../_blocks/Content'
 import { ProductsBlock } from '../../_blocks/ProductsBlock'
 import { History } from '../../_blocks/History'
 import { HomeProducts } from '../../_blocks/HomeProducts'
+import { HomeContact } from 'src/app/_blocks/HomeContact'
 
 const blockComponents = {
   galleryBlock: GalleryBock,
   productsBlock: ProductsBlock,
   content: ContentBlock,
   history:History,
-  homeProducts:HomeProducts
+  homeProducts:HomeProducts,
+  homeContact:HomeContact
 }
 
 export const Blocks: React.FC<{

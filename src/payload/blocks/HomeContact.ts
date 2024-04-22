@@ -8,6 +8,24 @@ export const HomeContact: Block = {
   },
   fields: [
     {
+      name: 'heading',
+      type: 'text',
+      label: {
+        en: 'Heading',
+        hr: 'Heading',
+      },
+      required: true,
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      label: {
+        en: 'Description',
+        hr: 'Description',
+      },
+      required: true,
+    },
+    {
       name: 'background',
       type: 'upload',
       relationTo: 'media',

@@ -79,6 +79,49 @@ export interface Page {
             blockName?: string | null;
             blockType: 'productsBlock';
           }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            columns?:
+              | {
+                  heading?: string | null;
+                  description: {
+                    [k: string]: unknown;
+                  }[];
+                  image: string | Media;
+                  imageSize?: ('small' | 'large') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'history';
+          }
+        | {
+            heading: string;
+            description: string;
+            products: {
+              justification?: ('left' | 'center-left' | 'right') | null;
+              alignment?: ('top' | 'top-center') | null;
+              product: string | Product;
+              image: string | Media;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'homeProducts';
+          }
+        | {
+            background: string | Media;
+            contactForm: string | Form;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'homeContact';
+          }
       )[]
     | null;
   slug?: string | null;
@@ -97,12 +140,8 @@ export interface Page {
  */
 export interface Media {
   id: string;
-  alt: string;
-  caption?:
-    | {
-        [k: string]: unknown;
-      }[]
-    | null;
+  alt?: string | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -743,6 +782,7 @@ export interface Settings {
  */
 export interface Header {
   id: string;
+  logo: string | Media;
   navItems?:
     | {
         link: {
@@ -840,41 +880,41 @@ export interface Topbar {
     url?: string | null;
     label: string;
   };
-  timmings: {
-    sunday: {
+  timmings?: {
+    sunday?: {
       closed?: boolean | null;
-      openningTime: string;
-      closingTime: string;
+      openningTime?: string | null;
+      closingTime?: string | null;
     };
-    monday: {
+    monday?: {
       closed?: boolean | null;
-      openningTime: string;
-      closingTime: string;
+      openningTime?: string | null;
+      closingTime?: string | null;
     };
-    tuesday: {
+    tuesday?: {
       closed?: boolean | null;
-      openningTime: string;
-      closingTime: string;
+      openningTime?: string | null;
+      closingTime?: string | null;
     };
-    wednesday: {
+    wednesday?: {
       closed?: boolean | null;
-      openningTime: string;
-      closingTime: string;
+      openningTime?: string | null;
+      closingTime?: string | null;
     };
-    thursday: {
+    thursday?: {
       closed?: boolean | null;
-      openningTime: string;
-      closingTime: string;
+      openningTime?: string | null;
+      closingTime?: string | null;
     };
-    friday: {
+    friday?: {
       closed?: boolean | null;
-      openningTime: string;
-      closingTime: string;
+      openningTime?: string | null;
+      closingTime?: string | null;
     };
-    saturday: {
+    saturday?: {
       closed?: boolean | null;
-      openningTime: string;
-      closingTime: string;
+      openningTime?: string | null;
+      closingTime?: string | null;
     };
   };
   updatedAt?: string | null;
