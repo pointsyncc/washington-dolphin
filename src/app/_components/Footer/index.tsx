@@ -76,9 +76,9 @@ export async function Footer({
               <h2 className="lg:text-[32px] sm:text-[25px] text-[20px] font-[700] text-center sm:text-start">
                 Imaš pitanje za nas?
               </h2>
-              <button className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-secondary hover:text-primary sm:w-auto w-[90%] mx-auto sm:mr-0">
+              <Link href={'/kontakt'} className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-secondary hover:text-primary sm:w-auto w-[90%] mx-auto sm:mr-0">
                 Kontaktiraj nas
-              </button>
+              </Link>
             </div>
           </div>
         </div>
