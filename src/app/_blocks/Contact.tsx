@@ -56,7 +56,7 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
         />
 
         <iframe
-          className="border-[2px] border-primary xl:h-[350px] h-[500px] mt-[50px] xl:w-[544px] max-w-full w-full rounded-sm sepia-[.80]"
+          className="border-[2px] border-primary xl:h-[350px] h-[500px] mt-[50px] xl:w-[544px] max-w-full w-full rounded-sm sepia-[.50]"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2776.771631884349!2d16.198850475904496!3d45.89588030453334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476671569b152dc5%3A0x8161f1ba693c246d!2sZagreba%C4%8Dka%20cesta%2045%2C%2010382%2C%20Gori%C4%8Dica%2C%20Croatia!5e0!3m2!1sen!2s!4v1713529275013!5m2!1sen!2s"
           allowFullScreen
           loading="lazy"
