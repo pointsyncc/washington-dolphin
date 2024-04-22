@@ -5,13 +5,29 @@ import { adminsOrPublished } from '../../access/adminsOrPublished'
 import { Content } from '../../blocks/Content'
 import { FormBlock } from '../../blocks/Form'
 import { GalleryBlock } from '../../blocks/GalleryBlock'
-import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
+import { ProductsBlock } from '../../blocks/ProductsBlock'
+import { Hero } from '../../blocks/Hero'
+import { History } from '../../blocks/History'
+import { HomeProducts } from '../../blocks/HomeProducts'
+import { HomeContact } from '../../blocks/HomeContact'
+import { HomeHero } from '../../blocks/HomeHero'
+import { Contact } from '../../blocks/Contact'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  labels: {
+    singular: {
+      en: 'Page',
+      hr: 'Stranica',
+    },
+    plural: {
+      en: 'Pages',
+      hr: 'Stranice',
+    }
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -87,9 +103,9 @@ export const Pages: CollectionConfig = {
         en: 'Featured Image',
         hr: 'Naslovna slika',
       },
-      required: true,
+      required: false,
     },
-    {
+   /*  {
       name: 'showWorkingSundays',
       type: 'checkbox',
       label: {
@@ -100,14 +116,14 @@ export const Pages: CollectionConfig = {
         position: 'sidebar',
       },
       required: true,
-    },
+    }, */
   {
       type: 'tabs',
       tabs: [
-        {
+  /*       {
           label: 'Hero',
           fields: [hero],
-        },
+        }, */
         {
           label: {
             en: 'Content',
@@ -121,8 +137,8 @@ export const Pages: CollectionConfig = {
                 hr: 'Raspored',
               },
               type: 'blocks',
-              required: true,
-              blocks: [Content, FormBlock, GalleryBlock],
+              required: false,
+              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock,Hero,History,HomeProducts,HomeContact,HomeHero,Contact],
             },
           ],
         },
