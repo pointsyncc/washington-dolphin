@@ -51,7 +51,7 @@ export const HomeProducts = ({heading,description,products}:any) => {
         </Text>
       </div>
       <ul className="mb-6 space-y-6 lg:space-y-0">
-        {products.map(product => {
+        {products.map((product) => {
           const justification =
             product.justification === 'right'
               ? 'items-end text-right '
@@ -68,7 +68,7 @@ export const HomeProducts = ({heading,description,products}:any) => {
           return (
             <li
               className={cn('flex flex-col space-y-5', justification, alignment)}
-              key={product.name}
+              key={product.id}
             >
               <Image
 

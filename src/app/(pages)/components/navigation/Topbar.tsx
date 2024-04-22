@@ -40,7 +40,7 @@ const TopBar = async (topbar: TTopbarProps) => {
             className='flex-1'
             links={links}
             contactInfoAppend={
-              <li className='lg:ml-auto'>
+              <li className='lg:ml-auto flex items-center justify-center'>
                 <Timmings timmings={topbar?.timmings} timmingsLink={topbar?.timmingsLink}/>
               </li>
             }
