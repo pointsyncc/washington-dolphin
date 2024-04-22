@@ -8,7 +8,7 @@ import { slateEditor } from '@payloadcms/richtext-slate'; // editor-import
 import dotenv from 'dotenv';
 import path from 'path';
 import { buildConfig } from 'payload/config';
-
+import { Logo } from './components/Logo/Logo'
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
 import FormBuilder from '@payloadcms/plugin-form-builder';
@@ -19,12 +19,11 @@ import { Posts } from './collections/Posts';
 import { Products } from './collections/Products';
 import Users from './collections/Users';
 import BeforeDashboard from './components/BeforeDashboard';
-import BeforeLogin from './components/BeforeLogin';
 import { seed } from './endpoints/seed';
 import { Footer } from './globals/Footer';
 import { Header } from './globals/Header';
-import { Settings } from './globals/Settings';
 import { Topbar } from './globals/Topbar';
+
 
 const generateTitle: GenerateTitle = () => {
   return 'Pekarna Mario'
@@ -54,10 +53,12 @@ export default buildConfig({
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
-      beforeLogin: [BeforeLogin],
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-      beforeDashboard: [BeforeDashboard],
+/*       beforeDashboard: [BeforeDashboard], */
+      graphics: {
+        Logo,
+      },
     },
     webpack: config => ({
       ...config,
