@@ -8,7 +8,7 @@ import React from 'react'
 import { MdArrowOutward } from 'react-icons/md'
 
 export const HomeProducts = ({heading,description,products}:any) => {
-  console.log(JSON.stringify(products))
+
   // const _products = [
   //   {
   //     name: 'Slastice',
