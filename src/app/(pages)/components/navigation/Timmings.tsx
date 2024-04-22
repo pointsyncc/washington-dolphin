@@ -26,6 +26,7 @@ type TimmingsModalProps = {
   closingTime: string
   timmings: Topbar['timmings']
   closed: boolean
+  link:Topbar['timmingsLink']
 }
 
 const TimmingsModal = ({
@@ -42,7 +43,7 @@ const TimmingsModal = ({
     const openningTime = formatTime(time?.openningTime)
     const closingTime = formatTime(time?.closingTime)
     formattedDaysTimmings.push({
-      time: time.closed ? 'ZATVORENO' : `${openningTime} - ${closingTime}`,
+      time: time.closed ? 'ZATVORENO' : `${openningTime} - ${closingTime}h`,
       label: CROTIAN_TRANSLATED_WEEKDAYS[key],
     })
   }
@@ -70,7 +71,7 @@ const TimmingsModal = ({
           <ul className="space-y-5">
             {formattedDaysTimmings.map((dayTimming, i) => (
               <li key={i} className="capitalize">
-                {dayTimming.label}: {dayTimming.time}h
+                {dayTimming.label}: {dayTimming.time}
               </li>
             ))}
           </ul>
