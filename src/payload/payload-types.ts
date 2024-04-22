@@ -21,7 +21,6 @@ export interface Config {
     'payload-migrations': PayloadMigration;
   };
   globals: {
-    settings: Settings;
     header: Header;
     footer: Footer;
     topbar: Topbar;
@@ -35,13 +34,15 @@ export interface Page {
   id: string;
   title: string;
   publishedAt?: string | null;
-  featuredImage: string | Media;
+  featuredImage?: string | Media | null;
   layout?:
     | (
         | {
-            richText: {
-              [k: string]: unknown;
-            }[];
+            richText?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'content';
@@ -49,9 +50,11 @@ export interface Page {
         | {
             form: string | Form;
             enableIntro?: boolean | null;
-            introContent: {
-              [k: string]: unknown;
-            }[];
+            introContent?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'formBlock';
@@ -119,6 +122,20 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'homeContact';
+          }
+        | {
+            background: string | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'homeHero';
+          }
+        | {
+            heading?: string | null;
+            description: string;
+            contactForm: string | Form;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact';
           }
       )[]
     | null;
@@ -340,9 +357,11 @@ export interface Post {
     | null;
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText: {
-      [k: string]: unknown;
-    }[];
+    richText?:
+      | {
+          [k: string]: unknown;
+        }[]
+      | null;
     links?:
       | {
           link: {
@@ -364,9 +383,11 @@ export interface Post {
   layout: (
     | {
         invertBackground?: boolean | null;
-        richText: {
-          [k: string]: unknown;
-        }[];
+        richText?:
+          | {
+              [k: string]: unknown;
+            }[]
+          | null;
         links?:
           | {
               link: {
@@ -388,9 +409,11 @@ export interface Post {
         blockType: 'cta';
       }
     | {
-        richText: {
-          [k: string]: unknown;
-        }[];
+        richText?:
+          | {
+              [k: string]: unknown;
+            }[]
+          | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'content';
@@ -404,9 +427,11 @@ export interface Post {
         blockType: 'mediaBlock';
       }
     | {
-        introContent: {
-          [k: string]: unknown;
-        }[];
+        introContent?:
+          | {
+              [k: string]: unknown;
+            }[]
+          | null;
         populateBy?: ('collection' | 'selection') | null;
         relationTo?: 'posts' | null;
         categories?: (string | Category)[] | null;
@@ -434,9 +459,11 @@ export interface Post {
     | (
         | {
             invertBackground?: boolean | null;
-            richText: {
-              [k: string]: unknown;
-            }[];
+            richText?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
             links?:
               | {
                   link: {
@@ -458,9 +485,11 @@ export interface Post {
             blockType: 'cta';
           }
         | {
-            richText: {
-              [k: string]: unknown;
-            }[];
+            richText?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'content';
@@ -474,9 +503,11 @@ export interface Post {
             blockType: 'mediaBlock';
           }
         | {
-            introContent: {
-              [k: string]: unknown;
-            }[];
+            introContent?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
             populateBy?: ('collection' | 'selection') | null;
             relationTo?: 'posts' | null;
             categories?: (string | Category)[] | null;
@@ -603,16 +634,6 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "settings".
- */
-export interface Settings {
-  id: string;
-  postsPage?: (string | null) | Page;
-  updatedAt?: string | null;
-  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
