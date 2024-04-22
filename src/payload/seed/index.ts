@@ -156,11 +156,11 @@ export const seed = async (payload: Payload): Promise<void> => {
   })
 
   payload.logger.info(`— Seeding pages...`)
-  await payload.create({
+/*   await payload.create({
     collection: 'pages',
     //replace FEATURED_IMAGE_ID with image1ID, PRODUCT_ID with productID, CATEGORY_ID with categoryID
     data: JSON.parse(JSON.stringify({ ...productsPage }).replace(/"\{\{FEATURED_IMAGE_ID\}\}"/g, image2ID).replace(/"\{\{PRODUCT_ID\}\}"/g, productID).replace(/"\{\{CATEGORY_ID\}\}"/g, categoryID)),
-  })
+  }) */
 
  
 
