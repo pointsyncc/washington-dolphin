@@ -107,7 +107,7 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
 
   if (!data) return null
   return (
-    <div className=" xl:max-w-[616px] xl:basis-[616px] xl:mx-0 mx-auto w-full bg-primary pt-[42px] px-[30px] sm:px-[56px] rounded-[20px] pb-[29px] xl:mt-0 mt-[50px] ">
+    <div className=" xl:max-w-[616px] xl:basis-[616px] xl:mx-0 mx-auto w-full bg-primary pt-[42px] px-[30px] sm:px-[56px] rounded-[20px] pb-[29px]  ">
       {Boolean(message) &&  <Text level={1} weight='medium' className={cn(message.type === 'danger' ? 'text-danger' : 'text-success')}>{message?.data}</Text>}
       {Boolean(contactFormPrepend) ? contactFormPrepend : null}
       <Form {...form}>
@@ -116,7 +116,7 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
             {data?.fields?.map((input, i) => {
               const width =
                 input.width <= 50
-                  ? 'sm:basis-[48.5%] sm:max-w-[48.5%]'
+                  ? 'basis-[100%] max-w-[100%] sm:basis-[48.5%] sm:max-w-[48.5%]'
                   : 'basis-[100%] max-w-[100%]'
 
               return (

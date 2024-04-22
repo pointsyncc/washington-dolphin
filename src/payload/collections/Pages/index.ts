@@ -5,7 +5,6 @@ import { adminsOrPublished } from '../../access/adminsOrPublished'
 import { Content } from '../../blocks/Content'
 import { FormBlock } from '../../blocks/Form'
 import { GalleryBlock } from '../../blocks/GalleryBlock'
-import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { revalidatePage } from './hooks/revalidatePage'
@@ -14,6 +13,8 @@ import { Hero } from '../../blocks/Hero'
 import { History } from '../../blocks/History'
 import { HomeProducts } from '../../blocks/HomeProducts'
 import { HomeContact } from '../../blocks/HomeContact'
+import { HomeHero } from '../../blocks/HomeHero'
+import { Contact } from '../../blocks/Contact'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -137,7 +138,7 @@ export const Pages: CollectionConfig = {
               },
               type: 'blocks',
               required: false,
-              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock,Hero,History,HomeProducts,HomeContact],
+              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock,Hero,History,HomeProducts,HomeContact,HomeHero,Contact],
             },
           ],
         },
