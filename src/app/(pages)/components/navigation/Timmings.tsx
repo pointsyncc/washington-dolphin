@@ -18,7 +18,7 @@ type TimmingsModalProps = {
   timmings: Topbar['timmings']
 }
 
-const TimmingsModal = ({ openningTime, closingTime, timmings }: TimmingsModalProps) => {
+const TimmingsModal = ({ openningTime, closingTime,closed, timmings }: TimmingsModalProps) => {
   const formattedDaysTimmings = []
   for (let key in timmings) {
     const time = timmings[key]
@@ -34,10 +34,10 @@ const TimmingsModal = ({ openningTime, closingTime, timmings }: TimmingsModalPro
       <ModalTrigger asChild>
         <button className="flex items-center gap-2 ">
           <FaClock className="text-secondary" />
-          {openningTime} - {closingTime}h
+          {closed ? 'ZATVORENO' : `${openningTime} - ${closingTime}h`}
         </button>
       </ModalTrigger>
-      <ModalContent className="bg-secondary border-secondary ">
+      <ModalContent className="bg-secondary border-secondary">
         <div className="space-y-5">
           <Heading level={2} className="flex gap-4 items-center justify-center">
             <FaClock /> Radno vrijeme
@@ -63,10 +63,11 @@ export const Timmings = ({ timmings }: { timmings: Topbar['timmings'] }) => {
 
   const openningTime = formatTime(dayObject?.openningTime)
   const closingTime = formatTime(dayObject?.closingTime)
+  const closed = dayObject.closed
   return (
     <div>
       <Text asChild={true} weight="medium">
-        <TimmingsModal openningTime={openningTime} closingTime={closingTime} timmings={timmings} />
+        <TimmingsModal closed={closed} openningTime={openningTime} closingTime={closingTime} timmings={timmings} />
       </Text>
     </div>
   )
