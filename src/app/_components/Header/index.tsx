@@ -7,20 +7,19 @@ import { FaPhoneAlt } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoMdClose, IoMdMail } from 'react-icons/io'
 import { TiThMenu as MenuIcon } from 'react-icons/ti'
-import WorkingSundays from './WorkingSunday'
-import { Header as HeaderType, WorkSunday } from '@/payload/payload-types'
+
+import { Header as HeaderType} from '@/payload/payload-types'
 import { HeaderNav } from './Nav'
 {
   /* eslint-disable @next/next/no-img-element */
 }
 
 interface HeaderProps {
-  showWorkingSundays: boolean
-  workingSundays: WorkSunday[]
+
   header: HeaderType
 }
 
-export function Header({ showWorkingSundays, workingSundays, header }: HeaderProps) {
+export function Header({  header }: HeaderProps) {
   const [openMenu, setOpenMenu] = useState(false)
   const contacts = [
     {

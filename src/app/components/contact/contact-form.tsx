@@ -34,7 +34,7 @@ const validationSchema = object({
 
 type FormData = Required<InferType<typeof validationSchema>>
 type TContactProps = {
-  formData: PayloadForm
+  formData: any
   contactFormPrepend?: React.ReactNode
 }
 
@@ -114,10 +114,14 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex flex-wrap justify-between gap-2 gap-y-4">
             {data?.fields?.map((input, i) => {
-              const width =
+          
+
+                const width =
                 input.width <= 50
                   ? 'basis-[100%] max-w-[100%] sm:basis-[48.5%] sm:max-w-[48.5%]'
                   : 'basis-[100%] max-w-[100%]'
+            
+
 
               return (
                 <FormField
