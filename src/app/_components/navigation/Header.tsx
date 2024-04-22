@@ -16,7 +16,7 @@ export const Header = ({ logo, navItems }: THeader) => {
       )}
     >
       <Container className="flex justify-between items-center">
-        <Logo logo={logo as Media} />
+        <Logo logo={logo as Media} className="md:mt-0 mt-[10px]" />
         <nav className="ml-auto bg-primary rounded-lg mx-[22px] px-4 lg:block hidden">
           <NavItems navItems={navItems} linkClassName='text-white' />
         </nav>

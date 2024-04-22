@@ -44,12 +44,12 @@ export const seed = async (payload: Payload): Promise<void> => {
         where: {},
       }),
     ), // eslint-disable-line function-paren-newline
-    ...globals.map(async global =>
-      payload.updateGlobal({
-        slug: global as 'header',
-        data: {},
-      }),
-    ), // eslint-disable-line function-paren-newline
+    // ...globals.map(async global =>
+    //   payload.updateGlobal({
+    //     slug: global as 'header',
+    //     data: {},
+    //   }),
+    // ), // eslint-disable-line function-paren-newline
   ])
 
   payload.logger.info(`— Seeding media...`)
