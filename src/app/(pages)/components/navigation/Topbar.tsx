@@ -19,21 +19,24 @@ const TopBar = async (topbar: TTopbarProps) => {
       icon: FaMapMarkerAlt,
       href: topbar?.location?.url ?? 'https://maps.app.goo.gl/Tow1vwwy4AweQLMh8',
       children: topbar?.location?.label ?? 'Zagrebačka cesta 45, 10382, Goričica',
+      className: 'hidden lg:flex'
     },
     {
       icon: FaEnvelope,
       href: `mailto:${topbar?.email?.url ?? 'pekarnamario@gmail.com'}`,
       children: topbar?.email?.label ?? 'pekarnamario@gmail.com',
+      className: 'hidden lg:flex'
     },
     {
       icon: FaPhone,
       href: `tel:${topbar?.phone?.url ?? '+385 98 139 1548'}`,
       children: topbar?.phone?.label ?? '+385 98 139 1548',
+      className: 'hidden lg:flex'
     },
   ]
 
   return (
-    <div className="py-4">
+    <div className="pb-4 lg:pt-4">
       <Container>
         <div className="gap-2 lg:gap-0 sm:items-center flex-col lg:flex-row flex lg:justify-between">
           <ContactInfo

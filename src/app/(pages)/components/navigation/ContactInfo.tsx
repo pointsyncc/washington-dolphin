@@ -8,7 +8,7 @@ type TContactInfoProps  = ComponentPropsWithoutRef<'ul'> & {
 }
 export const ContactInfo = ({ links,contactInfoAppend,className,...rest }:TContactInfoProps) => {
   return (
-    <ul className={cn("flex-wrap flex-col sm:flex-row flex gap-2 sm:gap-4",className)} {...rest}>
+    <ul className={cn("flex-wrap flex-col sm:flex-row flex gap-1 lg:gap-2 sm:gap-4",className)} {...rest}>
       {links.map(link => (
         <li key={link.children.toString()}>
           <LinkWithIcon {...link} />
