@@ -9,14 +9,11 @@ module.exports = {
     './src/app/_components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    container: {
-      center: true,
-      padding: '1rem',
-    },
+    container: false,
     extend: {
       screens: {
-        '3xl': '1800px',
-        xxl: '1536px',
+        // '3xl': '1800px',
+        // xxl: '1536px',
       },
       zIndex: {
         '-999': '-999',
@@ -115,7 +112,7 @@ module.exports = {
         xl: 'calc(var(--radius) + 6px)',
         lg: `var(--radius)`,
         md: `calc(var(--radius) - 6px)`,
-        sm: 'calc(var(--radius) - 12px)',
+        sm: 'calc(var(--radius) - 10px)',
         xs: 'calc(var(--radius) - 18px)',
         xxs: '4px',
       },
@@ -143,5 +140,34 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    function ({ addComponents, theme }) {
+      addComponents({
+        '.container': {
+          margin: 'auto',
+          'padding-inline': theme('padding.4'),
+          maxWidth: '100%',
+          '@screen sm': {
+            maxWidth: '600px',
+          },
+          '@screen md': {
+            maxWidth: '700px',
+          },
+          '@screen lg': {
+            maxWidth: '924px',
+          },
+          '@screen xl': {
+            maxWidth: '1180px',
+          },
+          '@screen 2xl': {
+            maxWidth: '1400px',
+          },
+          // '@screen 3xl': {
+          //   maxWidth: '1500px',
+          // },
+        },
+      })
+    },
+  ],
 }

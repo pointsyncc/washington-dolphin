@@ -34,10 +34,12 @@ const TopBar = async (topbar: TTopbarProps) => {
 
   return (
     <div className="py-4">
-      <div className="gap-2 lg:gap-0 items-center flex-col lg:flex-row flex lg:justify-between">
-        <ContactInfo links={links} />
-        <Timmings timmings={topbar?.timmings} />
-      </div>
+      <Container>
+        <div className="gap-2 lg:gap-0 items-center flex-col lg:flex-row flex lg:justify-between">
+          <ContactInfo links={links} />
+          <Timmings timmings={topbar?.timmings} />
+        </div>
+      </Container>
     </div>
   )
 }

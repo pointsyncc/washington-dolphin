@@ -6,6 +6,7 @@
 
 @layer base {
   :root {
+
     --body:42, 74%, 91%;
     --body-foreground:36, 100%, 17%;
     --background: 0 0% 100%;
@@ -207,4 +208,10 @@ p{
   --tw-shadow: inset 0 0 0 1px hsla(0,0%,100%,.05);
   --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+}
+
+@media (max-width: 575px) {
+  p {
+      font-size: 1rem !important;
+  }
 }

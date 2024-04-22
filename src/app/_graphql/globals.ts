@@ -5,6 +5,12 @@ export const HEADER = `
     navItems {
       link ${LINK_FIELDS({ disableAppearance: true })}
 		}
+    logo {
+      url
+      alt
+      width
+      height
+    }
   }
 `
 

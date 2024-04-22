@@ -6,6 +6,7 @@ import { cn } from '@/utils/classMerge'
 type TLinkWithIconProps = TLinkProps & {
   icon: IconType
   iconPosition?: 'prepend' | 'append'
+  iconClassName?:string
 }
 
 const LinkWithIcon = ({
@@ -13,14 +14,15 @@ const LinkWithIcon = ({
   children,
   iconPosition = 'prepend',
   className,
+  iconClassName,
   ...rest
 }: TLinkWithIconProps) => {
   const Icon = icon
   return (
     <Link className={cn('flex items-center gap-2', className)} {...rest}>
-      {iconPosition === 'prepend' && <Icon className='text-secondary'/>}
+      {iconPosition === 'prepend' && <Icon className={cn('text-secondary text-xl',iconClassName)}/>}
       {children}
-      {iconPosition === 'append' && <Icon className='text-secondary'/>}
+      {iconPosition === 'append' && <Icon className={cn('text-secondary text-xl',iconClassName)}/>}
     </Link>
   )
 }
