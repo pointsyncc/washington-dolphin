@@ -67,15 +67,15 @@ export const HomeProducts: Block = {
           required: true,
         },
         {
-            name: 'image',
-            label: {
-              en: 'Slika',
-              hr: 'Slika',
-            },
-            type: 'upload',
-            relationTo: 'media',
-            required: true,
+          name: 'image',
+          label: {
+            en: 'Slika',
+            hr: 'Slika',
           },
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
       ],
     },
   ],
