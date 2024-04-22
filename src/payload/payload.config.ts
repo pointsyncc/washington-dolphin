@@ -1,34 +1,30 @@
-import { webpackBundler } from '@payloadcms/bundler-webpack' // bundler-import
-import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-import
-import { payloadCloud } from '@payloadcms/plugin-cloud'
-import nestedDocs from '@payloadcms/plugin-nested-docs'
-import redirects from '@payloadcms/plugin-redirects'
-import seo from '@payloadcms/plugin-seo'
-import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
-import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
-import dotenv from 'dotenv'
-import path from 'path'
-import { buildConfig } from 'payload/config'
+import { webpackBundler } from '@payloadcms/bundler-webpack'; // bundler-import
+import { mongooseAdapter } from '@payloadcms/db-mongodb'; // database-adapter-import
+import nestedDocs from '@payloadcms/plugin-nested-docs';
+import redirects from '@payloadcms/plugin-redirects';
+import seo from '@payloadcms/plugin-seo';
+import type { GenerateTitle } from '@payloadcms/plugin-seo/types';
+import { slateEditor } from '@payloadcms/richtext-slate'; // editor-import
+import dotenv from 'dotenv';
+import path from 'path';
+import { buildConfig } from 'payload/config';
 
-import Categories from './collections/Categories'
-import Comments from './collections/Comments'
-import { Media } from './collections/Media'
-import { Pages } from './collections/Pages'
-import { Posts } from './collections/Posts'
-import { Projects } from './collections/Projects'
-import Users from './collections/Users'
-import BeforeDashboard from './components/BeforeDashboard'
-import BeforeLogin from './components/BeforeLogin'
-import { seed } from './endpoints/seed'
-import { Footer } from './globals/Footer'
-import { Header } from './globals/Header'
-import { Topbar } from './globals/Topbar'
-import { Settings } from './globals/Settings'
-import { Products } from './collections/Products'
-import { WorkSundays } from './globals/WorkSundays'
-import FormBuilder from '@payloadcms/plugin-form-builder'
-import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
-import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
+import FormBuilder from '@payloadcms/plugin-form-builder';
+import Categories from './collections/Categories';
+import { Media } from './collections/Media';
+import { Pages } from './collections/Pages';
+import { Posts } from './collections/Posts';
+import { Products } from './collections/Products';
+import Users from './collections/Users';
+import BeforeDashboard from './components/BeforeDashboard';
+import BeforeLogin from './components/BeforeLogin';
+import { seed } from './endpoints/seed';
+import { Footer } from './globals/Footer';
+import { Header } from './globals/Header';
+import { Settings } from './globals/Settings';
+import { Topbar } from './globals/Topbar';
 
 const generateTitle: GenerateTitle = () => {
   return 'Pekarna Mario'
@@ -46,7 +42,6 @@ const adapter = s3Adapter({
   },
   bucket: process.env.S3_BUCKET,
 })
-
 
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
@@ -86,8 +81,8 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments, Products],
-  globals: [Settings, Header, Footer, WorkSundays,Topbar],
+  collections: [Pages, Posts, Media, Categories, Users,Products],
+  globals: [Header, Footer, Topbar],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
@@ -129,10 +124,10 @@ export default buildConfig({
         checkbox: true,
         number: true,
         message: true,
-        payment: false
+        payment: false,
       },
-      redirectRelationships: ['pages'],    
-    }),    
+      redirectRelationships: ['pages'],
+    }),
     cloudStorage({
       collections: {
         media: {

@@ -107,6 +107,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--body))',
           foreground: 'hsl(var(--body-foreground))',
         },
+        'danger': {
+          DEFAULT: 'hsl(var(--danger))',
+        },
       },
       borderRadius: {
         xl: 'calc(var(--radius) + 6px)',

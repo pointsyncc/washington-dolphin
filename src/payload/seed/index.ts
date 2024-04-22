@@ -1,13 +1,18 @@
 import fs from 'fs'
 import path from 'path'
 import type { Payload } from 'payload'
+import { categories } from './categories'
 import { header } from './header'
 import { imageLogo } from './image-logo'
 import { imageProductsPage } from './image-products'
-import { categories } from './categories'
+import { Products } from './products'
+import { forms } from './forms'
+import { topBar } from './topbar'
+import { imageContactUsPage } from './image-contact-us'
+import { productsPage } from './pages/products'
 
-const collections = ['categories', 'media', 'pages']
-const globals = ['header', 'settings', 'footer']
+const collections = ['categories', 'media', 'pages', 'posts', 'products', 'forms']
+const globals = ['header', 'footer']
 
 // Next.js revalidation errors are normal when seeding the database without a server running
 // i.e. running `yarn seed` locally instead of using the admin UI within an active app
@@ -48,7 +53,7 @@ export const seed = async (payload: Payload): Promise<void> => {
 
   payload.logger.info(`— Seeding media...`)
 
-  const [image1Doc, image2Doc] = await Promise.all([
+  const [image1Doc, image2Doc, image3Doc] = await Promise.all([
     await payload.create({
       collection: 'media',
       filePath: path.resolve(__dirname + '/images/', imageLogo.filename),
@@ -60,14 +65,22 @@ export const seed = async (payload: Payload): Promise<void> => {
       filePath: path.resolve(__dirname + '/images/', imageProductsPage.filename),
       data: imageProductsPage,
     }),
+
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname + '/images/', imageContactUsPage.filename),
+      data: imageContactUsPage,
+    }),
   ])
 
   let image1ID = image1Doc.id
   let image2ID = image2Doc.id
+  let image3ID = image3Doc.id
 
   if (payload.db.defaultIDType === 'text') {
     image1ID = `"${image1ID}"`
     image2ID = `"${image2ID}"`
+    image3ID = `"${image3ID}"`
   }
 
   /*   payload.logger.info(`— Seeding demo author and user...`)
@@ -121,15 +134,43 @@ export const seed = async (payload: Payload): Promise<void> => {
     }),
   ])
  */
-  payload.logger.info(`— Seeding categories...`)
 
+  payload.logger.info(`— Seeding categories...`)
+  let categoryID = ''
   categories.forEach(async category => {
-    await payload.create({
+    const _categoriesRes = await payload.create({
       collection: 'categories',
       data: category,
     })
+    categoryID = _categoriesRes.id
   })
 
+  payload.logger.info(`— Seeding products...`)
+  let productID = ''
+  Products.forEach(async product => {
+    const _productsRes = await payload.create({
+      collection: 'products',
+      data: product,
+    })
+    productID = _productsRes.id
+  })
+
+  payload.logger.info(`— Seeding pages...`)
+  await payload.create({
+    collection: 'pages',
+    //replace FEATURED_IMAGE_ID with image1ID, PRODUCT_ID with productID, CATEGORY_ID with categoryID
+    data: JSON.parse(JSON.stringify({ ...productsPage }).replace(/"\{\{FEATURED_IMAGE_ID\}\}"/g, image2ID).replace(/"\{\{PRODUCT_ID\}\}"/g, productID).replace(/"\{\{CATEGORY_ID\}\}"/g, categoryID)),
+  })
+
+ 
+
+  payload.logger.info(`— Seeding forms...`)
+  forms.forEach(async form => {
+    await payload.create({
+      collection: 'forms',
+      data: form,
+    })
+  })
   /*   let image1ID = image1Doc.id
   let image2ID = image2Doc.id
 
@@ -144,6 +185,13 @@ export const seed = async (payload: Payload): Promise<void> => {
   await payload.updateGlobal({
     slug: 'header',
     data: JSON.parse(JSON.stringify({ ...header }).replace(/"\{\{LOGO_ID\}\}"/g, image1ID)),
+  })
+
+  payload.logger.info(`— Seeding topbar...`)
+
+  await payload.updateGlobal({
+    slug: 'topbar',
+    data: topBar,
   })
 
   payload.logger.info('Seeded database successfully!')

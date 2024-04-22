@@ -13,7 +13,6 @@ import { Blocks } from '@/components/Blocks'
 export const PageClient: React.FC<{
   page: Page
   header: HeaderType
-  workingSundays: any
 }> = ({ page: initialPage, workingSundays, header }) => {
   const { data } = useLivePreview<Page>({
     initialData: initialPage,

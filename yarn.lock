@@ -2218,6 +2218,7 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^10.0.0"
     express: "npm:^4.19.2"
     next: "npm:^14.1.4"
+    nodemailer-postmark-transport: "npm:^6.0.0"
     nodemon: "npm:^3.1.0"
     payload: "npm:^2.12.1"
     payload-admin-bar: "npm:^1.0.6"
@@ -4543,6 +4544,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"addressparser@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "addressparser@npm:1.0.1"
+  checksum: 10c0/15a6b149c643e3fb0888bcad89aa385e7718714a33049b5f357063b64b84a2febd6a0775011783c25e6b161982663d38a84fd4522de69adb4779971b92b4ddb3
+  languageName: node
+  linkType: hard
+
 "agent-base@npm:^7.0.2, agent-base@npm:^7.1.0, agent-base@npm:^7.1.1":
   version: 7.1.1
   resolution: "agent-base@npm:7.1.1"
@@ -4794,6 +4802,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "async@npm:3.2.5"
+  checksum: 10c0/1408287b26c6db67d45cb346e34892cee555b8b59e6c68e6f8c3e495cad5ca13b4f218180e871f3c2ca30df4ab52693b66f2f6ff43644760cab0b2198bda79c1
+  languageName: node
+  linkType: hard
+
 "asynckit@npm:^0.4.0":
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0"
@@ -4842,7 +4857,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.6.8":
+"axios@npm:^1.6.2, axios@npm:^1.6.8":
   version: 1.6.8
   resolution: "axios@npm:1.6.8"
   dependencies:
@@ -6413,6 +6428,13 @@ __metadata:
   version: 1.0.2
   resolution: "encodeurl@npm:1.0.2"
   checksum: 10c0/f6c2387379a9e7c1156c1c3d4f9cb7bb11cf16dd4c1682e1f6746512564b053df5781029b6061296832b59fb22f459dbe250386d217c2f6e203601abb2ee0bec
+  languageName: node
+  linkType: hard
+
+"encoding-japanese@npm:2.1.0":
+  version: 2.1.0
+  resolution: "encoding-japanese@npm:2.1.0"
+  checksum: 10c0/21aef8c2165545b58a156ab8168ff164bd2e922630e0dbece2e94fd9d326a1ce256a4c74cbf982cf187c42d8726b52e5d892bd4de9181cfa57240754d4ca6540
   languageName: node
   linkType: hard
 
@@ -8134,7 +8156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iconv-lite@npm:^0.6.2":
+"iconv-lite@npm:0.6.3, iconv-lite@npm:^0.6.2":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
   dependencies:
@@ -8965,6 +8987,32 @@ __metadata:
     prelude-ls: "npm:^1.2.1"
     type-check: "npm:~0.4.0"
   checksum: 10c0/effb03cad7c89dfa5bd4f6989364bfc79994c2042ec5966cb9b95990e2edee5cd8969ddf42616a0373ac49fac1403437deaf6e9050fbbaa3546093a59b9ac94e
+  languageName: node
+  linkType: hard
+
+"libbase64@npm:1.3.0, libbase64@npm:^1.2.1":
+  version: 1.3.0
+  resolution: "libbase64@npm:1.3.0"
+  checksum: 10c0/4ece76ce09fa389d0c578c83a121c16452916521b177f50c3e8637dd9919170c96c12e1c7de63b1c88da8e5aa7e7ab574c26d18f1f64666f46b358b4b5873c8b
+  languageName: node
+  linkType: hard
+
+"libmime@npm:^5.0.0":
+  version: 5.3.5
+  resolution: "libmime@npm:5.3.5"
+  dependencies:
+    encoding-japanese: "npm:2.1.0"
+    iconv-lite: "npm:0.6.3"
+    libbase64: "npm:1.3.0"
+    libqp: "npm:2.1.0"
+  checksum: 10c0/4bf321cd22e9dd832493a0aa0de149d363bbf6bf54f8981e0219dd61c0a0eb28095c752c3b859aa574911017354bfcafe4cef76fdbc37bd0ef3f03136856a397
+  languageName: node
+  linkType: hard
+
+"libqp@npm:2.1.0":
+  version: 2.1.0
+  resolution: "libqp@npm:2.1.0"
+  checksum: 10c0/98d371def6a47e4c7b29412f220870727415e4e90f2c875e3f5d8730972b39daee5e4c640dad34d9c3648cd91a350a98bd266d5c0bfcd75181ad4299935fc86c
   languageName: node
   linkType: hard
 
@@ -9853,6 +9901,38 @@ __metadata:
   version: 2.0.14
   resolution: "node-releases@npm:2.0.14"
   checksum: 10c0/199fc93773ae70ec9969bc6d5ac5b2bbd6eb986ed1907d751f411fef3ede0e4bfdb45ceb43711f8078bea237b6036db8b1bf208f6ff2b70c7d615afd157f3ab9
+  languageName: node
+  linkType: hard
+
+"nodemailer-build-attachment@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "nodemailer-build-attachment@npm:3.0.0"
+  dependencies:
+    libbase64: "npm:^1.2.1"
+    libmime: "npm:^5.0.0"
+    nodemailer-fetch: "npm:^2.1.0"
+  checksum: 10c0/4ab0749b3f5dcbbaf9f861df4a85b724405a58e5fa2c2dc3ed2a9aa183affb42b8600fdedb02c098672d8115865c57ecdee2ab5d2383c42eaee1a800e938fa13
+  languageName: node
+  linkType: hard
+
+"nodemailer-fetch@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "nodemailer-fetch@npm:2.1.0"
+  checksum: 10c0/39820baaf54eb1ba1877c0e387f4bd7873bae522115072c778c6bad66d7987719c49efc3e63fd032a7d4ba3a188643e85deeb0644cf9ea0279ab183b3684fe30
+  languageName: node
+  linkType: hard
+
+"nodemailer-postmark-transport@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "nodemailer-postmark-transport@npm:6.0.0"
+  dependencies:
+    addressparser: "npm:^1.0.1"
+    async: "npm:^3.2.5"
+    nodemailer-build-attachment: "npm:^3.0.0"
+    postmark: "npm:^4.0.2"
+  peerDependencies:
+    nodemailer: ">=6.x"
+  checksum: 10c0/d5d817c37416b8527f12a8df4111fe9611b53b462992bb8820b83623f22807fe245ae15b8441ba6af570a890de4f85e706917286753e243d18f0c411c770f98d
   languageName: node
   linkType: hard
 
@@ -11387,6 +11467,15 @@ __metadata:
     picocolors: "npm:^1.0.0"
     source-map-js: "npm:^1.2.0"
   checksum: 10c0/955407b8f70cf0c14acf35dab3615899a2a60a26718a63c848cf3c29f2467b0533991b985a2b994430d890bd7ec2b1963e36352b0774a19143b5f591540f7c06
+  languageName: node
+  linkType: hard
+
+"postmark@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "postmark@npm:4.0.2"
+  dependencies:
+    axios: "npm:^1.6.2"
+  checksum: 10c0/c97665f0a7fca956d8cb95dbde56c55f6cfb595353d71c729df5c4674e9f4e12dc7ba9695c9a6b605301a0806054069774bb24924fd450ceb40acea1021ce159
   languageName: node
   linkType: hard
 
