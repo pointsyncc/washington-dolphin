@@ -102,7 +102,7 @@ export const Pages: CollectionConfig = {
         en: 'Featured Image',
         hr: 'Naslovna slika',
       },
-      required: true,
+      required: false,
     },
    /*  {
       name: 'showWorkingSundays',

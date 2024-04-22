@@ -10,6 +10,7 @@ import { forms } from './forms'
 import { topBar } from './topbar'
 import { imageContactUsPage } from './image-contact-us'
 import { productsPage } from './pages/products'
+import { ogImage } from './og-image'
 
 const collections = ['categories', 'media', 'pages', 'posts', 'products', 'forms']
 const globals = ['header', 'footer']
@@ -53,7 +54,7 @@ export const seed = async (payload: Payload): Promise<void> => {
 
   payload.logger.info(`— Seeding media...`)
 
-  const [image1Doc, image2Doc, image3Doc] = await Promise.all([
+  const [image1Doc, image2Doc, image3Doc, ogImageDoc] = await Promise.all([
     await payload.create({
       collection: 'media',
       filePath: path.resolve(__dirname + '/images/', imageLogo.filename),
@@ -71,16 +72,24 @@ export const seed = async (payload: Payload): Promise<void> => {
       filePath: path.resolve(__dirname + '/images/', imageContactUsPage.filename),
       data: imageContactUsPage,
     }),
+
+    await payload.create({
+      collection: 'media',
+      filePath: path.resolve(__dirname + '/images/', ogImage.filename),
+      data: ogImage,
+    }),
   ])
 
   let image1ID = image1Doc.id
   let image2ID = image2Doc.id
   let image3ID = image3Doc.id
+  let ogImageID = ogImageDoc.id
 
   if (payload.db.defaultIDType === 'text') {
     image1ID = `"${image1ID}"`
     image2ID = `"${image2ID}"`
     image3ID = `"${image3ID}"`
+    ogImageID = `"${ogImageID}"`
   }
 
   /*   payload.logger.info(`— Seeding demo author and user...`)
