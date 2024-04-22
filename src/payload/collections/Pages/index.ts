@@ -17,6 +17,16 @@ import { HomeContact } from '../../blocks/HomeContact'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  labels: {
+    singular: {
+      en: 'Page',
+      hr: 'Stranica',
+    },
+    plural: {
+      en: 'Pages',
+      hr: 'Stranice',
+    }
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -94,7 +104,7 @@ export const Pages: CollectionConfig = {
       },
       required: true,
     },
-    {
+   /*  {
       name: 'showWorkingSundays',
       type: 'checkbox',
       label: {
@@ -105,7 +115,7 @@ export const Pages: CollectionConfig = {
         position: 'sidebar',
       },
       required: true,
-    },
+    }, */
   {
       type: 'tabs',
       tabs: [

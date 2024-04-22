@@ -54,9 +54,6 @@ export default async function Page({ params: { slug = 'home' } }) {
   let page = await fetchPage(slug)
 
   const {header} = await fetchGlobals()
-  console.log(JSON.stringify(header.navItems))
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/workSundays`)
-  const data = await res.json()
 
   // if no `home` page exists, render a static one using dummy content
   // you should delete this code once you have a home page in the CMS
@@ -69,7 +66,7 @@ export default async function Page({ params: { slug = 'home' } }) {
     return notFound()
   }
 
-  return <PageClient page={page} header={header} workingSundays={data} />
+  return <PageClient page={page} header={header}/>
 }
 
 export async function generateStaticParams() {

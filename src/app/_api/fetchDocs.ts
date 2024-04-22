@@ -16,10 +16,6 @@ const queryMap = {
     query: POSTS,
     key: 'Posts',
   },
-  projects: {
-    query: PROJECTS,
-    key: 'Projects',
-  },
   products: {
     query: PRODUCTS,
     key: 'Products',

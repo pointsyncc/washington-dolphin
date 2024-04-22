@@ -4,6 +4,16 @@ import type { CollectionConfig } from 'payload/types'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: {
+    singular: {
+      en: 'Media',
+      hr: 'Medij',
+    },
+    plural: {
+      en: 'Media',
+      hr: 'Mediji',
+    }
+  },
   upload: {
     staticURL: '/media',
     staticDir: path.resolve(__dirname, '../../../media'),

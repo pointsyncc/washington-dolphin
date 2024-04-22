@@ -10,11 +10,9 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
-    projects: Project;
     media: Media;
     categories: Category;
     users: User;
-    comments: Comment;
     products: Product;
     redirects: Redirect;
     forms: Form;
@@ -26,7 +24,6 @@ export interface Config {
     settings: Settings;
     header: Header;
     footer: Footer;
-    workSundays: WorkSunday;
     topbar: Topbar;
   };
 }
@@ -39,7 +36,6 @@ export interface Page {
   title: string;
   publishedAt?: string | null;
   featuredImage: string | Media;
-  showWorkingSundays: boolean;
   layout?:
     | (
         | {
@@ -116,6 +112,8 @@ export interface Page {
             blockType: 'homeProducts';
           }
         | {
+            heading: string;
+            description: string;
             background: string | Media;
             contactForm: string | Form;
             id?: string | null;
@@ -410,32 +408,20 @@ export interface Post {
           [k: string]: unknown;
         }[];
         populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects') | null;
+        relationTo?: 'posts' | null;
         categories?: (string | Category)[] | null;
         limit?: number | null;
         selectedDocs?:
-          | (
-              | {
-                  relationTo: 'posts';
-                  value: string | Post;
-                }
-              | {
-                  relationTo: 'projects';
-                  value: string | Project;
-                }
-            )[]
+          | {
+              relationTo: 'posts';
+              value: string | Post;
+            }[]
           | null;
         populatedDocs?:
-          | (
-              | {
-                  relationTo: 'posts';
-                  value: string | Post;
-                }
-              | {
-                  relationTo: 'projects';
-                  value: string | Project;
-                }
-            )[]
+          | {
+              relationTo: 'posts';
+              value: string | Post;
+            }[]
           | null;
         populatedDocsTotal?: number | null;
         id?: string | null;
@@ -492,32 +478,20 @@ export interface Post {
               [k: string]: unknown;
             }[];
             populateBy?: ('collection' | 'selection') | null;
-            relationTo?: ('posts' | 'projects') | null;
+            relationTo?: 'posts' | null;
             categories?: (string | Category)[] | null;
             limit?: number | null;
             selectedDocs?:
-              | (
-                  | {
-                      relationTo: 'posts';
-                      value: string | Post;
-                    }
-                  | {
-                      relationTo: 'projects';
-                      value: string | Project;
-                    }
-                )[]
+              | {
+                  relationTo: 'posts';
+                  value: string | Post;
+                }[]
               | null;
             populatedDocs?:
-              | (
-                  | {
-                      relationTo: 'posts';
-                      value: string | Post;
-                    }
-                  | {
-                      relationTo: 'projects';
-                      value: string | Project;
-                    }
-                )[]
+              | {
+                  relationTo: 'posts';
+                  value: string | Post;
+                }[]
               | null;
             populatedDocsTotal?: number | null;
             id?: string | null;
@@ -555,141 +529,6 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects".
- */
-export interface Project {
-  id: string;
-  title: string;
-  categories?: (string | Category)[] | null;
-  publishedAt?: string | null;
-  hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText: {
-      [k: string]: unknown;
-    }[];
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?: {
-              relationTo: 'pages';
-              value: string | Page;
-            } | null;
-            url?: string | null;
-            label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-    media?: string | Media | null;
-  };
-  layout: (
-    | {
-        invertBackground?: boolean | null;
-        richText: {
-          [k: string]: unknown;
-        }[];
-        links?:
-          | {
-              link: {
-                type?: ('reference' | 'custom') | null;
-                newTab?: boolean | null;
-                reference?: {
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null;
-                url?: string | null;
-                label: string;
-                appearance?: ('primary' | 'secondary') | null;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'cta';
-      }
-    | {
-        richText: {
-          [k: string]: unknown;
-        }[];
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'content';
-      }
-    | {
-        invertBackground?: boolean | null;
-        position?: ('default' | 'fullscreen') | null;
-        media: string | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'mediaBlock';
-      }
-    | {
-        introContent: {
-          [k: string]: unknown;
-        }[];
-        populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects') | null;
-        categories?: (string | Category)[] | null;
-        limit?: number | null;
-        selectedDocs?:
-          | (
-              | {
-                  relationTo: 'posts';
-                  value: string | Post;
-                }
-              | {
-                  relationTo: 'projects';
-                  value: string | Project;
-                }
-            )[]
-          | null;
-        populatedDocs?:
-          | (
-              | {
-                  relationTo: 'posts';
-                  value: string | Post;
-                }
-              | {
-                  relationTo: 'projects';
-                  value: string | Project;
-                }
-            )[]
-          | null;
-        populatedDocsTotal?: number | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'archive';
-      }
-  )[];
-  relatedProjects?: (string | Project)[] | null;
-  slug?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "comments".
- */
-export interface Comment {
-  id: string;
-  user?: (string | null) | User;
-  populatedUser?: {
-    id?: string | null;
-    name?: string | null;
-  };
-  doc?: (string | null) | Post;
-  comment?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -772,7 +611,6 @@ export interface PayloadMigration {
 export interface Settings {
   id: string;
   postsPage?: (string | null) | Page;
-  projectsPage?: (string | null) | Page;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -819,25 +657,6 @@ export interface Footer {
           url?: string | null;
           label: string;
         };
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "workSundays".
- */
-export interface WorkSunday {
-  id: string;
-  sunday?:
-    | {
-        date: string;
-        open: boolean;
-        from?: string | null;
-        to?: string | null;
-        description?: string | null;
         id?: string | null;
       }[]
     | null;
