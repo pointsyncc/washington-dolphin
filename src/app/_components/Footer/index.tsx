@@ -42,7 +42,7 @@ export async function Footer({
   return (
     <Container>
       <footer>
-        <div className="bg-primary rounded-sm px-4 sm:px-6 pt-[30px] pb-[60px]">
+        <div className="bg-primary rounded-sm px-4 sm:px-10 pt-[30px] pb-[60px]">
           <div className="flex lg:flex-row flex-col justify-between lg:mt-0 mt-[20px]">
             <div className="">
               {/* image */}
@@ -76,7 +76,7 @@ export async function Footer({
               <h2 className="lg:text-[32px] sm:text-[25px] text-[20px] font-[700] text-center sm:text-start">
                 Imaš pitanje za nas?
               </h2>
-              <Link href={'/kontakt'} className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-secondary hover:text-primary sm:w-auto w-[90%] mx-auto sm:mr-0">
+              <Link href={'/kontakt'} className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[3px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-secondary hover:text-primary sm:w-auto w-[90%] mx-auto sm:mr-0">
                 Kontaktiraj nas
               </Link>
             </div>
@@ -87,10 +87,10 @@ export async function Footer({
             Pekarna Mario © 2024. | Sva prava pridržana.
           </p>
           <div className="flex items-center mt-[20px] md:mt-0">
-            <Link className="text-[14px] hover:text-secondary" href={'/privacy-policy'}>
+            <Link className="text-[14px] hover:text-secondary hover:underline" href={'/privacy-policy'}>
               Politika privatnosti
             </Link>
-            <Link className="text-[14px] hover:text-secondary pl-[16px]" href={'/terms-of-use'}>
+            <Link className="text-[14px] hover:text-secondary pl-[16px] hover:underline" href={'/terms-of-use'}>
               Uvjeti korištenja
             </Link>
           </div>

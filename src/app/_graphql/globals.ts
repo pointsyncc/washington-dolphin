@@ -87,7 +87,6 @@ export function TOPBAR(locale: string = 'hr') {
         friday ${timmingFields}
         saturday ${timmingFields}
       }
-      timmingsLink ${LINK_FIELDS({ disableAppearance: true })}
     }
   `
 }
