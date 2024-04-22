@@ -12,7 +12,7 @@ export const Header = ({ logo, navItems }: THeader) => {
   return (
     <header
       className={cn(
-        'fixed w-full  left-0 z-50 xl:py-1 header transition-[top] ease-in-out duration-500',
+        'absolute w-full  left-0 z-50 xl:py-1 header transition-[top] ease-in-out duration-500',
       )}
     >
       <Container className="flex justify-between items-center">

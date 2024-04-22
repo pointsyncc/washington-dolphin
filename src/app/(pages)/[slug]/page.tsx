@@ -53,7 +53,7 @@ async function fetchPages() {
 export default async function Page({ params: { slug = 'home' } }) {
   console.log('Page', slug)
   //let page = await fetchPage(slug)
-  let page = await fetchPage('home')
+  let page = await fetchPage(slug)
 
   const {header} = await fetchGlobals()
 

@@ -120,6 +120,7 @@ export const Topbar: GlobalConfig = {
                   },          
                   date: {
                     pickerAppearance: 'timeOnly',
+                    //displayFormat: 'h:mm:ss a',
                   },
                 },
               },
@@ -140,6 +141,7 @@ export const Topbar: GlobalConfig = {
                   },          
                   date: {
                     pickerAppearance: 'timeOnly',
+                    //displayFormat: 'h:mm:ss a',
                   },
                 },
               },
