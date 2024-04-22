@@ -11,7 +11,7 @@ export const Logo = ({ logo, ...rest }: TLogoProps) => {
   return (
     <Link {...rest} href="/">
       <Image
-        className="sm:max-w-[13.5rem]"
+        className="max-w-[130px] lg:max-w-[13.5rem]"
         src={logo?.url}
         alt={logo?.alt}
         width={logo?.width}
