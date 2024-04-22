@@ -1,11 +1,5 @@
-import type { Footer, Header, Settings, Topbar, WorkSunday } from '../../payload/payload-types'
-import {
-  FOOTER_QUERY,
-  HEADER_QUERY,
-  SETTINGS_QUERY,
-  TOPBAR_QUERY,
-  WORKING_SUNDAYS_QUERY,
-} from '../_graphql/globals'
+import type { Footer, Header, Settings, Topbar } from '../../payload/payload-types'
+import { FOOTER_QUERY, HEADER_QUERY, SETTINGS_QUERY, TOPBAR_QUERY } from '../_graphql/globals'
 import { GRAPHQL_API_URL } from './shared'
 
 export async function fetchSettings(): Promise<Settings> {
@@ -82,31 +76,6 @@ export async function fetchFooter(): Promise<Footer> {
   return footer
 }
 
-export async function fetchWorkSundays(): Promise<Footer> {
-  if (!GRAPHQL_API_URL) throw new Error('NEXT_PUBLIC_SERVER_URL not found')
-
-  const sunday = await fetch(`${GRAPHQL_API_URL}/api/graphql`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: WORKING_SUNDAYS_QUERY,
-    }),
-  })
-    .then(res => {
-      if (!res.ok) throw new Error('Error fetching doc')
-      return res.json()
-    })
-    ?.then(res => {
-      if (res?.errors) throw new Error(res?.errors[0]?.message || 'Error fetching footer')
-      return res.data?.Footer
-    })
-
-  console.log(sunday)
-  return sunday
-}
-
 export async function fetchTopbar(): Promise<Topbar> {
   if (!GRAPHQL_API_URL) throw new Error('NEXT_PUBLIC_SERVER_URL not found')
 
@@ -138,8 +107,7 @@ export const fetchGlobals = async (): Promise<{
   settings: Settings
   header: Header
   footer: Footer
-  sunday: WorkSunday,
-  topbar:Topbar
+  topbar: Topbar
 }> => {
   // initiate requests in parallel, then wait for them to resolve
   // this will eagerly start to the fetch requests at the same time
@@ -147,15 +115,13 @@ export const fetchGlobals = async (): Promise<{
   const settingsData = fetchSettings()
   const headerData = fetchHeader()
   const footerData = fetchFooter()
-  const sundayData = fetchWorkSundays()
   const topbarData = fetchTopbar()
 
-  const [settings, header, footer, sunday, topbar]: [Settings, Header, Footer, WorkSunday,Topbar] =
+  const [settings, header, footer, topbar]: [Settings, Header, Footer, Topbar] =
     await Promise.all([
       await settingsData,
       await headerData,
       await footerData,
-      await sundayData,
       await topbarData,
     ])
 
@@ -163,7 +129,6 @@ export const fetchGlobals = async (): Promise<{
     settings,
     header,
     footer,
-    sunday,
-    topbar
+    topbar,
   }
 }
