@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { FaEnvelope, FaLocationDot, FaPhone } from 'react-icons/fa6'
 import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
-import { Page } from '@/payload/payload-types'
+import { Form, Page } from '@/payload/payload-types'
 import { ContactForm } from '../components/Contact/contact-form'
 import { fetchTopbar } from '../_api/fetchGlobals'
 import { ContactInfo } from '../(pages)/components/navigation/ContactInfo'
 import { Section } from '@/components/layout/Section'
 
-type TContactProps = Extract<Page['layout'][0], { blockType: 'Contact' }>
+type TContactProps = Extract<Page['layout'][0], { blockType: 'contact' }>
 
 export const Contact = ({ description, contactForm }: TContactProps) => {
   const [topbar, setTopbar] = useState(null)
@@ -48,7 +48,7 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
           {description}
         </p>
         <div className="xl:hidden block mb-[50px]">
-          <ContactForm formData={contactForm} />
+          <ContactForm formData={contactForm as Form} />
         </div>
         <ContactInfo
           links={contacts}
@@ -65,7 +65,7 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
       </div>
 
       <div className="xl:block hidden">
-        <ContactForm formData={contactForm} />
+        <ContactForm formData={contactForm as Form} />
       </div>
     </Section>
     // <div className="flex xl:flex-row flex-col justify-center items-start xl:items-center lg:justify-between w-full xl:px-[80px] lg:px-[60px] md:px-[40px] sm:px-[20px] px-0 pt-[60px]">

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import { Image } from './Image'
+import { Image } from './Image/index'
 import { Props } from './types'
 import { Video } from './Video'
 

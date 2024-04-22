@@ -48,4 +48,9 @@ export const topBar: Omit<Topbar, 'id' | 'createdAt' | 'updatedAt'> = {
       closed: true,
     },
   },
+  timmingsLink:{
+    type: 'custom',
+    url: '/kontakt',
+    label: 'Kontakt',
+  }
 }
