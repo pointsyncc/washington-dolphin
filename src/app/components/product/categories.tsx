@@ -19,15 +19,15 @@ const categories = ({ categories }: Props) => {
   }
   return (
     <div className="flex flex-wrap w-full   justify-center lg:justify-start items-center">
-              <button
-          className={`flex items-center justify-center md:basis-auto md:max-w-auto basis-auto max-w-auto sm:basis-[100px] text-center sm:max-w-[100px]
-          ]  text-[14px] sm:text-[16px] lg:text-[18px] py-[5px] lg:px-[35px] md:px-[25px] sm:px-[20px] px-[15px] ${currentValue === '' ? 'bg-[#CEA66B] text-white rounded-[10px] hover:bg-[#CEA66B]' : 'hover:text-[#CEA66B]'}`}
-          onClick={() => {
-            setCategoryHandler('')
-          }}
-        >
-          Svi proizvodi
-        </button>
+      <button
+        className={`flex items-center justify-center md:basis-auto md:max-w-auto basis-auto max-w-auto  text-center 
+          ]  text-[14px] sm:text-[16px] lg:text-[18px] py-[5px] lg:px-[35px] md:px-[25px] sm:px-[20px] px-[15px] ${!currentValue ? 'bg-[#CEA66B] text-white rounded-[10px] hover:bg-[#CEA66B]' : 'hover:text-[#CEA66B]'}`}
+        onClick={() => {
+          setCategoryHandler('')
+        }}
+      >
+        Svi proizvodi
+      </button>
       {categories.map((category, i) => (
         <button
           key={category.title}

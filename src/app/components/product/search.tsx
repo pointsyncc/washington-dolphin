@@ -46,7 +46,7 @@ const SearchForm = () => {
       <FaSearch className="absolute top-[12px] left-[15px] text-[#223333ad]" />
       <Input
         type="text"
-        className="pl-[40px] text-[#223333ad] rounded-[0px]"
+        className="pl-[40px] text-[#223333ad] rounded-[0px] bg-[#FFFCE3]"
         placeholder={'Pretraži proizvode...'}
         onChange={searchHandler}
       />

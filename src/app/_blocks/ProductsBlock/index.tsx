@@ -6,6 +6,7 @@ import type { Page } from '../../../payload/payload-types'
 import CategoriesSection from '../../components/product/categories'
 import Product from '../../components/product/product'
 import Search from '../../components/product/search'
+import { Section } from '@/components/layout/Section'
 
 type Props = Extract<Page['layout'][0], { blockType: 'productsBlock' }> & {
   id?: string
@@ -15,22 +16,21 @@ export const ProductsBlock: React.FC<Props> = props => {
   const { products, categories } = props
   const tsProducts = products as ProductType[]
   const searchParams = useSearchParams()
-
   const category = searchParams.get('category')
   const filteredProducts = tsProducts.filter(product => {
     if (category) {
       const productCategory =
-        typeof product.categories[0] === 'string'
-          ? product.categories[0]
-          : product.categories[0].title
-      return productCategory.toLowerCase() === category.toLowerCase()
+        typeof product?.categories?.[0] === 'string'
+          ? product?.categories?.[0]
+          : product?.categories?.[0]?.title
+      return productCategory?.toLowerCase() === category?.toLowerCase()
     }
     return products
   }) as ProductType[]
   return (
-    <Fragment>
+    <Section className='py-0'>
       <Suspense>
-        <div className="flex lg:flex-row flex-col items-center justify-between md:px-[35px] mt-[60px] w-full">
+        <div className="flex lg:flex-row flex-col items-center justify-between   w-full">
           {categories && <CategoriesSection categories={categories as Category[]} />}
 
           <Search />
@@ -51,6 +51,6 @@ export const ProductsBlock: React.FC<Props> = props => {
           )}
         </div>
       </Suspense>
-    </Fragment>
+    </Section>
   )
 }

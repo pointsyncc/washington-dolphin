@@ -148,5 +148,15 @@ export const Topbar: GlobalConfig = {
         },
       ),
     },
+    link({
+      appearances: false,
+      overrides: {
+        name: 'timmingsLink',
+        label: {
+          en: 'Timmings link',
+          hr: 'Timmings link',
+        },
+      },
+    }),
   ],
 }
