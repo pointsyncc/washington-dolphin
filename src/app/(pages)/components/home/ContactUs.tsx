@@ -1,7 +1,7 @@
 import { Section } from '@/components/layout/Section'
 import React from 'react'
 import HeroSection from 'src/app/components/common/hero-section'
-import { ContactForm } from 'src/app/components/contact/contact-form'
+import { ContactForm } from 'src/app/components/Contact/contact-form'
 
 export const ContactUs = () => {
   return (

@@ -8,11 +8,15 @@ import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding/inde
 import { Page } from '@/payload/payload-types'
 import { ContentBlock } from '../../_blocks/Content'
 import { ProductsBlock } from '../../_blocks/ProductsBlock'
+import { History } from '../../_blocks/History'
+import { HomeProducts } from '../../_blocks/HomeProducts'
 
 const blockComponents = {
   galleryBlock: GalleryBock,
   productsBlock: ProductsBlock,
   content: ContentBlock,
+  history:History,
+  homeProducts:HomeProducts
 }
 
 export const Blocks: React.FC<{

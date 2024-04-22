@@ -23,7 +23,7 @@ export const ProductsBlock: Block = {
         relationTo: 'products',
         hasMany: true,
         required: true,
-        
+  
     },
     {
         name: 'categories',

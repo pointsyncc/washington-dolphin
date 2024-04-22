@@ -1,5 +1,5 @@
 import HeroSection from '../../components/common/hero-section'
-import { ContactForm } from '../../components/contact/contact-form'
+import { ContactForm } from '../../components/Contact/contact-form'
 import { FaLocationDot } from 'react-icons/fa6'
 import { FaPhoneAlt } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
