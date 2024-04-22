@@ -26,6 +26,7 @@ type TimmingsModalProps = {
   closingTime: string
   timmings: Topbar['timmings']
   closed: boolean
+  link:Topbar['timmingsLink']
 }
 
 const TimmingsModal = ({
@@ -42,7 +43,7 @@ const TimmingsModal = ({
     const openningTime = formatTime(time?.openningTime)
     const closingTime = formatTime(time?.closingTime)
     formattedDaysTimmings.push({
-      time: time.closed ? 'ZATVORENO' : `${openningTime} - ${closingTime}`,
+      time: time.closed ? 'ZATVORENO' : `${openningTime} - ${closingTime}h`,
       label: CROTIAN_TRANSLATED_WEEKDAYS[key],
     })
   }
@@ -58,19 +59,22 @@ const TimmingsModal = ({
     <Modal>
       <ModalTrigger asChild>
         <button className="flex items-center gap-2 ">
-          <FaClock className="text-secondary" />
-          {closed ? 'ZATVORENO' : `${openningTime} - ${closingTime}h`}
+          <FaClock className="text-secondary text-lg" />
+          Radno vrijeme:{' '}
+          <span className='font-bold'>
+          {closed ? 'Trenutno zatvoreno' : `${openningTime} - ${closingTime}h`}
+          </span>
         </button>
       </ModalTrigger>
       <ModalContent className="bg-secondary border-secondary">
         <div className="space-y-5">
-          <Heading level={2} className="flex gap-4 items-center justify-center">
+          <Heading level={3} className="flex gap-4 items-center justify-center mb-2">
             <FaClock /> Radno vrijeme
           </Heading>
           <ul className="space-y-5">
             {formattedDaysTimmings.map((dayTimming, i) => (
               <li key={i} className="capitalize">
-                {dayTimming.label}: {dayTimming.time}h
+                {dayTimming.label}: {dayTimming.time}
               </li>
             ))}
           </ul>

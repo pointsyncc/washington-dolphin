@@ -3,7 +3,7 @@ import { Container } from '../grid/Container'
 import { Logo } from './Logo'
 
 import { cn } from '@/utils/classMerge'
-import { type Header as THeader } from '@/payload/payload-types'
+import { Media, type Header as THeader } from '@/payload/payload-types'
 
 import { NavItems } from './NavItems'
 import { MobileNav } from './MobileNav'
@@ -16,7 +16,7 @@ export const Header = ({ logo, navItems }: THeader) => {
       )}
     >
       <Container className="flex justify-between items-center">
-        <Logo logo={logo} className="md:mt-0 mt-[10px]" />
+        <Logo logo={logo as Media} className="md:mt-0 mt-[10px]" />
         <nav className="ml-auto bg-primary rounded-lg mx-[22px] px-4 lg:block hidden">
           <NavItems navItems={navItems} linkClassName='text-white' />
         </nav>

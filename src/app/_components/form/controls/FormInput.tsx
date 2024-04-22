@@ -29,4 +29,3 @@ export const FormInput = ({ blockType, ...rest }: TFormControl) => {
       return <Input {...(rest as InputProps)} />
   }
 }
-
