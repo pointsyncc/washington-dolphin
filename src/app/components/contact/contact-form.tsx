@@ -18,13 +18,14 @@ import {
 } from '@/components/form/form'
 import { Input } from '@/components/form/controls/TextInput'
 import { Textarea } from '@/components/form/controls/TextArea'
+import { FormInput } from '@/components/form/controls/FormInput'
 const validationSchema = object({
   name: string().required(),
   email: string().required(),
   subject: string().required(),
   message: string().required(),
 })
-export const ContactForm: React.FC = () => {
+export const ContactForm= ({formData:data}:any) => {
   const form = useForm({
     resolver: useYupValidationResolver(validationSchema),
     defaultValues: {
@@ -34,34 +35,36 @@ export const ContactForm: React.FC = () => {
       subject: '',
     },
   })
-  const inputs = [
-    {
-      component: Input,
-      name: 'name',
-      placeholder: 'Vaše ime *',
-      inputContainerClass: 'sm:basis-[48.5%] sm:max-w-[48.5%] basis-full max-w-full mb-[28px]',
-    },
-    {
-      component: Input,
-      type: 'email',
-      name: 'email',
-      placeholder: 'Vaša e-mail adresa *',
-      inputContainerClass: 'sm:basis-[48.5%] sm:max-w-[48.5%] basis-full max-w-full mb-[28px]',
-    },
-    {
-      component: Input,
-      name: 'subject',
-      placeholder: 'Predmet poruke *',
-      inputContainerClass: 'basis-[100%] max-w-[100%] mb-[28px]',
-    },
-    {
-      component: Textarea,
-      name: 'message',
-      placeholder: 'Vaša poruka *',
-      inputContainerClass: 'basis-[100%] max-w-[100%]',
-      inputClass: 'h-[200px]',
-    },
-  ]
+  // const inputs = [
+  //   {
+  //     component: Input,
+  //     name: 'name',
+  //     placeholder: 'Vaše ime *',
+  //     inputContainerClass: 'sm:basis-[48.5%] sm:max-w-[48.5%] basis-full max-w-full mb-[28px]',
+  //   },
+  //   {
+  //     component: Input,
+  //     type: 'email',
+  //     name: 'email',
+  //     placeholder: 'Vaša e-mail adresa *',
+  //     inputContainerClass: 'sm:basis-[48.5%] sm:max-w-[48.5%] basis-full max-w-full mb-[28px]',
+  //   },
+  //   {
+  //     component: Input,
+  //     name: 'subject',
+  //     placeholder: 'Predmet poruke *',
+  //     inputContainerClass: 'basis-[100%] max-w-[100%] mb-[28px]',
+  //   },
+  //   {
+  //     component: Textarea,
+  //     name: 'message',
+  //     placeholder: 'Vaša poruka *',
+  //     inputContainerClass: 'basis-[100%] max-w-[100%]',
+  //     inputClass: 'h-[200px]',
+  //   },
+  // ]
+
+  
 
   // const [formState, action] = useFormState(actions.createTopic, {
   //   errors: {},
@@ -70,12 +73,13 @@ export const ContactForm: React.FC = () => {
     const valid = await form.trigger()
     if (!valid) return
   }
+  if(!data) return null;
   return (
     <div className=" xl:max-w-[500px] xl:basis-[500px] xl:mx-0 mx-auto w-full bg-primary pt-[42px] px-[30px] sm:px-[56px] rounded-[20px] pb-[29px] xl:mt-0 mt-[50px] ">
       <Form {...form}>
         <form action={onSubmit} className="space-y-8">
           <div className="flex flex-wrap justify-between gap-2">
-            {inputs.map((input, i) => (
+            {data?.fields?.map((input, i) => (
               <FormField
                 control={form.control}
                 key={input.name}
@@ -83,11 +87,12 @@ export const ContactForm: React.FC = () => {
                 render={({ field }) => (
                   <FormItem className={`${input.inputContainerClass} relative`}>
                     <FormControl>
-                      <input.component
+                      <FormInput blockType={input.blockType} placeholder={input.placeholder} {...field}/>
+                      {/* <input.component
                         className={`${input.name !== 'message' && 'h-[60px]'} pl-[24px] w-full`}
                         placeholder={input.placeholder}
                         {...field}
-                      />
+                      /> */}
                     </FormControl>
                     <FormMessage className="text-danger" />
                   </FormItem>

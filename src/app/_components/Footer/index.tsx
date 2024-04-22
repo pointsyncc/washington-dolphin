@@ -59,7 +59,7 @@ export async function Footer({
 
                 <ContactInfo
                   links={links}
-                  className="sm:flex-col w-full sm:w-auto gap-6 sm:gap-6 mt-12"
+                  className="lg:flex-col w-full sm:w-auto gap-6 sm:gap-6 mt-12"
                 />
                 {/* {contacts.map(contact => (
                   <div key={contact.name} className="flex items-center lg:pl-[22px] mt-[20px]">
