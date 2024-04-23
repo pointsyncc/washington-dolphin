@@ -82,15 +82,15 @@ export async function Footer({
             </div>
           </div>
         </div>
-        <div className="flex md:flex-row text-primary flex-col justify-between items-center px-[0px]  md:px-[40px] py-[10px] md:py-[14px]">
-          <p className="!text-[14px] leading-[20px] sm:leading-[38px] text-center md:text-start mt-[10px] md:mt-0">
+        <div className="flex md:flex-row text-primary flex-col-reverse justify-between items-center px-[0px]  md:px-[40px] pt-[8px] pb-[14px] md:py-[14px]">
+          <p className="!text-[13px] leading-[20px] sm:leading-[38px] text-center md:text-start mt-[10px] md:mt-0">
             Pekarna Mario © 2024. | Sva prava pridržana.
           </p>
           <div className="flex items-center mt-[10px] md:mt-0">
-            <Link className="text-[14px] hover:text-secondary" href={'/privacy-policy'}>
+            <Link className="text-[13px] hover:text-secondary underline" href={'/privacy-policy'}>
               Politika privatnosti
             </Link>
-            <Link className="text-[14px] hover:text-secondary pl-[16px]" href={'/terms-of-use'}>
+            <Link className="text-[13px] hover:text-secondary pl-[16px] underline" href={'/terms-of-use'}>
               Uvjeti korištenja
             </Link>
           </div>

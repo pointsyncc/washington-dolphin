@@ -1,18 +1,16 @@
-import React from 'react'
 import { Metadata } from 'next'
+import React from 'react'
 
-import { AdminBar } from './_components/AdminBar'
 import { Footer } from './_components/Footer'
 
+import { Plus_Jakarta_Sans, Poppins } from 'next/font/google'
+import { TopBar } from './(pages)/components/navigation/Topbar'
+import { fetchGlobals } from './_api/fetchGlobals'
+import { Header } from './_components/navigation/Header'
+import './_css/app.css'
 import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
-import { Plus_Jakarta_Sans, Poppins } from 'next/font/google'
-import './_css/app.css'
-import { fetchGlobals } from './_api/fetchGlobals'
-import Link from 'next/link'
-import { TopBar } from './(pages)/components/navigation/Topbar'
-import { Header } from './_components/navigation/Header'
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
