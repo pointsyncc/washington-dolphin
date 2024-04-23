@@ -92,6 +92,7 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
                     <FormItem className={`${width} relative`}>
                       <FormControl>
                         <FormInput
+                        className='p-5 lg:p-6'
                           blockType={input.blockType}
                           placeholder={input.label}
                           {...field}

@@ -26,7 +26,7 @@ export const Section = <T extends ElementType>({
   variant = 'light',
 }: TSectionProps<T>) => {
   const classes = cn(
-    'py-12 mt-20',
+    'py-12 mt-6',
     variant === 'dark' ? 'bg-body-foreground text-secondary' : '',
     className,
   )
