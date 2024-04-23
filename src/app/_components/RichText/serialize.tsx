@@ -75,7 +75,7 @@ const serialize = (children?: Children): React.ReactNode[] =>
           </h2>
         )
       case 'h3':
-        return <h3 key={i} className='text-[1.15rem] lg:text-[1.4rem] font-semibold leading-10 lg:leading-[2.5rem]'>{serialize(node?.children)}</h3>
+        return <h3 key={i} className='text-[1.15rem] lg:text-[1.4rem] font-bold leading-10 lg:leading-[2.5rem]'>{serialize(node?.children)}</h3>
       case 'h4':
         return <h4 key={i}>{serialize(node?.children)}</h4>
       case 'h5':
@@ -112,7 +112,7 @@ const serialize = (children?: Children): React.ReactNode[] =>
       }
 
       default:
-        return <p key={i} className='text-sm lg:text-[15px] leading-5 mb-4'>{serialize(node?.children)}</p>
+        return <p key={i} className='text-sm lg:text-[15px] leading-6 mb-4'>{serialize(node?.children)}</p>
     }
   }) || []
 
