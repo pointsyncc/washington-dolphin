@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContactForm } from './contact-form'
+import { ContactForm } from './ContactFormNew'
 import qs from 'qs'
 import { payloadService } from 'src/app/_services/payload.service'
 export const Contact = async () => {

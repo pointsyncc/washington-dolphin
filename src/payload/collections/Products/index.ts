@@ -48,7 +48,7 @@ export const Products: CollectionConfig = {
             title: { like: searchTitle.toLowerCase() },
           },
         })
-        console.log(products)
+        //console.log(products)
         // const searchResults = products.docs.filter(product => {
         //   return (
         //     stringSimilarity(searchTitle, product.title) > 0.4 ||

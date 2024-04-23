@@ -21,7 +21,7 @@ export const PageClient: React.FC<{
 
   const bgURL =
     typeof data?.featuredImage === 'string' ? data?.featuredImage : data?.featuredImage?.url
-  console.log(data.layout,'LAYOUT')
+  //console.log(data.layout,'LAYOUT')
   return (
     <React.Fragment>
       {/* <Header showWorkingSundays={data.showWorkingSundays} workingSundays={workingSundays.sunday} header={header} /> */}

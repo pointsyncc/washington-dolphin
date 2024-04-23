@@ -4,7 +4,7 @@ import { FaEnvelope, FaLocationDot, FaPhone } from 'react-icons/fa6'
 import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
 import { Form, Page } from '@/payload/payload-types'
-import { ContactForm } from '../components/Contact/contact-form'
+import { ContactForm } from '../components/contact/ContactFormNew'
 import { fetchTopbar } from '../_api/fetchGlobals'
 import { ContactInfo } from '../(pages)/components/navigation/ContactInfo'
 import { Section } from '@/components/layout/Section'
@@ -20,7 +20,7 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
         const data = await fetchTopbar()
         setTopbar(data)
       } catch (error) {
-        console.log('error')
+        //console.log('error')
       }
     })()
   }, [])
