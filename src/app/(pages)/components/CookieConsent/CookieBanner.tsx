@@ -7,7 +7,6 @@ import Link from 'next/link'
 export default function CookieBanner() {
   return (
     <CookieConsent
-      debug={true}
       style={{
         background: '#cda56a',
         color: '#573400',
