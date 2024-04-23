@@ -29,6 +29,20 @@ export const PRODUCTS = `
   }
 `
 
+export const JOB_LISTINGS = `
+  query JobListings {
+    JobListings (limit: 300) {
+      docs {
+        title
+        description
+        location
+        deadline
+        salary
+      }
+    }
+  }
+`
+
 export const CATEGORIES = `
   query Categories {
     Categories(limit: 300) {

@@ -1,10 +1,15 @@
 'use client'
 import { Input } from '@/components/form/controls/TextInput'
-import {  useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 
-const SearchForm = () => {
+interface Props {
+  placeholder?: string
+  disabled?: boolean
+}
+
+const SearchForm = ({ placeholder, disabled }: Props) => {
   const searchParams = useSearchParams()
   const timeoutId = useRef(null)
   const pathname = usePathname()
@@ -12,7 +17,7 @@ const SearchForm = () => {
   const params = new URLSearchParams(searchParams)
   const searchHandler = e => {
     const query = e.target.value as string
-    if(!query.length){
+    if (!query.length) {
       params.delete('title')
       router.push(pathname + '?' + params.toString(), {
         scroll: false,
@@ -46,8 +51,9 @@ const SearchForm = () => {
       <Input
         type="text"
         className="pl-[40px] text-[#223333ad] rounded-[0px] bg-[#FFFCE3]"
-        placeholder={'Pretraži proizvode...'}
-        defaultValue={params.get('title')?params.get('title'):''}
+        placeholder={placeholder ?? 'Pretraži proizvode...'}
+        defaultValue={params.get('title') ? params.get('title') : ''}
+        disabled={disabled}
         onChange={searchHandler}
       />
     </div>
