@@ -33,8 +33,8 @@ export const Pages: CollectionConfig = {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, documentInfo, locale }) => {
-        return `http://localhost:3000/api/preview?url=${encodeURIComponent(
-          `http://localhost:3000/${data.slug}`,
+        return process.env.PAYLOAD_PUBLIC_SERVER_URL + `/api/preview?url=${encodeURIComponent(
+          process.env.PAYLOAD_PUBLIC_SERVER_URL + `/${data.slug}`,
         )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
       },
       breakpoints: [
