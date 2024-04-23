@@ -5,12 +5,13 @@ import React, { ComponentPropsWithRef } from 'react'
 
 type THeroSectionProps = ComponentPropsWithRef<'div'> & {
   pageTitle?: string
-  bgURL: string
+  bgURL?: string
   
 }
 
 const HeroSection = ({ pageTitle, className, bgURL,children }: THeroSectionProps) => {
   const imageSource = `${bgURL}`
+  const textColor = bgURL ? 'text-[#DDB780]' : 'text-secondary'
   return (
     <Container>
       <div
@@ -21,7 +22,7 @@ const HeroSection = ({ pageTitle, className, bgURL,children }: THeroSectionProps
         )}
       >
         {Boolean(pageTitle) && (
-          <h1 className="text-[#DDB780] sm:text-5xl text-xl font-[700] sm:pl-[60px] sm:pb-[60px] pl-[20px] pb-[20px]">
+          <h1 className={cn(textColor,'sm:text-5xl text-xl font-[700] sm:pl-[60px] sm:pb-[60px] pl-[20px] pb-[20px]')}>
             {pageTitle}
           </h1>
         )}

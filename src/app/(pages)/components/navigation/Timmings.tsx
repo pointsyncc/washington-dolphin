@@ -10,15 +10,15 @@ import { FaClock } from 'react-icons/fa6'
 import { MdArrowOutward } from 'react-icons/md'
 import { formatTime } from 'src/app/_utilities/formatDateTime'
 
-const WEEKDAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+const WEEKDAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 const CROTIAN_TRANSLATED_WEEKDAYS = {
-  sunday: 'Nedjelja',
   monday: 'Ponedjeljak',
   tuesday: 'Utorak',
   wednesday: 'Srijeda',
   thursday: 'Četvrtak',
   friday: 'Petak',
   saturday: 'Subota',
+  sunday: 'Nedjelja',
 }
 
 type TimmingsModalProps = {
@@ -58,7 +58,7 @@ const TimmingsModal = ({
   return (
     <Modal>
       <ModalTrigger asChild>
-        <button className="flex items-center gap-2 text-sm lg:text-lg">
+        <button className="flex items-center gap-2 text-sm lg:text-[1rem]">
           <FaClock className="text-secondary text-sm lg:text-lg" />
           Radno vrijeme:{' '}
           <span className='font-bold'>

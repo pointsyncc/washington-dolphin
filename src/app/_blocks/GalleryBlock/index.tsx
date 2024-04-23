@@ -36,8 +36,8 @@ export const GalleryBock: React.FC<Props> = props => {
   const handleClick = (index: number, item: CustomImage) => setIndex(index)
 
   return (
-    <div>
-      <Gallery images={images} onClick={handleClick} enableImageSelection={false} />
+    <div className='flex justify-center item-center px-4'>
+      <Gallery images={images} onClick={handleClick} enableImageSelection={false} rowHeight={200} margin={4} />
       {/*       <PhotoAlbum
       layout="rows"
       photos={images}

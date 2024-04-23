@@ -84,7 +84,7 @@ export const Topbar: GlobalConfig = {
         hr: 'Radno vrijeme',
       },
       type: 'group',
-      fields: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].map(
+      fields: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].map(
         day => {
           return {
             name: day,
