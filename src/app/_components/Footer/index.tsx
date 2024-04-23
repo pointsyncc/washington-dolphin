@@ -76,7 +76,10 @@ export async function Footer({
               <h2 className="lg:text-[32px] sm:text-[25px] text-[20px] font-[700] text-center sm:text-start">
                 Imaš pitanje za nas?
               </h2>
-              <Link href={'/kontakt'} className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-secondary hover:text-primary sm:w-auto w-[90%] mx-auto sm:mr-0 text-center">
+              <Link
+                href={'/kontakt'}
+                className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-secondary hover:text-primary sm:w-auto w-[90%] mx-auto sm:mr-0 text-center"
+              >
                 Kontaktiraj nas
               </Link>
             </div>
@@ -87,11 +90,17 @@ export async function Footer({
             Pekarna Mario © 2024. | Sva prava pridržana.
           </p>
           <div className="flex items-center mt-[10px] md:mt-0">
-            <Link className="text-[13px] hover:text-secondary underline" href={'/privacy-policy'}>
+            <Link
+              className="text-[13px] hover:text-secondary underline"
+              href={'/politika-privatnosti'}
+            >
               Politika privatnosti
             </Link>
-            <Link className="text-[13px] hover:text-secondary pl-[16px] underline" href={'/terms-of-use'}>
-              Uvjeti korištenja
+            <Link
+              className="text-[13px] hover:text-secondary pl-[16px] underline"
+              href={'/politika-kolacica'}
+            >
+              Politika kolačića
             </Link>
           </div>
         </div>

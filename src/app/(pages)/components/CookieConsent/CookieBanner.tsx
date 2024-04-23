@@ -40,10 +40,10 @@ export default function CookieBanner() {
       </Link>{' '}
       i{' '}
       <Link
-        href="/uvjeti-poslovanja"
+        href="/politika-kolacica"
         className="underline font-semibold text-[#573400] text-[12px]"
       >
-        uvjete poslovanja
+        politiku kolačića
       </Link>
       .
     </CookieConsent>
