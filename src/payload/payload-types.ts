@@ -14,6 +14,7 @@ export interface Config {
     categories: Category;
     users: User;
     products: Product;
+    'job-listings': JobListing;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -136,6 +137,13 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'contact';
+          }
+        | {
+            jobListings?: (string | JobListing)[] | null;
+            notificationEmails?: (string | null) | Form;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'jobListingsBlock';
           }
       )[]
     | null;
@@ -341,6 +349,24 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-listings".
+ */
+export interface JobListing {
+  id: string;
+  title: string;
+  shortDescription: string;
+  description: {
+    [k: string]: unknown;
+  }[];
+  location: string;
+  deadline?: string | null;
+  salary?: number | null;
+  form?: (string | null) | Form;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts".
  */
 export interface Post {
@@ -381,33 +407,6 @@ export interface Post {
     media?: string | Media | null;
   };
   layout: (
-    | {
-        invertBackground?: boolean | null;
-        richText?:
-          | {
-              [k: string]: unknown;
-            }[]
-          | null;
-        links?:
-          | {
-              link: {
-                type?: ('reference' | 'custom') | null;
-                newTab?: boolean | null;
-                reference?: {
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null;
-                url?: string | null;
-                label: string;
-                appearance?: ('primary' | 'secondary') | null;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'cta';
-      }
     | {
         richText?:
           | {
@@ -457,33 +456,6 @@ export interface Post {
   enablePremiumContent?: boolean | null;
   premiumContent?:
     | (
-        | {
-            invertBackground?: boolean | null;
-            richText?:
-              | {
-                  [k: string]: unknown;
-                }[]
-              | null;
-            links?:
-              | {
-                  link: {
-                    type?: ('reference' | 'custom') | null;
-                    newTab?: boolean | null;
-                    reference?: {
-                      relationTo: 'pages';
-                      value: string | Page;
-                    } | null;
-                    url?: string | null;
-                    label: string;
-                    appearance?: ('primary' | 'secondary') | null;
-                  };
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'cta';
-          }
         | {
             richText?:
               | {
@@ -721,11 +693,6 @@ export interface Topbar {
     label: string;
   };
   timmings?: {
-    sunday?: {
-      closed?: boolean | null;
-      openningTime?: string | null;
-      closingTime?: string | null;
-    };
     monday?: {
       closed?: boolean | null;
       openningTime?: string | null;
@@ -756,16 +723,11 @@ export interface Topbar {
       openningTime?: string | null;
       closingTime?: string | null;
     };
-  };
-  timmingsLink: {
-    type?: ('reference' | 'custom') | null;
-    newTab?: boolean | null;
-    reference?: {
-      relationTo: 'pages';
-      value: string | Page;
-    } | null;
-    url?: string | null;
-    label: string;
+    sunday?: {
+      closed?: boolean | null;
+      openningTime?: string | null;
+      closingTime?: string | null;
+    };
   };
   updatedAt?: string | null;
   createdAt?: string | null;

@@ -13,6 +13,7 @@ import { HomeProducts } from '../../_blocks/HomeProducts'
 import { HomeContact } from 'src/app/_blocks/HomeContact'
 import { HomeHero } from 'src/app/_blocks/HomeHero'
 import { Contact } from 'src/app/_blocks/Contact'
+import { JobListingsBlock } from '../../_blocks/JobListingsBlock'
 
 const blockComponents = {
   galleryBlock: GalleryBock,
@@ -22,7 +23,8 @@ const blockComponents = {
   homeProducts: HomeProducts,
   homeContact: HomeContact,
   homeHero: HomeHero,
-  contact:Contact
+  contact:Contact,
+  jobListingsBlock: JobListingsBlock
 }
 
 export const Blocks: React.FC<{

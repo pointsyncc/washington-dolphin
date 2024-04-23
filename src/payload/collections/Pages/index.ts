@@ -15,6 +15,7 @@ import { HomeProducts } from '../../blocks/HomeProducts'
 import { HomeContact } from '../../blocks/HomeContact'
 import { HomeHero } from '../../blocks/HomeHero'
 import { Contact } from '../../blocks/Contact'
+import { JobListingsBlock } from '../../blocks/JobListingBlock'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -138,7 +139,7 @@ export const Pages: CollectionConfig = {
               },
               type: 'blocks',
               required: false,
-              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock,Hero,History,HomeProducts,HomeContact,HomeHero,Contact],
+              blocks: [Content, FormBlock, GalleryBlock, ProductsBlock,Hero,History,HomeProducts,HomeContact,HomeHero,Contact, JobListingsBlock],
             },
           ],
         },

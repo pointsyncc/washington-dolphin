@@ -23,6 +23,7 @@ import { seed } from './endpoints/seed';
 import { Footer } from './globals/Footer';
 import { Header } from './globals/Header';
 import { Topbar } from './globals/Topbar';
+import JobListings from './collections/Jobs';
 
 
 const generateTitle: GenerateTitle = () => {
@@ -82,7 +83,7 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Media, Categories, Users,Products],
+  collections: [Pages, Posts, Media, Categories, Users, Products, JobListings],
   globals: [Header, Footer, Topbar],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
