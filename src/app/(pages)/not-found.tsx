@@ -10,7 +10,7 @@ export default function NotFound() {
       <VerticalPadding top="none" bottom="large">
         <main className="h-dvh grid justify-center items-center">
           <div className="flex justify-center flex-col gap-2 items-center">
-            <h1 className="text-6xl md:text-8xl font-bold">404</h1>
+            <div className='border-4 rounded-md p-6 border-secondary'><h1 className="text-6xl md:text-8xl font-bold">404</h1></div>
             <p className="text-center text-sm md:text-lg my-3">
               Nažalost, stranica koju tražite ne postoji ili je uklonjena.
             </p>

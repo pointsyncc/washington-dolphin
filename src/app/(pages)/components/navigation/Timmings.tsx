@@ -36,7 +36,7 @@ const TimmingsModal = ({
   timmings,
   link,
 }: TimmingsModalProps) => {
-  console.log(timmings, 'TIMMINGS')
+  //console.log(timmings, 'TIMMINGS')
   const formattedDaysTimmings = []
   for (let key in timmings) {
     const time = timmings[key]

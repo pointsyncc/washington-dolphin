@@ -1,30 +1,26 @@
 'use client'
+import React from 'react'
+import { useForm } from 'react-hook-form'
 import { MdArrowOutward } from 'react-icons/md'
-import React, { Fragment, useCallback, useState } from 'react'
-import { useForm, useFormState } from 'react-hook-form'
 // import { useRouter, useSearchParams } from 'next/navigation'
 
-import { type InferType, object, string } from 'yup'
+import { object, string, type InferType } from 'yup'
 // import { RenderParams } from '@/components/RenderParams'
-import { useYupValidationResolver } from '@/hooks/useYupValidationResolver'
+import { Loader } from '@/components/feedback/Loader'
+import { FormInput } from '@/components/form/controls/FormInput'
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/form/form'
-import { Input } from '@/components/form/controls/TextInput'
-import { Textarea } from '@/components/form/controls/TextArea'
-import { FormInput } from '@/components/form/controls/FormInput'
-import { type Form as PayloadForm } from '@/payload/payload-types'
-import { useStatusMessage } from '@/payload/hooks/useStatusMessage'
-import { payloadService } from 'src/app/_services/payload.service'
-import { Loader } from '@/components/feedback/Loader'
 import { Text } from '@/components/typography/text/Text'
+import { useYupValidationResolver } from '@/hooks/useYupValidationResolver'
+import { useStatusMessage } from '@/payload/hooks/useStatusMessage'
+import { type Form as PayloadForm } from '@/payload/payload-types'
 import { cn } from '@/utils/classMerge'
+import { payloadService } from 'src/app/_services/payload.service'
 const validationSchema = object({
   name: string().required(),
   email: string().email().required(),
@@ -34,7 +30,7 @@ const validationSchema = object({
 
 type FormData = Required<InferType<typeof validationSchema>>
 type TContactProps = {
-  formData: PayloadForm
+  formData: any
   contactFormPrepend?: React.ReactNode
 }
 
@@ -48,38 +44,6 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
       subject: '',
     },
   })
-  // const inputs = [
-  //   {
-  //     component: Input,
-  //     name: 'name',
-  //     placeholder: 'Vaše ime *',
-  //     inputContainerClass: 'sm:basis-[48.5%] sm:max-w-[48.5%] basis-full max-w-full mb-[28px]',
-  //   },
-  //   {
-  //     component: Input,
-  //     type: 'email',
-  //     name: 'email',
-  //     placeholder: 'Vaša e-mail adresa *',
-  //     inputContainerClass: 'sm:basis-[48.5%] sm:max-w-[48.5%] basis-full max-w-full mb-[28px]',
-  //   },
-  //   {
-  //     component: Input,
-  //     name: 'subject',
-  //     placeholder: 'Predmet poruke *',
-  //     inputContainerClass: 'basis-[100%] max-w-[100%] mb-[28px]',
-  //   },
-  //   {
-  //     component: Textarea,
-  //     name: 'message',
-  //     placeholder: 'Vaša poruka *',
-  //     inputContainerClass: 'basis-[100%] max-w-[100%]',
-  //     inputClass: 'h-[200px]',
-  //   },
-  // ]
-
-  // const [formState, action] = useFormState(actions.createTopic, {
-  //   errors: {},
-  // })
   const { status, message, setStatus, setMessage, handleAction } = useStatusMessage()
   const onSubmit = async (formData: FormData) => {
 

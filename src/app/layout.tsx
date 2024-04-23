@@ -52,7 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Providers>
             {/* <AdminBar /> */}
             <TopBar {...topbar} />
-            <Header {...header} />
+            <Header topbar={topbar} {...header} />
             <div className="pb-[3.125rem] lg:pb-[6.25rem] xl:pb-[9.375rem]">{children}</div>
 
             <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />

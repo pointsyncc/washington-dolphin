@@ -4,7 +4,7 @@ import { Text } from '@/components/typography/text/Text'
 import { Form, Page } from '@/payload/payload-types'
 import React from 'react'
 import HeroSection from 'src/app/components/common/hero-section'
-import { ContactForm } from 'src/app/components/Contact/contact-form'
+import { ContactForm } from 'src/app/components/contact/ContactFormNew'
 
 type THomeContactProps = Extract<Page['layout'][0], { blockType: 'homeContact' }>
 

@@ -23,7 +23,7 @@ export const ProductsBlock: React.FC<Props> = props => {
 
   const title = searchParams.get('title')
   const filteredProducts = tsProducts.filter(product => {
-    console.log(product)
+    //console.log(product)
     if (category) {
       const productCategory =
         typeof product?.categories?.[0] === 'string'
