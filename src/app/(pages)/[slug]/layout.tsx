@@ -1,5 +1,4 @@
 import React from 'react'
-import CookieBanner from '../components/CookieConsent/CookieBanner'
 
 const layout = async ({
   children,
@@ -14,7 +13,6 @@ const layout = async ({
   return (
     <main>
       {children}
-      <CookieBanner />
     </main>
   )
 }

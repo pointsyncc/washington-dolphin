@@ -11,6 +11,7 @@ import './_css/app.css'
 import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
+import CookieBanner from './(pages)/components/CookieConsent/CookieBanner'
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
@@ -54,6 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <div className="pb-[3.125rem] lg:pb-[6.25rem] xl:pb-[9.375rem]">{children}</div>
 
             <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />
+            <CookieBanner />
           </Providers>
         {/* </div> */}
       </body>
