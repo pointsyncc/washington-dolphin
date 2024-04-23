@@ -2006,7 +2006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@payloadcms/db-mongodb@npm:^1.4.4":
+"@payloadcms/db-mongodb@npm:^1.5.0":
   version: 1.5.0
   resolution: "@payloadcms/db-mongodb@npm:1.5.0"
   dependencies:
@@ -2139,7 +2139,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@payloadcms/plugin-seo@npm:^2.3.0":
+"@payloadcms/plugin-seo@npm:^2.3.1":
   version: 2.3.1
   resolution: "@payloadcms/plugin-seo@npm:2.3.1"
   peerDependencies:
@@ -2174,7 +2174,7 @@ __metadata:
   dependencies:
     "@next/eslint-plugin-next": "npm:^14.1.4"
     "@payloadcms/bundler-webpack": "npm:^1.0.6"
-    "@payloadcms/db-mongodb": "npm:^1.4.4"
+    "@payloadcms/db-mongodb": "npm:^1.5.0"
     "@payloadcms/eslint-config": "npm:^0.0.1"
     "@payloadcms/live-preview-react": "npm:^0.2.0"
     "@payloadcms/plugin-cloud": "npm:^3.0.0"
@@ -2182,7 +2182,7 @@ __metadata:
     "@payloadcms/plugin-form-builder": "npm:^1.2.1"
     "@payloadcms/plugin-nested-docs": "npm:^1.0.12"
     "@payloadcms/plugin-redirects": "npm:^1.0.1"
-    "@payloadcms/plugin-seo": "npm:^2.3.0"
+    "@payloadcms/plugin-seo": "npm:^2.3.1"
     "@payloadcms/richtext-slate": "npm:^1.5.0"
     "@radix-ui/react-checkbox": "npm:^1.0.4"
     "@radix-ui/react-dialog": "npm:^1.0.5"
@@ -2220,7 +2220,7 @@ __metadata:
     next: "npm:^14.1.4"
     nodemailer-postmark-transport: "npm:^6.0.0"
     nodemon: "npm:^3.1.0"
-    payload: "npm:^2.12.1"
+    payload: "npm:^2.13.0"
     payload-admin-bar: "npm:^1.0.6"
     prettier: "npm:^3.2.5"
     qs: "npm:^6.12.0"
@@ -10414,7 +10414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"payload@npm:^2.12.1":
+"payload@npm:^2.13.0":
   version: 2.13.0
   resolution: "payload@npm:2.13.0"
   dependencies:
