@@ -9,7 +9,7 @@ import React from 'react'
 type THistoryProps = Extract<Page['layout'][0], { blockType: 'history' }>
 export const History = ({columns}: THistoryProps) => {
   return (
-    <Section variant="dark">
+    <Section variant="dark" id='o-nama'>
       <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0">
         {columns?.map((column, i) => {
           const colClassName = cn(
