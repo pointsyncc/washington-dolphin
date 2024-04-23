@@ -57,25 +57,25 @@ export const seed = async (payload: Payload): Promise<void> => {
   const [image1Doc, image2Doc, image3Doc, ogImageDoc] = await Promise.all([
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname, imageLogo.filename),
+      filePath: path.resolve('./src/payload/seed', imageLogo.filename),
       data: imageLogo,
     }),
 
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname, imageProductsPage.filename),
+      filePath: path.resolve('./src/payload/seed', imageProductsPage.filename),
       data: imageProductsPage,
     }),
 
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname, imageContactUsPage.filename),
+      filePath: path.resolve('./src/payload/seed', imageContactUsPage.filename),
       data: imageContactUsPage,
     }),
 
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname, ogImage.filename),
+      filePath: path.resolve('./src/payload/seed', ogImage.filename),
       data: ogImage,
     }),
   ])
