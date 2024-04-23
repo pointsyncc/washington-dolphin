@@ -58,8 +58,8 @@ const TimmingsModal = ({
   return (
     <Modal>
       <ModalTrigger asChild>
-        <button className="flex items-center gap-2 ">
-          <FaClock className="text-secondary text-lg" />
+        <button className="flex items-center gap-2 text-sm lg:text-lg">
+          <FaClock className="text-secondary text-sm lg:text-lg" />
           Radno vrijeme:{' '}
           <span className='font-bold'>
           {closed ? 'Trenutno zatvoreno' : `${openningTime} - ${closingTime}h`}

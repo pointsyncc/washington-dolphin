@@ -2,13 +2,12 @@ import type { Page } from '../payload-types'
 
 export const staticHome: Page = {
   id: '',
-  title: 'Home',
+  title: 'Stranica nije pronađena',
   slug: 'home',
   createdAt: '',
   updatedAt: '',
   meta: {
-    title: 'Payload Website Template',
-    description: 'An open-source website built with Payload and Next.js.',
+    title: '404 Stranica nije pronađena - Pekarna Mario',
   },
   // hero: {
   //   type: 'lowImpact',
