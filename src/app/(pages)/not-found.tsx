@@ -2,7 +2,6 @@ import { LinkWithIcon } from '@/components/navigation/LinkWithIcon'
 import { MdArrowOutward } from 'react-icons/md'
 import { Gutter } from '../_components/Gutter'
 import { VerticalPadding } from '../_components/VerticalPadding'
-import CookieBanner from './components/CookieConsent/CookieBanner'
 
 export default function NotFound() {
   return (
@@ -25,7 +24,7 @@ export default function NotFound() {
             </LinkWithIcon>
           </div>
         </main>
-        <CookieBanner />
+        {/* <CookieBanner /> */}
       </VerticalPadding>
     </Gutter>
   )
