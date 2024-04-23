@@ -2217,7 +2217,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-simple-import-sort: "npm:^10.0.0"
     express: "npm:^4.19.2"
-    next: "npm:^14.1.4"
+    next: "npm:^14.2.2"
     nodemailer-postmark-transport: "npm:^6.0.0"
     nodemon: "npm:^3.1.0"
     payload: "npm:^2.13.0"
@@ -9777,7 +9777,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.1.4":
+"next@npm:^14.2.2":
   version: 14.2.2
   resolution: "next@npm:14.2.2"
   dependencies:

@@ -57,25 +57,25 @@ export const seed = async (payload: Payload): Promise<void> => {
   const [image1Doc, image2Doc, image3Doc, ogImageDoc] = await Promise.all([
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname + '/images/', imageLogo.filename),
+      filePath: path.resolve(__dirname, imageLogo.filename),
       data: imageLogo,
     }),
 
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname + '/images/', imageProductsPage.filename),
+      filePath: path.resolve(__dirname, imageProductsPage.filename),
       data: imageProductsPage,
     }),
 
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname + '/images/', imageContactUsPage.filename),
+      filePath: path.resolve(__dirname, imageContactUsPage.filename),
       data: imageContactUsPage,
     }),
 
     await payload.create({
       collection: 'media',
-      filePath: path.resolve(__dirname + '/images/', ogImage.filename),
+      filePath: path.resolve(__dirname, ogImage.filename),
       data: ogImage,
     }),
   ])
@@ -165,13 +165,11 @@ export const seed = async (payload: Payload): Promise<void> => {
   })
 
   payload.logger.info(`— Seeding pages...`)
-/*   await payload.create({
+  /*   await payload.create({
     collection: 'pages',
     //replace FEATURED_IMAGE_ID with image1ID, PRODUCT_ID with productID, CATEGORY_ID with categoryID
     data: JSON.parse(JSON.stringify({ ...productsPage }).replace(/"\{\{FEATURED_IMAGE_ID\}\}"/g, image2ID).replace(/"\{\{PRODUCT_ID\}\}"/g, productID).replace(/"\{\{CATEGORY_ID\}\}"/g, categoryID)),
   }) */
-
- 
 
   payload.logger.info(`— Seeding forms...`)
   forms.forEach(async form => {
