@@ -12,7 +12,7 @@ export const Logo = ({ logo, ...rest }: TLogoProps) => {
     <Link {...rest} href="/">
       <Image
         priority
-        className="max-w-[130px] lg:max-w-[13.5rem]"
+        className="max-w-[110px] lg:max-w-[13.5rem] h-auto"
         src={logo?.url}
         alt={logo?.alt}
         width={logo?.width}

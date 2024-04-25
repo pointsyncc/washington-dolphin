@@ -12,6 +12,9 @@ import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
 import CookieBanner from './(pages)/components/CookieConsent/CookieBanner'
+import { Page } from '@/payload/payload-types'
+import { fetchDoc } from './_api/fetchDoc'
+
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
@@ -24,16 +27,38 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: 'swap',
   weight: ['400', '500'],
 })
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+  params: { slug = 'oglasi-za-posao', id },
+}: {
+  children: React.ReactNode
+  params: { slug: string; id: string }
+}) {
   // const open_sans = Open_Sans({
   //   subsets: ['latin'],
   //   variable: '--font-open-sans',
   //   display: 'swap',
   // })
   const { header, topbar } = await fetchGlobals()
+
+  let page: Page | null = null
+  let hasFeaturedImage = false
+
+  console.log(slug)
+  console.log(id)
+
+  if (slug && !id) {
+    page = await fetchDoc({
+      collection: 'pages',
+      slug: slug,
+    })
+    const featuredImage = typeof page?.featuredImage === 'object' ? page?.featuredImage.url : null
+
+    console.log(hasFeaturedImage)
+  }
+
   // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/workSundays`)
   // const data = await res.json()
-
 
   return (
     <html
@@ -48,15 +73,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className=" relative overflow-x-hidden">
         {/* <div className="px-[22px]"> */}
-          <Providers>
-            {/* <AdminBar /> */}
-            <TopBar {...topbar} />
-            <Header topbar={topbar} {...header} />
-            <div className="pb-[3.125rem] lg:pb-[6.25rem] xl:pb-[9.375rem]">{children}</div>
+        <Providers>
+          {/* <AdminBar /> */}
+          <TopBar {...topbar} />
+          <Header topbar={topbar} {...header} hasFeaturedImage={hasFeaturedImage} />
+          <div className="pb-[3.125rem] lg:pb-[6.25rem] xl:pb-[9.375rem]">{children}</div>
 
-            <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />
-            <CookieBanner />
-          </Providers>
+          <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />
+          <CookieBanner />
+        </Providers>
         {/* </div> */}
       </body>
     </html>

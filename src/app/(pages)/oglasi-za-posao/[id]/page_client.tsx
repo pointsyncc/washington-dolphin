@@ -33,7 +33,7 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
   }
 
   return (
-    <main className="max-w-[1200px] m-auto mt-28 lg:mt-36 px-4">
+    <main className="max-w-[1200px] m-auto mt-20 lg:mt-36 px-4">
       <div className="mb-0 lg:mb-6">
         <div className="flex w-full justify-between">
           <p className="opacity-70 !text-[12.5px] block lg:hidden">
