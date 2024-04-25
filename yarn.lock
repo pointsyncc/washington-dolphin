@@ -2220,7 +2220,7 @@ __metadata:
     next: "npm:^14.2.2"
     nodemailer-postmark-transport: "npm:^6.0.0"
     nodemon: "npm:^3.1.0"
-    payload: "npm:^2.13.0"
+    payload: "npm:^2.14.1"
     payload-admin-bar: "npm:^1.0.6"
     prettier: "npm:^3.2.5"
     qs: "npm:^6.12.0"
@@ -10425,9 +10425,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"payload@npm:^2.13.0":
-  version: 2.13.0
-  resolution: "payload@npm:2.13.0"
+"payload@npm:^2.14.1":
+  version: 2.14.1
+  resolution: "payload@npm:2.14.1"
   dependencies:
     "@date-io/date-fns": "npm:2.16.0"
     "@dnd-kit/core": "npm:6.0.8"
@@ -10519,7 +10519,7 @@ __metadata:
     uuid: "npm:9.0.1"
   bin:
     payload: bin.js
-  checksum: 10c0/3cd8f281db124ba9632bb01e2b2a7a19eaa98693855b6ac1cc080cc5496c1524bcdee9790f6e216b1c6ef871884630725707a230b0ca5a18485dea27df49ea37
+  checksum: 10c0/9cc41d8ecbffc9779ea45dd54c2883c31de4db5e5868fa6d01315dd2337cd7ca40dca4b4205b366457d2fee260813b75b357392d775d9c57397449cfe81c46a5
   languageName: node
   linkType: hard
 
