@@ -22,7 +22,7 @@ export const JobListingsBlock: React.FC<
     <div className="py-10 px-4">
       <div className="space-y-4">
         <p className="text-center">Prelistaj naše oglase i pronađi savršeni posao za sebe.</p>
-        <Search placeholder="Pretraži poslove..." disabled={jobListings.length === 0} />
+        <Search placeholder="Pretraži poslove..." disabled={jobListings && jobListings.length === 0} />
       </div>
       <div className="max-w-[1200px] m-auto px-4 mt-6">
         <main className="mt-6 gap-2 lg:gap-6 flex-wrap lg:mt-12 flex justify-center items-center">
@@ -78,7 +78,7 @@ export const JobListingsBlock: React.FC<
             </div>
           )}
         </main>
-        {jobListings.length > 0 && (
+        {jobListings && jobListings.length > 0 && (
           <LinkWithIcon
             iconClassName="text-body-foreground"
             className="flex items-center justify-center lg:justify-end mt-6 lg:mt-4 hover:text-body-foreground hover:underline"
