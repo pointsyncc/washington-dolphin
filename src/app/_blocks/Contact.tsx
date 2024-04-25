@@ -44,15 +44,21 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
   return (
     <Section className='py-0' containerProps={{className:'flex xl:flex-row flex-col justify-center items-start xl:items-center lg:justify-between'}}>
       <div className="xl:basis-[40%] xl:max-w-[40%] sm:max-w-[100%] sm:basis-[100%] pr-[0px] lg:pr-[15px]">
-        <p className="text-[20px] text-primary leading-[37px] w-full xl:pr-[20px] mb-[50px]">
+        <p className="text-[20px] text-primary leading-[37px] mb-8">
           {description}
         </p>
+        <div className='w-full flex justify-start lg:hidden'>
+        <ContactInfo
+          links={contacts}
+          className="flex-col gap-5 mb-8"
+        />
+        </div>
         <div className="xl:hidden block mb-[50px]">
           <ContactForm formData={contactForm as Form} />
         </div>
         <ContactInfo
           links={contacts}
-          className="lg:flex-col w-full sm:w-auto gap-6 sm:gap-6 mt-12"
+          className="hidden lg:flex lg:flex-col w-full sm:w-auto gap-6 sm:gap-6 mt-12"
         />
 
         <iframe

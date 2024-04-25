@@ -16,7 +16,7 @@ export const HomeContact = ({
 }: THomeContactProps) => {
   const bgURL = typeof background === 'string' ? background : background.url
   return (
-    <HeroSection bgURL={bgURL} className="h-auto md:h-screen flex items-center justify-start px-12 py-[2.6875rem]">
+    <HeroSection bgURL={bgURL} className="h-auto md:h-screen flex items-center justify-start px-5 py-5">
       <ContactForm
         formData={contactForm as Form}
         contactFormPrepend={
