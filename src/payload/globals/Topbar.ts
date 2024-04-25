@@ -4,6 +4,10 @@ import link from '../fields/link'
 
 
 const translationsOfDays = {
+  sunday: {
+    en: 'Sunday',
+    hr: 'Nedjelja',
+  },
   monday: {
     en: 'Monday',
     hr: 'Ponedjeljak',
@@ -27,10 +31,6 @@ const translationsOfDays = {
   saturday: {
     en: 'Saturday',
     hr: 'Subota',
-  },
-  sunday: {
-    en: 'Sunday',
-    hr: 'Nedjelja',
   },
 }
 
@@ -94,7 +94,7 @@ export const Topbar: GlobalConfig = {
         hr: 'Radno vrijeme',
       },
       type: 'group',
-      fields: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].map(
+      fields: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].map(
         day => {
           return {
             name: day,

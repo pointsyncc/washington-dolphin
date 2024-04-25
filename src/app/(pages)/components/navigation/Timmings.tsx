@@ -12,13 +12,13 @@ import { formatTime } from 'src/app/_utilities/formatDateTime'
 
 const WEEKDAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 const CROTIAN_TRANSLATED_WEEKDAYS = {
+  sunday: 'Nedjelja',
   monday: 'Ponedjeljak',
   tuesday: 'Utorak',
   wednesday: 'Srijeda',
   thursday: 'Četvrtak',
   friday: 'Petak',
   saturday: 'Subota',
-  sunday: 'Nedjelja',
 }
 
 type TimmingsModalProps = {
