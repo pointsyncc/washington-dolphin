@@ -8,6 +8,6 @@ import type { AfterChangeHook } from 'payload/dist/collections/config/types'
 export const revalidateJob: AfterChangeHook = ({ doc, req: { payload } }) => {
   console.log('revalidateJob hook is triggered')
   revalidate({ payload, collection: 'job-listings', slug: doc.id })
-
+  revalidate({ payload, collection: 'pages', slug: 'oglasi-za-posao' })
   return doc
 }
