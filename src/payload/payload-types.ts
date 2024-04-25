@@ -362,6 +362,11 @@ export interface JobListing {
   deadline?: string | null;
   salary?: number | null;
   form?: (string | null) | Form;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: string | Media | null;
+  };
   updatedAt: string;
   createdAt: string;
 }

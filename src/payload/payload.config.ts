@@ -110,7 +110,7 @@ export default buildConfig({
       collections: ['categories'],
     }),
     seo({
-      collections: ['pages', 'posts'],
+      collections: ['pages', 'posts', 'job-listings'],
       generateTitle,
       uploadsCollection: 'media',
     }),
