@@ -18,11 +18,11 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
     <main className="max-w-[1200px] m-auto mt-28 lg:mt-36 px-4">
       <div className="mb-6">
         <div className="flex w-full justify-between">
-          <p className="opacity-70 !text-[13px] block lg:hidden">Objavljeno: {formatDate(job.createdAt)}</p>
+          <p className="opacity-70 !text-[12.5px] block lg:hidden">Objavljeno: {formatDate(job.createdAt)}</p>
           <p className="opacity-70 hidden lg:block">Objavljeno: {formatDate(job.createdAt)}</p>
-          <p className="!text-[13px] block lg:hidden rounded-md underline">
+          <p className="!text-[12.5px] block lg:hidden rounded-md underline">
               {job.deadline !== null
-                ? 'Prijave traju do:' + formatDate(job.deadline)
+                ? 'Prijave traju do: ' + formatDate(job.deadline)
                 : 'Nema roka prijave'}
             </p>
         </div>
