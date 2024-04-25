@@ -50,7 +50,7 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           </h1>
           <div className="hidden lg:flex flex-col items-start justify-center gap-2">
             <p className="text-md px-6 py-1 rounded-md underline">
-              {job.deadline ? 'Prijave traju do:' + formatDate(job.deadline) : 'Nema roka prijave'}
+              {job.deadline ? 'Prijave traju do: ' + formatDate(job.deadline) : 'Nema roka prijave'}
             </p>
           </div>
         </div>
@@ -66,9 +66,11 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           <div className="mb-4">
             <p className="font-bold text-lg mb-4">Opis oglasa:</p>
             <RichText content={job.description} className="mb-8 lg:mb-0" />
-            <p className="flex max-w-fit lg:hidden !text-[12.5px] font-medium bg-secondary px-5 py-1 rounded-md ">
-              Plaća: {job.salary} EUR
-            </p>
+            {job.salary && (
+              <p className="flex max-w-fit lg:hidden !text-[12.5px] font-medium bg-secondary px-5 py-1 rounded-md ">
+                Plaća: {job.salary} EUR
+              </p>
+            )}
           </div>
           <ContactForm
             formData={job.form as Form}
@@ -84,35 +86,36 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
             }
           />
         </div>
-        {job.salary && (
-          <div className="mt-10 flex justify-center lg:justify-between items-center">
+
+        <div className="mt-10 flex justify-center lg:justify-between items-center">
+          {job.salary && (
             <p className="hidden lg:block font-medium bg-secondary px-6 py-1 rounded-md">
               Plaća: {job.salary} EUR
             </p>
-            <div className="hidden lg:flex items-center justify-center gap-4">
-              <p className="">Podijeli sa drugima: </p>
-              <button onClick={() => handleCopy()}>
-                <FaCopy size={32} />
-              </button>
-              <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
-                <EmailIcon size={32} round />
-              </EmailShareButton>
-              <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
-                <FacebookIcon size={32} round />
-              </FacebookShareButton>
-              <WhatsappShareButton url={currentUrl}>
-                <WhatsappIcon size={32} round />
-              </WhatsappShareButton>
-              <ViberShareButton url={currentUrl} title={job.title}>
-                <ViberIcon size={32} round />
-              </ViberShareButton>
-            </div>
+          )}
+          <div className="hidden lg:flex items-center justify-center gap-4">
+            <p className="">Podijeli sa drugima: </p>
+            <button onClick={() => handleCopy()}>
+              <FaCopy size={32} />
+            </button>
+            <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
+              <EmailIcon size={32} round />
+            </EmailShareButton>
+            <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <WhatsappShareButton url={currentUrl}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            <ViberShareButton url={currentUrl} title={job.title}>
+              <ViberIcon size={32} round />
+            </ViberShareButton>
           </div>
-        )}
+        </div>
       </div>
-      <div className="flex lg:hidden items-center justify-center gap-4 pb-16">
+      <div className="flex lg:hidden items-center justify-center gap-4 pb-16 mt-6">
         <p className="!text-[12.5px]">Podijeli sa drugima: </p>
-        <div className='flex flex-wrap items-center gap-3'>
+        <div className="flex flex-wrap items-center gap-3">
           <button onClick={() => handleCopy()}>
             <FaCopy size={26} />
           </button>
