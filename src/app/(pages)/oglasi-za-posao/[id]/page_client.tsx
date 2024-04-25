@@ -28,7 +28,7 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
         </div>
         <div className="flex flex-wrap gap-3 justify-between items-center">
           <h1
-            className="text-2xl lg:text-4xl font-bold line-clamp-2 max-w-[700px]"
+            className="text-2xl lg:text-4xl font-bold line-clamp-2 text-wrap"
             title={job.title}
           >
             {job.title}
