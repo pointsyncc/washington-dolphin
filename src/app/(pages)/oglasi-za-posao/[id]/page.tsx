@@ -2,13 +2,12 @@ import RichText from '@/components/RichText'
 import { Heading } from '@/components/typography/heading/Heading'
 import { Text } from '@/components/typography/text/Text'
 import { Form, JobListing } from '@/payload/payload-types'
+import { Metadata } from 'next'
 import { FaLocationDot } from 'react-icons/fa6'
+import { fetchDoc } from 'src/app/_api/fetchDoc'
+import { mergeOpenGraph } from 'src/app/_utilities/mergeOpenGraph'
 import { ContactForm } from 'src/app/components/contact/ContactFormNew'
 import NotFound from '../../not-found'
-import { generateMeta } from 'src/app/_utilities/generateMeta'
-import { fetchDoc } from 'src/app/_api/fetchDoc'
-import { Metadata } from 'next'
-import { mergeOpenGraph } from 'src/app/_utilities/mergeOpenGraph'
 
 export const dynamic = 'force-dynamic'
 
@@ -26,28 +25,23 @@ export default async function Page({ params: { id } }) {
   }
   if (!job) return NotFound()
 
-  const croatianDate = new Date(job.createdAt).toLocaleDateString('hr-HR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-
-  const croatianDeadlineDate = new Date(job.deadline).toLocaleDateString('hr-HR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
+  const formatDate = (date: string) => {
+    const _date = new Date(date)
+    return _date.toLocaleDateString('hr-HR')
+  }
   return (
     <main className="max-w-[1200px] m-auto mt-28 lg:mt-36 px-4">
       <div className="mb-6">
         <div className="flex items-center justify-start gap-2">
-          <p className="opacity-70">Objavljeno: {croatianDate}</p>
+          <p className="opacity-70">Objavljeno: {formatDate(job.createdAt)}</p>
         </div>
         <div className="flex flex-wrap gap-3 justify-between items-center">
           <h1 className="text-2xl lg:text-4xl font-bold">{job.title}</h1>
           <div className="flex flex-col items-start justify-center gap-2">
             <p className="text-md px-6 py-1 rounded-md underline">
-              Prijave traju do: {croatianDeadlineDate ? croatianDeadlineDate : 'Nema roka'}
+              {job.deadline !== null
+                ? 'Prijave traju do:' + formatDate(job.deadline)
+                : 'Nema roka prijave'}
             </p>
           </div>
         </div>
@@ -55,8 +49,11 @@ export default async function Page({ params: { id } }) {
           <FaLocationDot className="text-lg" />
           {job.location}
         </p>
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
-          <RichText content={job.description} className="mb-8 lg:mb-0" />
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
+          <div>
+            <p className='font-bold text-lg mb-4'>Opis oglasa:</p>
+            <RichText content={job.description} className="mb-8 lg:mb-0" />
+          </div>
           <ContactForm
             formData={job.form as Form}
             contactFormPrepend={
@@ -101,7 +98,7 @@ export async function generateMetadata({ params: { id } }): Promise<Metadata> {
     `${process.env.NEXT_PUBLIC_SERVER_URL}${job.meta.image.url}`
 
   return {
-    title: job.title || 'Pekarna Mario',
+    title: job.title + ' - Oglasi za posao' || 'Pekarna Mario',
     description: job.shortDescription,
     openGraph: mergeOpenGraph({
       title: job.title || 'Pekarna Mario',

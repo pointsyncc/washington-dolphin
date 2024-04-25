@@ -37,7 +37,7 @@ const JobListingCard = ({
         <p className="text-[#573400]/80">{shortDescription}</p>
         <div className="flex justify-between items-center pt-[49px]">
           <div className="flex flex-col lg:flex-row justify-between gap-3.5 lg:gap-2 items-start lg:items-center w-full text-primary">
-            {deadline && <p className="m-0 text-xs">Prijave traju do: {deadline ? formatDate(deadline) : 'Nema roka'}</p>}
+            {<p className="m-0 text-xs">{deadline !== null ? 'Prijave traju do: ' + formatDate(deadline) : 'Nema roka prijave'}</p>}
             {salary && (
               <p className="m-0 text-xs bg-[#cda56a] px-4 py-2.5 rounded-sm">Plaća: {salary} EUR</p>
             )}
