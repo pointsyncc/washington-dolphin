@@ -34,7 +34,7 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
 
   return (
     <main className="max-w-[1200px] m-auto mt-28 lg:mt-36 px-4">
-      <div className="mb-6">
+      <div className="mb-0 lg:mb-6">
         <div className="flex w-full justify-between">
           <p className="opacity-70 !text-[12.5px] block lg:hidden">
             Objavljeno: {formatDate(job.createdAt)}
@@ -63,9 +63,12 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           {job.location}
         </p>
         <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
-          <div>
+          <div className='mb-4'>
             <p className="font-bold text-lg mb-4">Opis oglasa:</p>
             <RichText content={job.description} className="mb-8 lg:mb-0" />
+            <p className="flex max-w-fit lg:hidden !text-[12.5px] font-medium bg-secondary px-5 py-1 rounded-md ">
+              Plaća: {job.salary} EUR
+            </p>
           </div>
           <ContactForm
             formData={job.form as Form}
@@ -82,8 +85,8 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           />
         </div>
         {job.salary && (
-          <div className="mt-10 flex justify-between items-center">
-            <p className="text-md font-medium bg-secondary px-6 py-1 rounded-md">
+          <div className="mt-10 flex justify-center lg:justify-between items-center">
+            <p className="hidden lg:block font-medium bg-secondary px-6 py-1 rounded-md">
               Plaća: {job.salary} EUR
             </p>
             <div className="hidden lg:flex items-center justify-center gap-4">
@@ -107,7 +110,7 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           </div>
         )}
       </div>
-      <div className="flex lg:hidden items-center justify-center gap-4">
+      <div className="flex lg:hidden items-center justify-center gap-4 pb-16">
         <p className="!text-[12.5px]">Podijeli sa drugima: </p>
         <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
           <EmailIcon size={28} round />
