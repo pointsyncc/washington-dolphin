@@ -18,21 +18,24 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
     <main className="max-w-[1200px] m-auto mt-28 lg:mt-36 px-4">
       <div className="mb-6">
         <div className="flex w-full justify-between">
-          <p className="opacity-70 !text-[13px] block lg:hidden">Objavljeno: {formatDate(job.createdAt)}</p>
+          <p className="opacity-70 !text-[12.5px] block lg:hidden">
+            Objavljeno: {formatDate(job.createdAt)}
+          </p>
           <p className="opacity-70 hidden lg:block">Objavljeno: {formatDate(job.createdAt)}</p>
-          <p className="!text-[13px] block lg:hidden rounded-md underline">
-              {job.deadline !== null
-                ? 'Prijave traju do:' + formatDate(job.deadline)
-                : 'Nema roka prijave'}
-            </p>
+          <p className="!text-[12.5px] block lg:hidden rounded-md underline">
+            {job.deadline ? 'Prijave traju do: ' + formatDate(job.deadline) : 'Nema roka prijave'}
+          </p>
         </div>
         <div className="flex flex-wrap gap-3 justify-between items-center">
-          <h1 className="text-2xl lg:text-4xl font-bold line-clamp-2 max-w-[700px]" title={job.title}>{job.title}</h1>
+          <h1
+            className="text-2xl lg:text-4xl font-bold line-clamp-2 max-w-[700px]"
+            title={job.title}
+          >
+            {job.title}
+          </h1>
           <div className="hidden lg:flex flex-col items-start justify-center gap-2">
             <p className="text-md px-6 py-1 rounded-md underline">
-              {job.deadline !== null
-                ? 'Prijave traju do:' + formatDate(job.deadline)
-                : 'Nema roka prijave'}
+              {job.deadline ? 'Prijave traju do:' + formatDate(job.deadline) : 'Nema roka prijave'}
             </p>
           </div>
         </div>
