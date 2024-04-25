@@ -5,6 +5,10 @@ import { Form, JobListing } from '@/payload/payload-types'
 import { FaLocationDot } from 'react-icons/fa6'
 import { ContactForm } from 'src/app/components/contact/ContactFormNew'
 import NotFound from '../../not-found'
+import { generateMeta } from 'src/app/_utilities/generateMeta'
+import { fetchDoc } from 'src/app/_api/fetchDoc'
+import { Metadata } from 'next'
+import { mergeOpenGraph } from 'src/app/_utilities/mergeOpenGraph'
 
 export const dynamic = 'force-dynamic'
 
@@ -43,7 +47,7 @@ export default async function Page({ params: { id } }) {
           <h1 className="text-2xl lg:text-4xl font-bold">{job.title}</h1>
           <div className="flex flex-col items-start justify-center gap-2">
             <p className="text-md px-6 py-1 rounded-md underline">
-              Prijave traju do: {croatianDeadlineDate}
+              Prijave traju do: {croatianDeadlineDate ? croatianDeadlineDate : 'Nema roka'}
             </p>
           </div>
         </div>
@@ -52,7 +56,7 @@ export default async function Page({ params: { id } }) {
           {job.location}
         </p>
         <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
-          <RichText content={job.description} className='mb-8 lg:mb-0' />
+          <RichText content={job.description} className="mb-8 lg:mb-0" />
           <ContactForm
             formData={job.form as Form}
             contactFormPrepend={
@@ -68,11 +72,48 @@ export default async function Page({ params: { id } }) {
           />
         </div>
         {job.salary && (
-        <div className='mt-10 flex'>
-          <p className='text-md font-medium bg-secondary px-6 py-1 rounded-md'>Plaća: {job.salary} EUR</p>
-        </div>
+          <div className="mt-10 flex">
+            <p className="text-md font-medium bg-secondary px-6 py-1 rounded-md">
+              Plaća: {job.salary} EUR
+            </p>
+          </div>
         )}
       </div>
     </main>
   )
+}
+
+export async function generateMetadata({ params: { id } }): Promise<Metadata> {
+  let job: JobListing | null = null
+  job = await fetchDoc({
+    collection: 'job-listings',
+    id: id,
+  })
+
+  /*   if (!page && slug === 'home') {
+    page = staticHome
+  } */
+
+  const ogImage =
+    typeof job?.meta?.image === 'object' &&
+    job?.meta?.image !== null &&
+    'url' in job?.meta?.image &&
+    `${process.env.NEXT_PUBLIC_SERVER_URL}${job.meta.image.url}`
+
+  return {
+    title: job.title || 'Pekarna Mario',
+    description: job.shortDescription,
+    openGraph: mergeOpenGraph({
+      title: job.title || 'Pekarna Mario',
+      description: job.shortDescription,
+      url: Array.isArray(job.id) ? job.id.join('/') : '/',
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+            },
+          ]
+        : undefined,
+    }),
+  }
 }
