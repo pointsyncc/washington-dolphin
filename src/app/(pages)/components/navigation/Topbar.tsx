@@ -36,7 +36,7 @@ const TopBar = async (topbar: TTopbarProps) => {
   ]
 
   return (
-    <div className="pb-3 lg:pb-4 lg:pt-4">
+    <div className="pb-3 lg:pb-4 lg:pt-4 flex justify-center">
       <Container>
         <div className="gap-2 lg:gap-0 sm:items-center flex-col lg:flex-row flex lg:justify-between">
           <ContactInfo
