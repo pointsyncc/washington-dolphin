@@ -1,10 +1,19 @@
+'use client'
 import RichText from '@/components/RichText'
 import { Heading } from '@/components/typography/heading/Heading'
 import { Text } from '@/components/typography/text/Text'
 import { Form, JobListing } from '@/payload/payload-types'
 import { FaLocationDot } from 'react-icons/fa6'
 import { ContactForm } from 'src/app/components/contact/ContactFormNew'
-
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  WhatsappShareButton,
+  ViberShareButton,
+} from 'react-share'
+import { EmailIcon, FacebookIcon, WhatsappIcon, ViberIcon } from 'react-share'
+import { FaCopy } from 'react-icons/fa'
+import { usePathname } from 'next/navigation'
 interface PageClientProps {
   job: JobListing
 }
@@ -14,6 +23,15 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
     const _date = new Date(date)
     return _date.toLocaleDateString('hr-HR')
   }
+
+  //get current url using nextjs router
+  const currentUrl = process.env.NEXT_PUBLIC_SERVER_URL + usePathname()
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(currentUrl)
+    alert('Link je kopiran u međuspremnik')
+  }
+
   return (
     <main className="max-w-[1200px] m-auto mt-28 lg:mt-36 px-4">
       <div className="mb-6">
@@ -27,10 +45,7 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           </p>
         </div>
         <div className="flex flex-wrap gap-3 justify-between items-center">
-          <h1
-            className="text-2xl lg:text-4xl font-bold line-clamp-2 text-wrap"
-            title={job.title}
-          >
+          <h1 className="text-2xl lg:text-4xl font-bold line-clamp-2 text-wrap" title={job.title}>
             {job.title}
           </h1>
           <div className="hidden lg:flex flex-col items-start justify-center gap-2">
@@ -67,12 +82,45 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           />
         </div>
         {job.salary && (
-          <div className="mt-10 flex">
+          <div className="mt-10 flex justify-between items-center">
             <p className="text-md font-medium bg-secondary px-6 py-1 rounded-md">
               Plaća: {job.salary} EUR
             </p>
+            <div className="hidden lg:flex items-center justify-center gap-4">
+              <p className="">Podijeli sa drugima: </p>
+              <button onClick={() => handleCopy()}>
+                <FaCopy size={32} />
+              </button>
+              <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
+                <EmailIcon size={32} round />
+              </EmailShareButton>
+              <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+              <WhatsappShareButton url={currentUrl}>
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+              <ViberShareButton url={currentUrl} title={job.title}>
+                <ViberIcon size={32} round />
+              </ViberShareButton>
+            </div>
           </div>
         )}
+      </div>
+      <div className="flex lg:hidden items-center justify-center gap-4">
+        <p className="!text-[12.5px]">Podijeli sa drugima: </p>
+        <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
+          <EmailIcon size={28} round />
+        </EmailShareButton>
+        <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
+          <FacebookIcon size={28} round />
+        </FacebookShareButton>
+        <WhatsappShareButton url={currentUrl}>
+          <WhatsappIcon size={28} round />
+        </WhatsappShareButton>
+        <ViberShareButton url={currentUrl} title={job.title}>
+          <ViberIcon size={28} round />
+        </ViberShareButton>
       </div>
     </main>
   )
