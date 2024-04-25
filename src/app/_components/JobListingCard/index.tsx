@@ -26,7 +26,7 @@ const JobListingCard = ({
   }
   return (
     <Link href={'/oglasi-za-posao/' + href}>
-      <div className="shadow-sm bg-[#FFFCE3] ] lg:min-w-[450px]  rounded-[20px] w-[450px] basis-[60px] p-[24px] lg:m-[20px] hover:translate-y-[-10px] transition-all cursor-pointer flex-col flex-1">
+      <div className="shadow-sm bg-[#FFFCE3] ] lg:min-w-[450px]  rounded-[20px] w-full lg:w-[450px] basis-[100%] p-[24px] lg:m-[20px] hover:translate-y-[-10px] transition-all cursor-pointer">
         <div className='flex justify-between items-center'>
         <p className="!text-[12.5px] opacity-85 space-y-1 lg:space-y-2">Objavljeno: {formatDate(publishedAt)}</p>
         <Link href={'/oglasi-za-posao/' + href}>
