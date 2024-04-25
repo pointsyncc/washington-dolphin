@@ -77,6 +77,16 @@ export const Topbar: GlobalConfig = {
         },
       },
     }),
+    link({
+      appearances: false,
+      overrides: {
+        name: 'timmingsLink',
+        label: {
+          en: 'Link',
+          hr: 'Veza',
+        },
+      },
+    }),
     {
       name: 'timmings',
       label: {
