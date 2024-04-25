@@ -30,16 +30,19 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
       icon: FaMapMarkerAlt,
       href: topbar?.location?.url ?? 'https://maps.app.goo.gl/Tow1vwwy4AweQLMh8',
       children: topbar?.location?.label ?? 'Zagrebačka cesta 45, 10382, Goričica',
+      text: 'Otvori kartu'
     },
     {
       icon: FaEnvelope,
       href: `mailto:${topbar?.email?.url ?? 'pekarnamario@gmail.com'}`,
       children: topbar?.email?.label ?? 'pekarnamario@gmail.com',
+      text: 'Pošalji poruku'
     },
     {
       icon: FaPhone,
       href: `tel:${topbar?.phone?.url ?? '+385 98 139 1548'}`,
       children: topbar?.phone?.label ?? '+385 98 139 1548',
+      text: 'Nazovi'
     },
   ]
   return (
@@ -92,27 +95,16 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
             }}
           ></div> */}
           <div className="text-center flex flex-wrap bg-transparent  gap-1.5 items-center  max-w-fit mt-4 absolute bottom-3 left-3 rounded-full  p-2 ">
-            <Link
-              className="bg-[#cda56a] text-[#573400] px-4 py-2 rounded-sm !text-[12.5px]"
-              href="https://maps.app.goo.gl/o5kcQ5pxaYr9LZsZ9"
-            >
-              <FaMapMarkerAlt className="inline-block mr-2" />
-              Prikaži lokaciju
-            </Link>
-            <Link
-              className="bg-[#cda56a] text-[#573400] px-4 py-2 rounded-sm !text-[12.5px]"
-              href="https://maps.app.goo.gl/o5kcQ5pxaYr9LZsZ9"
-            >
-              <FaPhone className="inline-block mr-2" />
-              Nazovi
-            </Link>
-            <Link
-              className="bg-[#cda56a] text-[#573400] px-4 py-2 rounded-sm !text-[12.5px]"
-              href="https://maps.app.goo.gl/o5kcQ5pxaYr9LZsZ9"
-            >
-              <FaEnvelope className="inline-block mr-2" />
-              Pošalji poruku
-            </Link>
+            {contacts.map((contact) => (
+              <Link
+                key={contact.children}
+                href={contact.href}
+                className="bg-[#cda56a] text-[#573400] px-4 py-2 rounded-sm !text-[12.5px]"
+              >
+                {contact.icon && <contact.icon className="inline-block mr-2" />}
+                {contact.text}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
