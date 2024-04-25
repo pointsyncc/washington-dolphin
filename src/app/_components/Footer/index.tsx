@@ -7,16 +7,19 @@ import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
 import { ContactInfo } from 'src/app/(pages)/components/navigation/ContactInfo'
 import { TLinkWithIconProps } from '../navigation/LinkWithIcon'
 // import { Field } from 'payload/types'
-import { Topbar } from '@/payload/payload-types'
+import { Header, Topbar } from '@/payload/payload-types'
 import { Container } from '../grid/Container'
+import { MdArrowOutward } from 'react-icons/md'
 export async function Footer({
   location,
   email,
   phone,
+  navLinks,
 }: {
   location: Topbar['location']
   email: Topbar['email']
   phone: Topbar['phone']
+  navLinks: Header['navItems']
 }) {
   const links: TLinkWithIconProps[] = [
     {
@@ -43,44 +46,40 @@ export async function Footer({
     <Container>
       <footer>
         <div className="bg-primary rounded-sm px-4 sm:px-10 pt-[30px] pb-[60px]">
-          <div className="flex lg:flex-row flex-col justify-between lg:mt-0 mt-[20px]">
-            <div className="">
-              {/* image */}
+          <div className="flex lg:flex-row flex-col justify-between items-start px-6 lg:px-0 mx-auto lg:mt-0 mt-[20px]">
+            <div className="w-full">
               <Image
+                className="mx-auto sm:mx-0 max-w-[190px] lg:max-w-[100%] w-full sm:w-auto"
                 src={'/logo-footer.png'}
                 alt={'logo'}
                 width={229}
                 height={118}
-                className="mx-auto sm:mx-0"
               />
               {/* contacts */}
-              <div className="flex justify-center w-full sm:w-auto sm:block ">
-                {/* <div className="flex flex-col  lg:w-auto lg:mt-[50px] my-[15px]"> */}
-
-                <ContactInfo
-                  links={links}
-                  className="lg:flex-col w-full sm:w-auto gap-6 sm:gap-6 mt-12"
-                />
-                {/* {contacts.map(contact => (
-                  <div key={contact.name} className="flex items-center lg:pl-[22px] mt-[20px]">
-                    {contact.icon}
-                    <span className="pl-[10px]  text-accent sm:text-[16px] text-[14px]">
-                      {contact.text}
-                    </span>
-                  </div>
-                ))} */}
-                {/* </div> */}
+              <div className="flex justify-center items-center w-full sm:w-auto sm:block ">
+                <ContactInfo links={links} className="lg:flex-col sm:w-auto gap-5 sm:gap-6 mt-8" />
               </div>
             </div>
-            <div className="flex sm:flex-row flex-col sm:items-center justify-between text-secondary mt-[30px] lg:mt-0">
-              <h2 className="lg:text-[32px] sm:text-[25px] text-[20px] font-[700] text-center sm:text-start">
+            <div className='mt-8 lg:mt-0'>
+              <h6 className='text-[#cda56a] font-bold text-lg lg:text-xl mb-3 lg:mb-5'>Korisni linkovi</h6>
+              <nav className="flex flex-col gap-3.5">
+                {navLinks.map((navLink) => (
+                  <Link key={navLink.id + '_' + navLink.link.label.toLowerCase()} href={navLink.link.url} className='text-[#fef7d0] text-sm hover:underline'>
+                    {navLink.link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+            <div className="flex sm:flex-row flex-col sm:items-center justify-between text-secondary mt-8 w-full lg:mt-0">
+              <h2 className="lg:text-[32px] sm:text-[25px] text-lg font-[700] text-center sm:text-start">
                 Imaš pitanje za nas?
               </h2>
               <Link
                 href={'/kontakt'}
-                className="lg:ml-[30px] sm:ml-[25px] sm:mt-[0] mt-[20px]  border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all hover:bg-secondary hover:text-primary sm:w-auto w-[90%] mx-auto sm:mr-0 text-center"
+                className="lg:ml-[30px] flex gap-3.5 justify-center items-center sm:ml-[25px] sm:mt-[0] mt-4 border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all bg-secondary text-primary sm:w-auto w-[90%] mx-auto sm:mr-0 text-center"
               >
                 Kontaktiraj nas
+                <MdArrowOutward className="text-xl" />
               </Link>
             </div>
           </div>

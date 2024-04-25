@@ -25,7 +25,7 @@ const JobListingCard = ({
     return _date.toLocaleDateString('hr-HR')
   }
   return (
-    <Link href={'/oglasi-za-posao/' + href}>
+    <Link href={'/oglasi-za-posao/' + href} legacyBehavior>
       <div className="shadow-sm bg-[#FFFCE3] ] border-[1px] border-[#573400]/40 lg:min-w-[450px]  rounded-[20px] w-full lg:w-[450px] basis-[100%] p-[24px] lg:m-[20px] hover:translate-y-[-10px] transition-all cursor-pointer">
         <div className="flex justify-between items-center">
           <p className="!text-[12.5px] opacity-85 space-y-1 lg:space-y-2">

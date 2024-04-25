@@ -58,7 +58,7 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
 
   if (!data) return null
   return (
-    <div className=" xl:max-w-[616px] xl:basis-[616px] xl:mx-0 mx-auto w-full bg-primary pt-[42px] px-[20px] sm:px-[56px] rounded-[20px] pb-[20px]  ">
+    <div className=" xl:max-w-[616px] xl:basis-[616px] xl:mx-0 mx-auto w-full bg-primary pt-[42px] px-8 lg:px-8 sm:px-[56px] rounded-[20px] pb-[22px]  ">
       {Boolean(message) && (
         <Text
           level={1}
@@ -70,7 +70,7 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
       )}
       {Boolean(contactFormPrepend) ? contactFormPrepend : null}
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="flex flex-wrap justify-between gap-2 gap-y-4">
             {data?.fields?.map((input, i) => {
               const width =
@@ -105,7 +105,7 @@ export const ContactForm = ({ formData: data, contactFormPrepend }: TContactProp
           <div className="flex justify-end">
             <button
               type="submit"
-              className="rounded-[10px] lg:mx-0 text-[15px] font-[500] text-secondary hover:text-white transition-all flex items-center justify-end"
+              className="rounded-[10px] lg:mx-0 text-[15px] font-[500] text-secondary hover:underline transition-all flex items-center justify-end"
             >
               {status === 'pending' ? (
                 <Loader variant="secondary" />

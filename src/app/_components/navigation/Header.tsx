@@ -52,8 +52,8 @@ export const Header = ({ logo, navItems, topbar, hasFeaturedImage }: THeaderProp
         </nav>
 
         <MobileNav>
-          <NavItems navItems={navItems} className="flex-col" />
-          <ContactInfo className="flex-1 text-secondary" links={links} />
+          <NavItems navItems={navItems} className="flex-col gap-0 mt-12" />
+          <ContactInfo className="text-black" links={links} />
         </MobileNav>
       </Container>
     </header>
