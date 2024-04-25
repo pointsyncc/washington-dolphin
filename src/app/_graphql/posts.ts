@@ -64,6 +64,7 @@ export const JOB_LISTING = `
         id
         title
         description
+        shortDescription
         location
         deadline
         salary
