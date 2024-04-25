@@ -44,8 +44,8 @@ export async function Footer({
 
   return (
     <Container>
-      <footer>
-        <div className="bg-primary rounded-sm px-4 sm:px-10 pt-[30px] pb-[60px]">
+      <footer className=''>
+        <div className="bg-primary rounded-sm px-4 sm:px-10 pt-[30px] pb-[60px] border-4 border-[#cda56a]">
           <div className="flex lg:flex-row flex-col justify-between items-start px-6 lg:px-0 mx-auto lg:mt-0 mt-[20px]">
             <div className="w-full">
               <Image
