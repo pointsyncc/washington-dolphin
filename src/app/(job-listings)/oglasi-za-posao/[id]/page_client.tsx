@@ -12,7 +12,7 @@ import {
   ViberShareButton,
 } from 'react-share'
 import { EmailIcon, FacebookIcon, WhatsappIcon, ViberIcon } from 'react-share'
-import { FaCopy } from 'react-icons/fa'
+import { FaCopy, FaEnvelope, FaFacebook, FaViber, FaWhatsapp } from 'react-icons/fa'
 import { usePathname } from 'next/navigation'
 interface PageClientProps {
   job: JobListing
@@ -99,16 +99,16 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
               <FaCopy size={32} />
             </button>
             <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
-              <EmailIcon size={32} round />
+              <FaEnvelope size={32} />
             </EmailShareButton>
             <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
-              <FacebookIcon size={32} round />
+              <FaFacebook size={32} />
             </FacebookShareButton>
             <WhatsappShareButton url={currentUrl}>
-              <WhatsappIcon size={32} round />
+              <FaWhatsapp size={32} />
             </WhatsappShareButton>
             <ViberShareButton url={currentUrl} title={job.title}>
-              <ViberIcon size={32} round />
+              <FaViber size={32} />
             </ViberShareButton>
           </div>
         </div>
@@ -120,16 +120,16 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
             <FaCopy size={26} />
           </button>
           <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
-            <EmailIcon size={26} round />
+            <FaEnvelope size={26} />
           </EmailShareButton>
           <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
-            <FacebookIcon size={26} round />
+            <FaFacebook size={26} />
           </FacebookShareButton>
           <WhatsappShareButton url={currentUrl}>
-            <WhatsappIcon size={26} round />
+            <FaWhatsapp size={26} />
           </WhatsappShareButton>
           <ViberShareButton url={currentUrl} title={job.title}>
-            <ViberIcon size={26} round />
+            <FaViber size={26} />
           </ViberShareButton>
         </div>
       </div>
