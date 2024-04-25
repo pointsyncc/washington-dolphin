@@ -13,9 +13,10 @@ import { FaEnvelope, FaPhone } from 'react-icons/fa6'
 
 interface THeaderProps extends THeader {
   topbar: Topbar
+  hasFeaturedImage: boolean
 }
 
-export const Header = ({ logo, navItems, topbar }: THeaderProps) => {
+export const Header = ({ logo, navItems, topbar, hasFeaturedImage }: THeaderProps) => {
   const links: TLinkWithIconProps[] = [
     {
       icon: FaMapMarkerAlt,
@@ -36,14 +37,16 @@ export const Header = ({ logo, navItems, topbar }: THeaderProps) => {
       className: 'hidden lg:flex',
     },
   ]
+  let bgColor = hasFeaturedImage ? 'bg-transparent' : 'bg-[#573400] lg:bg-transparent'
   return (
     <header
       className={cn(
-        'absolute w-full  left-0 z-50 xl:py-1 header transition-[top] ease-in-out duration-500',
+        bgColor,
+        'absolute w-full  left-0 z-50 py-1.5 xl:py-1 header transition-[top] ease-in-out duration-500',
       )}
     >
       <Container className="flex justify-between items-center">
-        <Logo logo={logo as Media} className="md:mt-0 mt-[10px]" />
+        <Logo logo={logo as Media} className="" />
         <nav className="ml-auto bg-primary rounded-lg mx-[22px] px-4 lg:block hidden">
           <NavItems navItems={navItems} linkClassName="text-white" />
         </nav>

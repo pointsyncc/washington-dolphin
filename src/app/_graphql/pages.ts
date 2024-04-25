@@ -19,22 +19,9 @@ export const PAGE = `
       docs {
         id
         title
-        hero {
-          type
-          richText
-          links {
-            link ${LINK_FIELDS()}
-          }
-          ${MEDIA}
+        featuredImage {
+          url
         }
-        layout {
-          ${CONTENT}
-          ${CALL_TO_ACTION}
-          ${CONTENT}
-          ${MEDIA_BLOCK}
-          ${ARCHIVE_BLOCK}
-        }
-        ${META}
       }
     }
   }
