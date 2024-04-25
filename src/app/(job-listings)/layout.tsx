@@ -4,14 +4,14 @@ import React from 'react'
 import { Footer } from '../_components/Footer'
 
 import { Plus_Jakarta_Sans, Poppins } from 'next/font/google'
-import CookieBanner from './components/CookieConsent/CookieBanner'
-import { TopBar } from './components/navigation/Topbar'
 import { fetchGlobals } from '../_api/fetchGlobals'
 import { Header } from '../_components/navigation/Header'
 import '../_css/app.css'
 import { Providers } from '../_providers'
 import { InitTheme } from '../_providers/Theme/InitTheme'
 import { mergeOpenGraph } from '../_utilities/mergeOpenGraph'
+import { TopBar } from '../(pages)/components/navigation/Topbar'
+import CookieBanner from '../(pages)/components/CookieConsent/CookieBanner'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -43,7 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers>
           {/* <AdminBar /> */}
           <TopBar {...topbar} />
-          <Header topbar={topbar} {...header} hasFeaturedImage={true} />
+          <Header topbar={topbar} {...header} hasFeaturedImage={false} />
           <div className="pb-[3.125rem] lg:pb-[6.25rem] xl:pb-[9.375rem]">{children}</div>
           <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />
           <CookieBanner />
