@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload/types'
+import { revalidateJob } from './revalidateJob'
 
 const JobListings: CollectionConfig = {
   slug: 'job-listings',
@@ -19,6 +20,9 @@ const JobListings: CollectionConfig = {
           `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/oglasi-za-posao/${doc.id}/${doc.title}`,
         )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
       },
+  },
+  hooks: {
+    afterChange: [revalidateJob],
   },
   access: {
     read: () => true,
