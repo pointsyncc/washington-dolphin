@@ -2,7 +2,7 @@ import { JobListing } from '@/payload/payload-types'
 import { Metadata } from 'next'
 import { fetchDoc } from 'src/app/_api/fetchDoc'
 import { mergeOpenGraph } from 'src/app/_utilities/mergeOpenGraph'
-import NotFound from '../../not-found'
+import NotFound from '../../../(pages)/not-found'
 import PageClient from './page_client'
 
 export const dynamic = 'force-dynamic'
