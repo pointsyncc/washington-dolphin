@@ -140,7 +140,7 @@ export interface Page {
           }
         | {
             jobListings?: (string | JobListing)[] | null;
-            notificationEmails?: (string | null) | Form;
+            notificationEmails: string | Form;
             id?: string | null;
             blockName?: string | null;
             blockType: 'jobListingsBlock';
@@ -683,6 +683,16 @@ export interface Topbar {
     label: string;
   };
   phone: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    url?: string | null;
+    label: string;
+  };
+  timmingsLink: {
     type?: ('reference' | 'custom') | null;
     newTab?: boolean | null;
     reference?: {

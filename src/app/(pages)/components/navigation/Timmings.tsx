@@ -26,7 +26,7 @@ type TimmingsModalProps = {
   closingTime: string
   timmings: Topbar['timmings']
   closed: boolean
-  link:Topbar['timmingsLink']
+  link:any
 }
 
 const TimmingsModal = ({
