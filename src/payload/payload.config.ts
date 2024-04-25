@@ -1,5 +1,8 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack'; // bundler-import
 import { mongooseAdapter } from '@payloadcms/db-mongodb'; // database-adapter-import
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
+import FormBuilder from '@payloadcms/plugin-form-builder';
 import nestedDocs from '@payloadcms/plugin-nested-docs';
 import redirects from '@payloadcms/plugin-redirects';
 import seo from '@payloadcms/plugin-seo';
@@ -8,22 +11,18 @@ import { slateEditor } from '@payloadcms/richtext-slate'; // editor-import
 import dotenv from 'dotenv';
 import path from 'path';
 import { buildConfig } from 'payload/config';
-import { Logo } from './components/Logo/Logo'
-import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
-import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
-import FormBuilder from '@payloadcms/plugin-form-builder';
 import Categories from './collections/Categories';
+import JobListings from './collections/Jobs/Jobs';
 import { Media } from './collections/Media';
 import { Pages } from './collections/Pages';
 import { Posts } from './collections/Posts';
 import { Products } from './collections/Products';
 import Users from './collections/Users';
-import BeforeDashboard from './components/BeforeDashboard';
+import { Logo } from './components/Logo/Logo';
 import { seed } from './endpoints/seed';
 import { Footer } from './globals/Footer';
 import { Header } from './globals/Header';
 import { Topbar } from './globals/Topbar';
-import JobListings from './collections/Jobs';
 
 
 const generateTitle: GenerateTitle = () => {
@@ -42,6 +41,8 @@ const adapter = s3Adapter({
   },
   bucket: process.env.S3_BUCKET,
 })
+
+const mockModulePath = path.resolve(__dirname, './emptyModuleMock.js')
 
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
@@ -68,6 +69,8 @@ export default buildConfig({
         alias: {
           ...config.resolve.alias,
           dotenv: path.resolve(__dirname, './dotenv.js'),
+          [path.resolve(__dirname, 'utilities/revalidate')]:
+              mockModulePath,
           [path.resolve(__dirname, './endpoints/seed')]: path.resolve(
             __dirname,
             './emptyModuleMock.js',
