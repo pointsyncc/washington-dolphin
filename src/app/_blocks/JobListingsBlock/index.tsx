@@ -26,7 +26,7 @@ export const JobListingsBlock: React.FC<
       </div>
       <div className="max-w-[1200px] m-auto px-4 mt-6">
         <main className="mt-6 gap-2 lg:gap-6 flex-wrap lg:mt-12 flex justify-center items-center">
-          {jobListings.length > 2 ? (
+          {jobListings && jobListings.length > 0 ? (
             jobListings.map((job, index) => {
               const { title, shortDescription, salary, id, createdAt, deadline } = job as JobListing
               return (
