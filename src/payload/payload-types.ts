@@ -708,6 +708,11 @@ export interface Topbar {
     label: string;
   };
   timmings?: {
+    sunday?: {
+      closed?: boolean | null;
+      openningTime?: string | null;
+      closingTime?: string | null;
+    };
     monday?: {
       closed?: boolean | null;
       openningTime?: string | null;
@@ -734,11 +739,6 @@ export interface Topbar {
       closingTime?: string | null;
     };
     saturday?: {
-      closed?: boolean | null;
-      openningTime?: string | null;
-      closingTime?: string | null;
-    };
-    sunday?: {
       closed?: boolean | null;
       openningTime?: string | null;
       closingTime?: string | null;
