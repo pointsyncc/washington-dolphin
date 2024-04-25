@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <TopBar {...topbar} />
           <Header topbar={topbar} {...header} hasFeaturedImage={true} />
           <div className="pb-[3.125rem] lg:pb-[6.25rem] xl:pb-[9.375rem]">{children}</div>
-          <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} />
+          <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} navLinks={header.navItems} />
           <CookieBanner />
         </Providers>
       </body>

@@ -5,7 +5,7 @@ import * as SidebarPrimitive from '@radix-ui/react-dialog'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/utils/classMerge'
 import { FaTimes } from 'react-icons/fa'
-
+import { IoMdClose } from "react-icons/io";
 const Sidebar = SidebarPrimitive.Root
 
 const SidebarTrigger = SidebarPrimitive.Trigger
@@ -60,8 +60,8 @@ const SidebarContent = React.forwardRef<
     <SidebarOverlay />
     <SidebarPrimitive.Content ref={ref} className={cn(SidebarVariants({ side }), className)} {...props}>
       {children}
-      <SidebarPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-        <FaTimes className="h-4 w-4" />
+      <SidebarPrimitive.Close className="bg-[#573400] rounded-xs text-[#cda56a] p-2 absolute right-4 top-4 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+        <IoMdClose size=".9rem" />
         <span className="sr-only">Close</span>
       </SidebarPrimitive.Close>
     </SidebarPrimitive.Content>
