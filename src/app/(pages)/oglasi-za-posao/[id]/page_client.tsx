@@ -17,12 +17,18 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
   return (
     <main className="max-w-[1200px] m-auto mt-28 lg:mt-36 px-4">
       <div className="mb-6">
-        <div className="flex items-center justify-start gap-2">
-          <p className="opacity-70">Objavljeno: {formatDate(job.createdAt)}</p>
+        <div className="flex w-full justify-between">
+          <p className="opacity-70 !text-[13px] block lg:hidden">Objavljeno: {formatDate(job.createdAt)}</p>
+          <p className="opacity-70 hidden lg:block">Objavljeno: {formatDate(job.createdAt)}</p>
+          <p className="!text-[13px] block lg:hidden rounded-md underline">
+              {job.deadline !== null
+                ? 'Prijave traju do:' + formatDate(job.deadline)
+                : 'Nema roka prijave'}
+            </p>
         </div>
         <div className="flex flex-wrap gap-3 justify-between items-center">
-          <h1 className="text-2xl lg:text-4xl font-bold">{job.title}</h1>
-          <div className="flex flex-col items-start justify-center gap-2">
+          <h1 className="text-2xl lg:text-4xl font-bold line-clamp-2 max-w-[700px]" title={job.title}>{job.title}</h1>
+          <div className="hidden lg:flex flex-col items-start justify-center gap-2">
             <p className="text-md px-6 py-1 rounded-md underline">
               {job.deadline !== null
                 ? 'Prijave traju do:' + formatDate(job.deadline)
@@ -30,7 +36,11 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
             </p>
           </div>
         </div>
-        <p className="flex items-center gap-2 my-4 opacity-95">
+        <p className="!text-[13px] flex items-center gap-2 my-4 opacity-95 lg:hidden">
+          <FaLocationDot className="text-lg" />
+          {job.location}
+        </p>
+        <p className="items-center gap-2 my-4 opacity-95 hidden lg:flex">
           <FaLocationDot className="text-lg" />
           {job.location}
         </p>
