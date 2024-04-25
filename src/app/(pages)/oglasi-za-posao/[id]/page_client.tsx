@@ -63,7 +63,7 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
           {job.location}
         </p>
         <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
-          <div className='mb-4'>
+          <div className="mb-4">
             <p className="font-bold text-lg mb-4">Opis oglasa:</p>
             <RichText content={job.description} className="mb-8 lg:mb-0" />
             <p className="flex max-w-fit lg:hidden !text-[12.5px] font-medium bg-secondary px-5 py-1 rounded-md ">
@@ -112,18 +112,23 @@ export default function PageClient({ job }: PageClientProps): JSX.Element {
       </div>
       <div className="flex lg:hidden items-center justify-center gap-4 pb-16">
         <p className="!text-[12.5px]">Podijeli sa drugima: </p>
-        <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
-          <EmailIcon size={28} round />
-        </EmailShareButton>
-        <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
-          <FacebookIcon size={28} round />
-        </FacebookShareButton>
-        <WhatsappShareButton url={currentUrl}>
-          <WhatsappIcon size={28} round />
-        </WhatsappShareButton>
-        <ViberShareButton url={currentUrl} title={job.title}>
-          <ViberIcon size={28} round />
-        </ViberShareButton>
+        <div className='flex flex-wrap items-center gap-3'>
+          <button onClick={() => handleCopy()}>
+            <FaCopy size={26} />
+          </button>
+          <EmailShareButton url={currentUrl} subject={job.title} body={job.shortDescription}>
+            <EmailIcon size={26} round />
+          </EmailShareButton>
+          <FacebookShareButton url={currentUrl} hashtag="#pekarna-mario">
+            <FacebookIcon size={26} round />
+          </FacebookShareButton>
+          <WhatsappShareButton url={currentUrl}>
+            <WhatsappIcon size={26} round />
+          </WhatsappShareButton>
+          <ViberShareButton url={currentUrl} title={job.title}>
+            <ViberIcon size={26} round />
+          </ViberShareButton>
+        </div>
       </div>
     </main>
   )
