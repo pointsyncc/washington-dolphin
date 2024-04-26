@@ -2220,7 +2220,7 @@ __metadata:
     next: "npm:^14.2.3"
     nodemailer-postmark-transport: "npm:^6.0.0"
     nodemon: "npm:^3.1.0"
-    payload: "npm:^2.14.1"
+    payload: "npm:2.14"
     payload-admin-bar: "npm:^1.0.6"
     prettier: "npm:^3.2.5"
     qs: "npm:^6.12.0"
@@ -10426,7 +10426,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"payload@npm:^2.14.1":
+"payload@npm:2.14":
   version: 2.14.1
   resolution: "payload@npm:2.14.1"
   dependencies:

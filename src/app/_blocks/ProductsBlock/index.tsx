@@ -1,15 +1,15 @@
 'use client'
+import { Loader } from '@/components/feedback/Loader'
+import { Section } from '@/components/layout/Section'
 import { Category, Product as ProductType } from '@/payload/payload-types'
+import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
-import React, { Fragment, Suspense, useEffect, useState } from 'react'
+import qs from 'qs'
+import React, { Suspense, useEffect, useState } from 'react'
 import type { Page } from '../../../payload/payload-types'
 import CategoriesSection from '../../components/product/categories'
 import Product from '../../components/product/product'
 import Search from '../../components/product/search'
-import { Section } from '@/components/layout/Section'
-import axios from 'axios'
-import { Loader } from '@/components/feedback/Loader'
-import qs from 'qs'
 type Props = Extract<Page['layout'][0], { blockType: 'productsBlock' }> & {
   id?: string
 }
@@ -76,11 +76,6 @@ export const ProductsBlock: React.FC<Props> = props => {
     }
   }, [title, category])
 
-  // useEffect(() => {
-  //   if (category) {
-  //     searchHandler()
-  //   }
-  // }, [category])
 
   return (
     <Section className="py-0">
