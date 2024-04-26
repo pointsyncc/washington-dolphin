@@ -22,19 +22,19 @@ export const Header = ({ logo, navItems, topbar, hasFeaturedImage }: THeaderProp
       icon: FaMapMarkerAlt,
       href: topbar?.location?.url ?? 'https://maps.app.goo.gl/Tow1vwwy4AweQLMh8',
       children: topbar?.location?.label ?? 'Zagrebačka cesta 45, 10382, Goričica',
-      className: 'hidden lg:flex',
+      className: 'lg:flex',
     },
     {
       icon: FaEnvelope,
       href: `mailto:${topbar?.email?.url ?? 'pekarnamario@gmail.com'}`,
       children: topbar?.email?.label ?? 'pekarnamario@gmail.com',
-      className: 'hidden lg:flex',
+      className: 'lg:flex',
     },
     {
       icon: FaPhone,
       href: `tel:${topbar?.phone?.url ?? '+385 98 139 1548'}`,
       children: topbar?.phone?.label ?? '+385 98 139 1548',
-      className: 'hidden lg:flex',
+      className: 'lg:flex',
     },
   ]
   let bgColor = hasFeaturedImage ? 'bg-transparent' : 'bg-[#573400] lg:bg-transparent'
@@ -51,9 +51,8 @@ export const Header = ({ logo, navItems, topbar, hasFeaturedImage }: THeaderProp
           <NavItems navItems={navItems} linkClassName="text-white" />
         </nav>
 
-        <MobileNav>
-          <NavItems navItems={navItems} className="flex-col gap-0 mt-12" />
-          <ContactInfo className="text-black" links={links} />
+        <MobileNav navItems={navItems}>
+          <ContactInfo className="text-black mt-auto" links={links} />
         </MobileNav>
       </Container>
     </header>

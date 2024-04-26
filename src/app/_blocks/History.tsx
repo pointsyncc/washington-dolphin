@@ -21,8 +21,8 @@ export const History = ({columns}: THistoryProps) => {
           return (
             <div className={colClassName} key={column.id}>
               <div className="space-y-5">
-                {Boolean(column.heading) && <Heading level={2}>{column.heading}</Heading>}
-                <div className="w-[35.8125rem] max-w-full">
+                {Boolean(column.heading) && <Heading className='text-secondary' level={2}>{column.heading}</Heading>}
+                <div className="w-[35.8125rem] max-w-full text-primary-foreground">
                   {serialize(column.description as any)}
                 </div>
                 {/* <Text level={1} className="w-4/5">

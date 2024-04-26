@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+
 import { FaEnvelope, FaLocationDot, FaPhone } from 'react-icons/fa6'
 // import { IoMdMail } from 'react-icons/io'
 import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
@@ -10,6 +10,8 @@ import { TLinkWithIconProps } from '../navigation/LinkWithIcon'
 import { Header, Topbar } from '@/payload/payload-types'
 import { Container } from '../grid/Container'
 import { MdArrowOutward } from 'react-icons/md'
+import { Link } from '../navigation/Link'
+import { Heading } from '../typography/heading/Heading'
 export async function Footer({
   location,
   email,
@@ -46,8 +48,8 @@ export async function Footer({
     <Container>
       <footer className=''>
         <div className="bg-primary rounded-sm px-4 sm:px-10 pt-[30px] pb-[60px] border-4 border-[#cda56a]">
-          <div className="flex lg:flex-row flex-col justify-between items-start px-6 lg:px-0 mx-auto lg:mt-0 mt-[20px]">
-            <div className="w-full">
+          <div className="flex lg:flex-row flex-col justify-between lg:items-center px-6 lg:px-0 mx-auto lg:mt-0 mt-[20px]">
+            <div className="lg:w-4/12 lg:basis-4/12">
               <Image
                 className="mx-auto sm:mx-0 max-w-[190px] lg:max-w-[100%] w-full sm:w-auto"
                 src={'/logo-footer.png'}
@@ -56,27 +58,27 @@ export async function Footer({
                 height={118}
               />
               {/* contacts */}
-              <div className="flex justify-center items-center w-full sm:w-auto sm:block ">
+              <div className="flex items-center w-full sm:w-auto sm:block ">
                 <ContactInfo links={links} className="lg:flex-col sm:w-auto gap-5 sm:gap-6 mt-8" />
               </div>
             </div>
-            <div className='mt-8 lg:mt-0'>
-              <h6 className='text-[#cda56a] font-bold text-lg lg:text-xl mb-3 lg:mb-5'>Korisni linkovi</h6>
+            <div className='w-full lg:w-3/12 lg:basis-3/12 mt-8 lg:mt-0'>
+              <Heading level={3} className='text-[#cda56a]  mb-3 lg:mb-5'>Korisni linkovi</Heading>
               <nav className="flex flex-col gap-3.5">
                 {navLinks.map((navLink) => (
-                  <Link key={navLink.id + '_' + navLink.link.label.toLowerCase()} href={navLink.link.url} className='text-[#fef7d0] text-sm hover:underline'>
+                  <Link key={navLink.id + '_' + navLink.link.label.toLowerCase()} href={navLink.link.url} className='!text-primary-foreground  text-sm hover:underline'>
                     {navLink.link.label}
                   </Link>
                 ))}
               </nav>
             </div>
-            <div className="flex sm:flex-row flex-col sm:items-center justify-between text-secondary mt-8 w-full lg:mt-0">
-              <h2 className="lg:text-[32px] sm:text-[25px] text-lg font-[700] text-center sm:text-start">
+            <div className="w-full lg:w-5/12 lg:basis-5/12 flex space-y-6 flex-col sm:items-center justify-between text-secondary mt-8  lg:mt-0">
+              <Heading level={2} className="text-center sm:text-start">
                 Imaš pitanje za nas?
-              </h2>
+              </Heading>
               <Link
                 href={'/kontakt'}
-                className="lg:ml-[30px] flex gap-3.5 justify-center items-center sm:ml-[25px] sm:mt-[0] mt-4 border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all bg-secondary text-primary sm:w-auto w-[90%] mx-auto sm:mr-0 text-center"
+                className="flex gap-3.5 justify-center items-center  sm:mt-[0] mt-4 border-[2px] border-secondary rounded-[10px]  px-[15px] lg:px-[35px] sm:py-[15px] py-[10px] lg:py-[17px] transition-all bg-secondary text-primary lg:w-auto w-full max-w-[25rem]  text-center hover:!text-primary mx-auto lg:mx-0"
               >
                 Kontaktiraj nas
                 <MdArrowOutward className="text-xl" />
