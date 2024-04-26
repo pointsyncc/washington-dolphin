@@ -1,18 +1,17 @@
 'use client'
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import { MdArrowOutward } from 'react-icons/md'
-import { object, string, type InferType } from 'yup'
 import { Loader } from '@/components/feedback/Loader'
 import { FormInput } from '@/components/form/controls/FormInput'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/form/form'
 import { Text } from '@/components/typography/text/Text'
-import { useYupValidationResolver } from '@/hooks/useYupValidationResolver'
 import { useStatusMessage } from '@/payload/hooks/useStatusMessage'
 import { cn } from '@/utils/classMerge'
+import { Form as FormType } from '@payloadcms/plugin-form-builder/dist/types'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { MdArrowOutward } from 'react-icons/md'
 import { payloadService } from 'src/app/_services/payload.service'
-import { Form as FormType } from 'payload-plugin-form-builder/dist/types'
 import { buildInitialFormState } from './buildInitialFormState'
+
 // const validationSchema = object({
 //   name: string().required('Ovo polje je obavezno'),
 //   email: string().email().required('Ovo polje je obavezno'),
@@ -79,7 +78,7 @@ export const PayloadForm = ({ formData: data, formPrepend }: TPayloadFormProps )
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="flex flex-wrap justify-between gap-2 gap-y-4">
-            {data?.fields?.map((input, i) => {
+            {data?.fields?.map((input: any, i) => {
               const width =
                 input.width <= 50
                   ? 'basis-[100%] max-w-[100%] sm:basis-[48.5%] sm:max-w-[48.5%]'
@@ -89,7 +88,7 @@ export const PayloadForm = ({ formData: data, formPrepend }: TPayloadFormProps )
                 <FormField
                   control={form.control}
                   key={input.name}
-                  name={input.name as any}
+                  name={input.name as never}
                   render={({ field }) => (
                     <FormItem className={`${width} relative`}>
                       <FormControl>

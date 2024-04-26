@@ -82,7 +82,7 @@ export const HomeProducts = ({heading,description,products}:any) => {
               />
               <div>
                 <Heading level={3}>{product?.product?.title}</Heading>
-                <Text>{product?.product?.description}</Text>
+                <Text className='max-w-[250px]'>{product?.product?.description}</Text>
               </div>
             </li>
           )
