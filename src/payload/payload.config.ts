@@ -5,8 +5,8 @@ import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
 import FormBuilder from '@payloadcms/plugin-form-builder';
 import nestedDocs from '@payloadcms/plugin-nested-docs';
 import redirects from '@payloadcms/plugin-redirects';
-import seo from '@payloadcms/plugin-seo';
-import type { GenerateTitle } from '@payloadcms/plugin-seo/types';
+/* import seo from '@payloadcms/plugin-seo';
+import type { GenerateTitle } from '@payloadcms/plugin-seo/types'; */
 import { slateEditor } from '@payloadcms/richtext-slate'; // editor-import
 import dotenv from 'dotenv';
 import path from 'path';
@@ -25,9 +25,9 @@ import { Header } from './globals/Header';
 import { Topbar } from './globals/Topbar';
 
 
-const generateTitle: GenerateTitle = () => {
+/* const generateTitle: GenerateTitle = () => {
   return 'Pekarna Mario'
-}
+} */
 
 const adapter = s3Adapter({
   config: {
@@ -109,11 +109,11 @@ export default buildConfig({
     nestedDocs({
       collections: ['categories'],
     }),
-    seo({
+/*     seo({
       collections: ['pages', 'posts'],
       generateTitle,
       uploadsCollection: 'media',
-    }),
+    }), */
     FormBuilder({
       // ...
       fields: {
