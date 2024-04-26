@@ -42,7 +42,6 @@ const adapter = s3Adapter({
   bucket: process.env.S3_BUCKET,
 })
 
-const mockModulePath = path.resolve(__dirname, './emptyModuleMock.js')
 
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
@@ -69,8 +68,6 @@ export default buildConfig({
         alias: {
           ...config.resolve.alias,
           dotenv: path.resolve(__dirname, './dotenv.js'),
-          [path.resolve(__dirname, 'utilities/revalidate')]:
-              mockModulePath,
           [path.resolve(__dirname, './endpoints/seed')]: path.resolve(
             __dirname,
             './emptyModuleMock.js',
@@ -113,7 +110,7 @@ export default buildConfig({
       collections: ['categories'],
     }),
     seo({
-      collections: ['pages', 'posts', 'job-listings'],
+      collections: ['pages', 'posts'],
       generateTitle,
       uploadsCollection: 'media',
     }),
