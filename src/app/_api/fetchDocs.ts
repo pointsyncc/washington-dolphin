@@ -24,7 +24,7 @@ const queryMap = {
     query: CATEGORIES,
     key: 'Categories',
   },
-  jobListings: {
+  'job-listings': {
     query: JOB_LISTINGS,
     key: 'JobListings',
   },
