@@ -33,8 +33,11 @@ export const JOB_LISTINGS = `
   query JobListings {
     JobListings (limit: 300) {
       docs {
+        id
         title
         description
+        updatedAt
+        createdAt
         location
         deadline
         salary
