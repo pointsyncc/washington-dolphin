@@ -89,7 +89,7 @@ export const Products: CollectionConfig = {
         },
       },
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'categories',

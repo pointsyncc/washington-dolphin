@@ -7,7 +7,7 @@ export type THeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
   alt?: boolean
 }
 const fontSizes = {
-  h1: 'text-lg xl:text-5xl',
+  h1: 'text-2xl xl:text-5xl',
   h2: 'text-lg xl:text-3xl',
   h3: 'text-lg xl:text-[1.625rem]',
   h4: 'text-[1rem] md:text-xl xl:text-[1.25rem]',
