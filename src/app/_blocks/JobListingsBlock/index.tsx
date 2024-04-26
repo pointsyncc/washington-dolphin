@@ -25,7 +25,7 @@ export const JobListingsBlock: React.FC<
         <Search placeholder="Pretraži poslove..." disabled={jobListings && jobListings.length === 0} />
       </div>
       <Fragment>
-        <main className="mt-6 gap-6 lg:gap-6 flex-wrap lg:mt-12 flex justify-center items-stretch max-w-[1200px] overflow-hidden m-auto px-4">
+        <main className="mt-6 gap-6 md:gap-0 lg:mt-12 flex flex-wrap md:flex-nowrap justify-center items-stretch max-w-[1200px] overflow-hidden m-auto px-4">
           {jobListings && jobListings.length > 0 ? (
             jobListings.map((job, index) => {
               const { title, shortDescription, salary, id, createdAt, deadline } = job as JobListing

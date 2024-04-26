@@ -99,9 +99,9 @@ export const Contact = ({ description, contactForm }: TContactProps) => {
               <Link
                 key={contact.children}
                 href={contact.href}
-                className="bg-[#cda56a] text-[#573400] px-4 py-2 rounded-sm !text-[12.5px]"
+                className="bg-[#cda56a] text-[#573400] px-4 py-2 rounded-sm !text-[12.5px] flex items-center gap-2"
               >
-                {contact.icon && <contact.icon className="inline-block mr-2" />}
+                {contact.icon && <contact.icon />}
                 {contact.text}
               </Link>
             ))}
