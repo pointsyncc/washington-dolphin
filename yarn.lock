@@ -2139,16 +2139,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@payloadcms/plugin-seo@npm:2.3.0":
-  version: 2.3.0
-  resolution: "@payloadcms/plugin-seo@npm:2.3.0"
-  peerDependencies:
-    payload: ^2.7.0
-    react: ^18.0.0
-  checksum: 10c0/59f39da2d3067d8eb0fc51710e00d6d740760816903a537dc48e3894041e2e3371eececb4f46e78281784d34e29ecc649f3e71cb03cc39989d2b6c9d2134de89
-  languageName: node
-  linkType: hard
-
 "@payloadcms/richtext-slate@npm:^1.5.0":
   version: 1.5.0
   resolution: "@payloadcms/richtext-slate@npm:1.5.0"
@@ -2189,7 +2179,6 @@ __metadata:
     "@payloadcms/plugin-form-builder": "npm:^1.2.1"
     "@payloadcms/plugin-nested-docs": "npm:^1.0.12"
     "@payloadcms/plugin-redirects": "npm:^1.0.1"
-    "@payloadcms/plugin-seo": "npm:2.3.0"
     "@payloadcms/richtext-slate": "npm:^1.5.0"
     "@radix-ui/react-checkbox": "npm:^1.0.4"
     "@radix-ui/react-dialog": "npm:^1.0.5"
