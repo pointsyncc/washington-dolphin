@@ -2168,9 +2168,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@payloadcms/template-website@workspace:.":
+"@pkgjs/parseargs@npm:^0.11.0":
+  version: 0.11.0
+  resolution: "@pkgjs/parseargs@npm:0.11.0"
+  checksum: 10c0/5bd7576bb1b38a47a7fc7b51ac9f38748e772beebc56200450c4a817d712232b8f1d3ef70532c80840243c657d491cf6a6be1e3a214cff907645819fdc34aadd
+  languageName: node
+  linkType: hard
+
+"@pointsyncc/washington-dolphin@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@payloadcms/template-website@workspace:."
+  resolution: "@pointsyncc/washington-dolphin@workspace:."
   dependencies:
     "@next/eslint-plugin-next": "npm:^14.1.4"
     "@payloadcms/bundler-webpack": "npm:^1.0.6"
@@ -2243,15 +2250,11 @@ __metadata:
     typescript: "npm:^5.4.4"
     yet-another-react-lightbox: "npm:^3.17.2"
     yup: "npm:^1.4.0"
+  peerDependenciesMeta:
+    react-i18next:
+      optional: false
   languageName: unknown
   linkType: soft
-
-"@pkgjs/parseargs@npm:^0.11.0":
-  version: 0.11.0
-  resolution: "@pkgjs/parseargs@npm:0.11.0"
-  checksum: 10c0/5bd7576bb1b38a47a7fc7b51ac9f38748e772beebc56200450c4a817d712232b8f1d3ef70532c80840243c657d491cf6a6be1e3a214cff907645819fdc34aadd
-  languageName: node
-  linkType: hard
 
 "@polka/url@npm:^1.0.0-next.24":
   version: 1.0.0-next.25
