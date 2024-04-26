@@ -17,22 +17,22 @@ type Props = Extract<Page['layout'][0], { blockType: 'productsBlock' }> & {
 export const ProductsBlock: React.FC<Props> = props => {
   const { products, categories } = props
   const [tsProducts, setProducts] = useState<ProductType[]>(products as ProductType[])
-  const [showLoader, setShowLoader] = useState(false)
+  const [showLoader, setShowLoader] = useState(true)
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
 
   const title = searchParams.get('title')
-  const filteredProducts = tsProducts.filter(product => {
-    //console.log(product)
-    if (category) {
-      const productCategory =
-        typeof product?.categories?.[0] === 'string'
-          ? product?.categories?.[0]
-          : product?.categories?.[0]?.title
-      return productCategory?.toLowerCase() === category?.toLowerCase()
-    }
-    return products
-  }) as ProductType[]
+  // const filteredProducts = tsProducts.filter(product => {
+  //   //console.log(product)
+  //   if (category) {
+  //     const productCategory =
+  //       typeof product?.categories?.[0] === 'string'
+  //         ? product?.categories?.[0]
+  //         : product?.categories?.[0]?.title
+  //     return productCategory?.toLowerCase() === category?.toLowerCase()
+  //   }
+  //   return products
+  // }) as ProductType[]
   const searchHandler = async () => {
     const query:Record<string,any> = {
       and: [
@@ -69,6 +69,7 @@ export const ProductsBlock: React.FC<Props> = props => {
     }
   }
   useEffect(() => {
+    setShowLoader(false)
     if (title || category) {
       searchHandler()
     } else {
@@ -89,8 +90,8 @@ export const ProductsBlock: React.FC<Props> = props => {
           <Loader variant="primary" className="mt-[20px] lg:mt-[80px] mx-auto h-12 w-12" />
         ) : (
           <div className="flex justify-center flex-wrap pt-[20px] lg:pt-[80px]">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product, i) => (
+            {tsProducts.length > 0 ? (
+              tsProducts.map((product, i) => (
                 <Product
                   title={product.title}
                   description={product.description}

@@ -22,7 +22,7 @@ export const HomeContact = ({
         contactFormPrepend={
           <div className='mb-6 space-y-3'>
             <Heading className='text-secondary' level={2}>{heading}</Heading>
-            <Text className='text-white' level={1}>{description}</Text>
+            <Text className='text-primary-foreground' level={1}>{description}</Text>
           </div>
         }
       />

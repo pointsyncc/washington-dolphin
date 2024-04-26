@@ -21,11 +21,11 @@ export type TFormControl = {
 export const FormInput = ({ blockType, ...rest }: TFormControl) => {
   switch (blockType) {
     case 'text':
-      return <Input {...(rest as InputProps)} />
+      return <Input type={blockType} {...(rest as InputProps)} />
     case 'textarea':
       return <Textarea {...(rest as TextareaProps)} />
 
     default:
-      return <Input {...(rest as InputProps)} />
+      return <Input type={blockType} {...(rest as InputProps)} />
   }
 }

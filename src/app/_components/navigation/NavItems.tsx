@@ -6,9 +6,10 @@ import { ComponentPropsWithoutRef } from 'react'
 type TNavItemProps = ComponentPropsWithoutRef<'ul'> & {
   navItems: THeader['navItems']
   linkClassName?:string
+  onNavItemClick?:()=>void
 }
 
-export const NavItems = ({ navItems,className,linkClassName }: TNavItemProps) => {
+export const NavItems = ({ navItems,className,linkClassName,onNavItemClick }: TNavItemProps) => {
   return (
     <ul className={cn("flex items-center gap-2",className)}>
       {navItems?.map(({ link }) => {
@@ -22,8 +23,9 @@ export const NavItems = ({ navItems,className,linkClassName }: TNavItemProps) =>
         return (
           <li key={url}>
             <Link
+              onClick={onNavItemClick}
               href={href}
-              className={cn('py-4 block px-3 xl:px-4 rounded-md transition-colors',linkClassName)}
+              className={cn('py-4 block px-3 xl:px-4 rounded-md transition-colors lg:text-primary-foreground',linkClassName)}
             >
               {label}
             </Link>

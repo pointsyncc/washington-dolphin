@@ -69,11 +69,6 @@
     "yet-another-react-lightbox": "^3.17.2",
     "yup": "^1.4.0"
   },
-  "peerDependenciesMeta": {
-    "react-i18next": {
-      "optional": false
-    }
-  },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.1.4",
     "@payloadcms/eslint-config": "^0.0.1",

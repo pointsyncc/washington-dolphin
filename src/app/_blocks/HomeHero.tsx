@@ -3,12 +3,20 @@ import NextJsImage from '@/components/Media/NextImage'
 import { cn } from '@/utils/classMerge'
 import React, { ComponentPropsWithRef, useState } from 'react'
 import Hero from 'src/app/components/common/hero-section'
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import Lightbox from 'yet-another-react-lightbox'
+import 'yet-another-react-lightbox/styles.css'
 
 import Product1 from '/public/product-1.jpg'
 import Product2 from '/public/product-2.jpg'
 import Product3 from '/public/product-3.jpg'
+import { Section } from '@/components/layout/Section'
+import { Heading } from '@/components/typography/heading/Heading'
+import { Text } from '@/components/typography/text/Text'
+import { Image } from '@/components/Media/Image'
+import { Link } from '@/components/navigation/Link'
+import { getPayloadLinkHref } from '@/utils/getPayloadLinkHref'
+import { LinkWithIcon } from '@/components/navigation/LinkWithIcon'
+import { MdArrowOutward } from 'react-icons/md'
 
 type TGalleryItemTriggerProps = ComponentPropsWithRef<'div'> & {
   children: React.ReactNode
@@ -22,10 +30,13 @@ const GalleryItemTrigger = ({
   pointClassName,
   bgURL,
 }: TGalleryItemTriggerProps) => {
-  const [open,setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   return (
     <>
-      <button className={cn('flex gap-2 items-center btn-none', className)} onClick={setOpen.bind(null,true)}>
+      <button
+        className={cn('flex gap-2 items-center btn-none', className)}
+        onClick={setOpen.bind(null, true)}
+      >
         <div
           className={cn(
             'bg-white border-[#FF9800] rounded-full border-4 w-[19px] h-[19px]',
@@ -42,40 +53,69 @@ const GalleryItemTrigger = ({
       <Lightbox
         open={open}
         close={() => setOpen(false)}
-        slides={[Product1,Product2,Product3]}
+        slides={[Product1, Product2, Product3]}
         render={{ slide: NextJsImage }}
       />
     </>
   )
 }
 
-export const HomeHero = () => {
+export const HomeHero = ({ heading, description, image, cta, galleryLink }: any) => {
+  const ctaHref = getPayloadLinkHref(cta)
+  const galleryLinkHref = getPayloadLinkHref(galleryLink)
+
   return (
-    <Hero bgURL="/home-hero.jpg" className="md:h-screen h-screen relative ">
-      <GalleryItemTrigger bgURL="/home-hero-cake.jpg" className="absolute top-[58%] left-8">
+    <Section className="lg:mt-32" containerProps={{ className: 'flex flex-col-reverse lg:flex-row justify-between items-stretch space-y-6 space-y-reverse lg:space-y-0' }}>
+      <div className="lg:w-1/2 lg:basis-1/2  space-y-6 flex flex-col pr-4 ">
+        <Heading>{heading}</Heading>
+        <Text level={1} className="lg:max-w-[33.5625rem]">
+          {description}
+        </Text>
+        <div className="lg:!mt-auto flex space-x-5">
+          <Link
+            href={ctaHref}
+            className="bg-primary hover:!text-secondary !text-primary-foreground px-7 py-2.5 rounded-sm inline-block w-auto"
+          >
+            {cta.label}
+          </Link>
+          <LinkWithIcon href={galleryLinkHref} icon={MdArrowOutward} iconPosition='append'>
+            {galleryLink.label}
+          </LinkWithIcon>
+        </div>
+      </div>
+      <div className="lg:w-1/2 lg:basis-1/2 max-h-screen lg:block flex justify-center ">
+        <Image
+          responsive={false}
+          src={image.url}
+          width={image.width}
+          height={image.height}
+          alt={image.alt}
+        />
+      </div>
+      {/* <GalleryItemTrigger bgURL="/home-hero-cake.jpg" className="absolute top-[58%] left-8">
         Slastice
-      </GalleryItemTrigger>
-      <GalleryItemTrigger
+      </GalleryItemTrigger> */}
+      {/* <GalleryItemTrigger
         bgURL="/home-hero-cake.jpg"
         className="absolute top-[34%] left-[36%] flex-col-reverse"
         pointClassName=""
       >
         Kruh
-      </GalleryItemTrigger>
-      <GalleryItemTrigger
+      </GalleryItemTrigger> */}
+      {/* <GalleryItemTrigger
         bgURL="/home-hero-cake.jpg"
         className="absolute top-[77%] left-[33%] flex-col"
         pointClassName=""
       >
         Bureci
-      </GalleryItemTrigger>
-      <GalleryItemTrigger
+      </GalleryItemTrigger> */}
+      {/* <GalleryItemTrigger
         bgURL="/home-hero-cake.jpg"
         className="absolute top-[84%] left-[58%] flex-col"
         pointClassName=""
       >
         Peciva
-      </GalleryItemTrigger>
-    </Hero>
+      </GalleryItemTrigger> */}
+    </Section>
   )
 }
