@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
   sitemap1 = pages.map(page => ({
-    url: `${BASE_URL}/${page.slug}`,
+    url: `${BASE_URL}/${page.slug === 'home' ? '' : page.slug}`,
     lastModified: new Date(page.updatedAt),
     changeFrequency: 'monthly',
     priority: 0.8,
