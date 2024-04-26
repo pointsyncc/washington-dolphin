@@ -1,11 +1,12 @@
 {
-  "name": "@payloadcms/template-website",
-  "description": "Website template for Payload",
+  "name": "@pointsyncc/washington-dolphin",
+  "description": "Pekarna Mario",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
   "engines": {
-    "node": "20.x"
+    "node": "20.x",
+    "yarn": "4.x"
   },
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts nodemon",
@@ -75,7 +76,7 @@
   },
   "peerDependenciesMeta": {
     "react-i18next": {
-      "optional": true
+      "optional": false
     }
   },
   "devDependencies": {
