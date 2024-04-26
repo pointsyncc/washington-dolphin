@@ -16,6 +16,7 @@ type Props = Extract<Page['layout'][0], { blockType: 'galleryBlock' }> & {
 }
 
 export const GalleryBock: React.FC<Props> = props => {
+
   const { images: _images } = props
 
   const images = _images.map(img => {
@@ -34,7 +35,7 @@ export const GalleryBock: React.FC<Props> = props => {
   const [index, setIndex] = useState(-1)
 
   const handleClick = (index: number, item: CustomImage) => setIndex(index)
-
+  console.log(images,'IMAGES')
   return (
     <div className='flex justify-center item-center px-4'>
       <Gallery images={images} onClick={handleClick} enableImageSelection={false} rowHeight={200} margin={4} />

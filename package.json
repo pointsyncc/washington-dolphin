@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
-  "engines": {
-    "node": "20.x"
-  },
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts nodemon",
     "seed": "rm -rf media && cross-env PAYLOAD_SEED=true PAYLOAD_DROP_DATABASE=true PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts ts-node src/server.ts",
@@ -34,7 +31,6 @@
     "@payloadcms/plugin-form-builder": "^1.2.1",
     "@payloadcms/plugin-nested-docs": "^1.0.12",
     "@payloadcms/plugin-redirects": "^1.0.1",
-    "@payloadcms/plugin-seo": "2.3.0",
     "@payloadcms/richtext-slate": "^1.5.0",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -99,6 +95,5 @@
     "tailwindcss": "^3.4.3",
     "ts-node": "10.9.1",
     "typescript": "^5.4.4"
-  },
-  "packageManager": "yarn@4.1.0"
+  }
 }
