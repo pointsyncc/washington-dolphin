@@ -25,8 +25,15 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: 'swap',
   weight: ['400', '500'],
 })
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+  params: { slug = 'home' },
+}: {
+  children: React.ReactNode
+  params: { slug: string }
+}) {
   const { header, topbar } = await fetchGlobals()
+  console.log(slug)
 
   return (
     <html
@@ -43,9 +50,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers>
           {/* <AdminBar /> */}
           <TopBar {...topbar} />
-          <Header topbar={topbar} {...header} hasFeaturedImage={true} />
+          <Header topbar={topbar} {...header} hasFeaturedImage={slug === 'home' ? false : true} />
           <div className="pb-[3.125rem] lg:pb-[6.25rem] xl:pb-[9.375rem]">{children}</div>
-          <Footer email={topbar.email} phone={topbar.phone} location={topbar.location} navLinks={header.navItems} />
+          <Footer
+            email={topbar.email}
+            phone={topbar.phone}
+            location={topbar.location}
+            navLinks={header.navItems}
+          />
           <CookieBanner />
         </Providers>
       </body>

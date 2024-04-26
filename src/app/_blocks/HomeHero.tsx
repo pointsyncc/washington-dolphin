@@ -65,25 +65,25 @@ export const HomeHero = ({ heading, description, image, cta, galleryLink }: any)
   const galleryLinkHref = getPayloadLinkHref(galleryLink)
 
   return (
-    <Section className="lg:mt-32" containerProps={{ className: 'flex flex-col-reverse lg:flex-row justify-between items-stretch space-y-6 space-y-reverse lg:space-y-0' }}>
+    <Section className="lg:mt-32" containerProps={{ className: 'flex flex-col mt-8 lg:mt-0 lg:flex-row justify-between items-stretch space-y-6 space-y-reverse lg:space-y-0' }}>
       <div className="lg:w-1/2 lg:basis-1/2  space-y-6 flex flex-col pr-4 ">
         <Heading>{heading}</Heading>
         <Text level={1} className="lg:max-w-[33.5625rem]">
           {description}
         </Text>
-        <div className="lg:!mt-auto flex space-x-5">
+        <div className="lg:!mt-auto space-x-5 hidden lg:flex">
           <Link
             href={ctaHref}
-            className="bg-primary hover:!text-secondary !text-primary-foreground px-7 py-2.5 rounded-sm inline-block w-auto"
+            className="bg-primary hover:!text-secondary !text-primary-foreground px-7 py-2.5 rounded-sm inline-block w-fit whitespace-nowrap"
           >
             {cta.label}
           </Link>
-          <LinkWithIcon href={galleryLinkHref} icon={MdArrowOutward} iconPosition='append'>
+          <LinkWithIcon href={galleryLinkHref} icon={MdArrowOutward} iconPosition='append' className='w-fit whitespace-nowrap'>
             {galleryLink.label}
           </LinkWithIcon>
         </div>
       </div>
-      <div className="lg:w-1/2 lg:basis-1/2 max-h-screen lg:block flex justify-center ">
+      <div className="lg:w-1/2 lg:basis-1/2 max-h-screen lg:block flex justify-center pt-8 lg:pt-0">
         <Image
           responsive={false}
           src={image.url}
@@ -92,30 +92,17 @@ export const HomeHero = ({ heading, description, image, cta, galleryLink }: any)
           alt={image.alt}
         />
       </div>
-      {/* <GalleryItemTrigger bgURL="/home-hero-cake.jpg" className="absolute top-[58%] left-8">
-        Slastice
-      </GalleryItemTrigger> */}
-      {/* <GalleryItemTrigger
-        bgURL="/home-hero-cake.jpg"
-        className="absolute top-[34%] left-[36%] flex-col-reverse"
-        pointClassName=""
-      >
-        Kruh
-      </GalleryItemTrigger> */}
-      {/* <GalleryItemTrigger
-        bgURL="/home-hero-cake.jpg"
-        className="absolute top-[77%] left-[33%] flex-col"
-        pointClassName=""
-      >
-        Bureci
-      </GalleryItemTrigger> */}
-      {/* <GalleryItemTrigger
-        bgURL="/home-hero-cake.jpg"
-        className="absolute top-[84%] left-[58%] flex-col"
-        pointClassName=""
-      >
-        Peciva
-      </GalleryItemTrigger> */}
+      <div className="lg:!mt-auto flex lg:hidden space-x-5">
+          <Link
+            href={ctaHref}
+            className="bg-primary hover:!text-secondary !text-primary-foreground px-7 py-2.5 rounded-sm inline-block w-fit whitespace-nowrap"
+          >
+            {cta.label}
+          </Link>
+          <LinkWithIcon href={galleryLinkHref} icon={MdArrowOutward} iconPosition='append' className='w-fit whitespace-nowrap'>
+            {galleryLink.label}
+          </LinkWithIcon>
+        </div>
     </Section>
   )
 }
