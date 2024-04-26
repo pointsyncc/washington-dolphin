@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
+  "engines": {
+    "node": ">=20.11.1",
+    "yarn": ">=4.1.0"
+  },
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts nodemon",
     "seed": "rm -rf media && cross-env PAYLOAD_SEED=true PAYLOAD_DROP_DATABASE=true PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts ts-node src/server.ts",
@@ -69,6 +73,11 @@
     "tailwindcss-animate": "^1.0.7",
     "yet-another-react-lightbox": "^3.17.2",
     "yup": "^1.4.0"
+  },
+  "peerDependenciesMeta": {
+    "react-i18next": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.1.4",
