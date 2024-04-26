@@ -83,7 +83,7 @@ export const HomeHero = ({ heading, description, image, cta, galleryLink }: any)
           </LinkWithIcon>
         </div>
       </div>
-      <div className="lg:w-1/2 lg:basis-1/2 max-h-screen lg:block flex justify-center pt-8 lg:pt-0">
+      <div className="lg:w-1/2 lg:basis-1/2 max-h-screen lg:block flex justify-center pt-8 lg:pt-0*">
         <Image
           responsive={false}
           src={image.url}
