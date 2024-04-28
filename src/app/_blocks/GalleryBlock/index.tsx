@@ -40,16 +40,16 @@ export const GalleryBock: React.FC<Props> = props => {
   console.log(images, 'IMAGES')
   return (
     <Section>
-
-      {/* <PhotoAlbum
+      <PhotoAlbum
         layout="rows"
         photos={images}
         renderPhoto={NXImage}
         defaultContainerWidth={1200}
-        sizes={{ size: 'calc(100vw - 240px)' }}
+        rowConstraints={{ maxPhotos: 4 }}
         onClick={({ index: current }) => setIndex(current)}
-      /> */}
-      <Gallery images={images} onClick={handleClick} enableImageSelection={false} rowHeight={200} margin={4} /> 
+        sizes={{ size: 'calc(100vw - 240px)' }}
+      />
+      {/* <Gallery images={images} onClick={handleClick} enableImageSelection={false} rowHeight={200} margin={4} />  */}
       <Lightbox slides={images} open={index >= 0} index={index} close={() => setIndex(-1)} />
     </Section>
   )
