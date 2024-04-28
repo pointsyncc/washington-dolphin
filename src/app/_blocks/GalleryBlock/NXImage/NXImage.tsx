@@ -1,3 +1,4 @@
+import { cn } from "@/utils/classMerge";
 import Image from "next/image";
 import type { RenderPhotoProps } from "react-photo-album";
 
@@ -7,12 +8,15 @@ export default function NXImage({
   wrapperStyle,
 }: RenderPhotoProps) {
   return (
-    <div style={{ ...wrapperStyle, position: "relative" }}>
+    <div style={{ ...wrapperStyle, position: "relative" }}         className="rounded-sm">
       <Image
+
         fill
         src={photo}
         placeholder={"blurDataURL" in photo ? "blur" : undefined}
-        {...{ alt, title, sizes, className, onClick }}
+        className={cn('rounded-sm',className)}
+
+        {...{ alt, title, sizes,  onClick }}
       />
     </div>
   );

@@ -24,6 +24,7 @@ export const Section = <T extends ElementType>({
   className,
   containerProps,
   variant = 'light',
+  ...rest
 }: TSectionProps<T>) => {
   const classes = cn(
     'py-12 mt-6',
@@ -31,5 +32,5 @@ export const Section = <T extends ElementType>({
     className,
   )
   const Comp = asChild ? Slot : 'section'
-  return <Comp className={classes}>{withContainer ? <Container {...containerProps}>{children}</Container> : children}</Comp>
+  return <Comp className={classes} {...rest}>{withContainer ? <Container {...containerProps}>{children}</Container> : children}</Comp>
 }

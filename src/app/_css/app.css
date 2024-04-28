@@ -121,6 +121,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-body text-body-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;

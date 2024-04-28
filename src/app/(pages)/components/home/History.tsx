@@ -8,7 +8,7 @@ import React from 'react'
 export const History = ({ columns }: any) => {
 
   return (
-    <Section variant="dark">
+    <Section variant="dark" id="o-nama">
       <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0">
         {columns.map((column, i) => {
           const colClassName = cn(
