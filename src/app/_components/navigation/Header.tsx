@@ -1,3 +1,4 @@
+'use client'
 import { Container } from '../grid/Container'
 import { Logo } from './Logo'
 
@@ -10,13 +11,15 @@ import { NavItems } from './NavItems'
 import { TLinkWithIconProps } from './LinkWithIcon'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { FaEnvelope, FaPhone } from 'react-icons/fa6'
+import { useEffect, useState } from 'react'
 
 interface THeaderProps extends THeader {
   topbar: Topbar
-  hasFeaturedImage: boolean
+  hasFeaturedImage?: boolean
+  slug?: string
 }
 
-export const Header = ({ logo, navItems, topbar, hasFeaturedImage }: THeaderProps) => {
+export const Header = ({ logo, navItems, topbar, hasFeaturedImage, slug }: THeaderProps) => {
   const links: TLinkWithIconProps[] = [
     {
       icon: FaMapMarkerAlt,
@@ -37,7 +40,18 @@ export const Header = ({ logo, navItems, topbar, hasFeaturedImage }: THeaderProp
       className: 'lg:flex',
     },
   ]
-  let bgColor = hasFeaturedImage ? 'bg-transparent' : 'bg-[#573400] lg:bg-transparent'
+
+  const [bgColor, setBgColor] = useState('bg-transparent')
+
+  useEffect(() => {
+    console.log(slug)
+    if (hasFeaturedImage || slug) {
+      setBgColor('bg-transparent')
+    } else {
+      setBgColor('bg-[#573400] lg:bg-transparent')
+    }
+  }, [hasFeaturedImage, slug])
+
   return (
     <header
       className={cn(

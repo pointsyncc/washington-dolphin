@@ -28,13 +28,9 @@ export const JobListingsBlock: React.FC<
   const [showLoader, setShowLoader] = useState(true)
   const searchHandler = async () => {
     const query: Record<string, any> = {
-      and: [
-        {
-          title: {
-            like: title,
-          },
-        },
-      ],
+      title: {
+        like: title,
+      },
     }
 
     const queryString = qs.stringify(
@@ -45,7 +41,7 @@ export const JobListingsBlock: React.FC<
     )
     try {
       setShowLoader(true)
-      const response = await axios.get(`/api/products${queryString}`)
+      const response = await axios.get(`/api/job-listings${queryString}`)
       setListings(response.data.docs as JobListing[])
 
       //set the search query in the url

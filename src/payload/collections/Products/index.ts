@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload/types'
-// import { stringSimilarity } from 'string-similarity-js'
+import { stringSimilarity } from 'string-similarity-js'
 import { admins } from '../../access/admins'
 import { adminsOrPublished } from '../../access/adminsOrPublished'
 import { equal } from 'assert'
@@ -49,13 +49,13 @@ export const Products: CollectionConfig = {
           },
         })
         //console.log(products)
-        // const searchResults = products.docs.filter(product => {
-        //   return (
-        //     stringSimilarity(searchTitle, product.title) > 0.4 ||
-        //     product.title.toLowerCase().startsWith(searchTitle.toLowerCase())
-        //   )
-        // })
-        // res.json(searchResults)
+        const searchResults = products.docs.filter(product => {
+          return (
+            stringSimilarity(searchTitle, product.title) > 0.4 ||
+            product.title.toLowerCase().startsWith(searchTitle.toLowerCase())
+          )
+        })
+        //return res.send(searchResults)
         return res.send(products)
       },
     },

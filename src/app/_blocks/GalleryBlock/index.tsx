@@ -39,7 +39,7 @@ export const GalleryBock: React.FC<Props> = props => {
   const handleClick = (index: number, item: CustomImage) => setIndex(index)
   console.log(images, 'IMAGES')
   return (
-    <Section>
+    <Section className='mt-20'>
       <PhotoAlbum
         layout="rows"
         photos={images}

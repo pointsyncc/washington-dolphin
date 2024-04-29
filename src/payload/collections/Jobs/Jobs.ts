@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload/types'
 import { revalidateJob } from './revalidateJob'
+import stringSimilarity from 'string-similarity-js'
 
 const JobListings: CollectionConfig = {
   slug: 'job-listings',
@@ -21,6 +22,31 @@ const JobListings: CollectionConfig = {
         )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
       },
   },
+  endpoints: [
+    {
+      path: '/search',
+      method: 'get',
+      handler: async (req, res, next) => {
+        const { title } = req.query
+        const searchTitle = title as string
+        const jobs = await req.payload.find({
+          collection: 'job-listings',
+          where: {
+            title: { like: searchTitle.toLowerCase() },
+          },
+        })
+        //console.log(jobs)
+        const searchResults = jobs.docs.filter(product => {
+          return (
+            stringSimilarity(searchTitle, product.title) > 0.4 ||
+            product.title.toLowerCase().startsWith(searchTitle.toLowerCase())
+          )
+        })
+        return res.send(searchResults)
+        //return res.send(jobs)
+      },
+    },
+  ],
   hooks: {
     afterChange: [revalidateJob],
   },
