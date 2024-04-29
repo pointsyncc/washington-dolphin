@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      //disallow: '/private/',
+      disallow: '/admin/',
     },
     sitemap: "https://www.pekarnamario.hr/sitemap.xml"
   }
