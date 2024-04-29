@@ -2139,6 +2139,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@payloadcms/plugin-seo@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "@payloadcms/plugin-seo@npm:2.3.2"
+  peerDependencies:
+    payload: ^2.7.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/fd26d645652c88e43536bf04e1276ef0f11cd42f84ec7a9a85a941813abd04571249c423a40b0396cd26fcf313f9d1e18bf9766eb5a358620c46cd95c0aaebd4
+  languageName: node
+  linkType: hard
+
 "@payloadcms/richtext-slate@npm:^1.5.0":
   version: 1.5.0
   resolution: "@payloadcms/richtext-slate@npm:1.5.0"
@@ -2179,6 +2189,7 @@ __metadata:
     "@payloadcms/plugin-form-builder": "npm:^1.2.1"
     "@payloadcms/plugin-nested-docs": "npm:^1.0.12"
     "@payloadcms/plugin-redirects": "npm:^1.0.1"
+    "@payloadcms/plugin-seo": "npm:^2.3.2"
     "@payloadcms/richtext-slate": "npm:^1.5.0"
     "@radix-ui/react-checkbox": "npm:^1.0.4"
     "@radix-ui/react-dialog": "npm:^1.0.5"
@@ -2216,7 +2227,7 @@ __metadata:
     next: "npm:14.2.2"
     nodemailer-postmark-transport: "npm:^6.0.0"
     nodemon: "npm:^3.1.0"
-    payload: "npm:2.14"
+    payload: "npm:^2.14.2"
     payload-admin-bar: "npm:^1.0.6"
     prettier: "npm:^3.2.5"
     qs: "npm:^6.12.0"
@@ -10414,9 +10425,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"payload@npm:2.14":
-  version: 2.14.1
-  resolution: "payload@npm:2.14.1"
+"payload@npm:^2.14.2":
+  version: 2.14.2
+  resolution: "payload@npm:2.14.2"
   dependencies:
     "@date-io/date-fns": "npm:2.16.0"
     "@dnd-kit/core": "npm:6.0.8"
@@ -10484,11 +10495,11 @@ __metadata:
     process: "npm:0.11.10"
     qs: "npm:6.11.2"
     qs-middleware: "npm:1.0.3"
-    react: "npm:18.2.0"
+    react: "npm:^18.0.0"
     react-animate-height: "npm:2.1.2"
     react-datepicker: "npm:4.16.0"
     react-diff-viewer-continued: "npm:3.2.6"
-    react-dom: "npm:18.2.0"
+    react-dom: "npm:^18.0.0"
     react-helmet: "npm:6.1.0"
     react-i18next: "npm:11.18.6"
     react-image-crop: "npm:10.1.8"
@@ -10508,7 +10519,7 @@ __metadata:
     uuid: "npm:9.0.1"
   bin:
     payload: bin.js
-  checksum: 10c0/9cc41d8ecbffc9779ea45dd54c2883c31de4db5e5868fa6d01315dd2337cd7ca40dca4b4205b366457d2fee260813b75b357392d775d9c57397449cfe81c46a5
+  checksum: 10c0/1191c091512c8371ab3a7fe588478e88507b1f2f92af5dfe09738d862d0a0da01eabcfc097dd44470dd1b6b36184040fc05fe92c01f713670e19d8ae5d5b3ed5
   languageName: node
   linkType: hard
 
@@ -11838,7 +11849,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.2.0, react-dom@npm:^18.2.0":
+"react-dom@npm:^18.0.0":
+  version: 18.3.1
+  resolution: "react-dom@npm:18.3.1"
+  dependencies:
+    loose-envify: "npm:^1.1.0"
+    scheduler: "npm:^0.23.2"
+  peerDependencies:
+    react: ^18.3.1
+  checksum: 10c0/a752496c1941f958f2e8ac56239172296fcddce1365ce45222d04a1947e0cc5547df3e8447f855a81d6d39f008d7c32eab43db3712077f09e3f67c4874973e85
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -12196,6 +12219,15 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10c0/b562d9b569b0cb315e44b48099f7712283d93df36b19a39a67c254c6686479d3980b7f013dc931f4a5a3ae7645eae6386b4aa5eea933baa54ecd0f9acb0902b8
+  languageName: node
+  linkType: hard
+
+"react@npm:^18.0.0":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
+  dependencies:
+    loose-envify: "npm:^1.1.0"
+  checksum: 10c0/283e8c5efcf37802c9d1ce767f302dd569dd97a70d9bb8c7be79a789b9902451e0d16334b05d73299b20f048cbc3c7d288bbbde10b701fa194e2089c237dbea3
   languageName: node
   linkType: hard
 
@@ -12564,6 +12596,15 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10c0/b777f7ca0115e6d93e126ac490dbd82642d14983b3079f58f35519d992fa46260be7d6e6cede433a92db70306310c6f5f06e144f0e40c484199e09c1f7be53dd
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.23.2":
+  version: 0.23.2
+  resolution: "scheduler@npm:0.23.2"
+  dependencies:
+    loose-envify: "npm:^1.1.0"
+  checksum: 10c0/26383305e249651d4c58e6705d5f8425f153211aef95f15161c151f7b8de885f24751b377e4a0b3dd42cce09aad3f87a61dab7636859c0d89b7daf1a1e2a5c78
   languageName: node
   linkType: hard
 

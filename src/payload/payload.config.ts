@@ -1,33 +1,32 @@
-import { webpackBundler } from '@payloadcms/bundler-webpack'; // bundler-import
-import { mongooseAdapter } from '@payloadcms/db-mongodb'; // database-adapter-import
-import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
-import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
-import FormBuilder from '@payloadcms/plugin-form-builder';
-import nestedDocs from '@payloadcms/plugin-nested-docs';
-import redirects from '@payloadcms/plugin-redirects';
-/* import seo from '@payloadcms/plugin-seo';
-import type { GenerateTitle } from '@payloadcms/plugin-seo/types'; */
-import { slateEditor } from '@payloadcms/richtext-slate'; // editor-import
-import dotenv from 'dotenv';
-import path from 'path';
-import { buildConfig } from 'payload/config';
-import Categories from './collections/Categories';
-import JobListings from './collections/Jobs/Jobs';
-import { Media } from './collections/Media';
-import { Pages } from './collections/Pages';
-import { Posts } from './collections/Posts';
-import { Products } from './collections/Products';
-import Users from './collections/Users';
-import { Logo } from './components/Logo/Logo';
-import { seed } from './endpoints/seed';
-import { Footer } from './globals/Footer';
-import { Header } from './globals/Header';
-import { Topbar } from './globals/Topbar';
+import { webpackBundler } from '@payloadcms/bundler-webpack' // bundler-import
+import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-import
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
+import FormBuilder from '@payloadcms/plugin-form-builder'
+import nestedDocs from '@payloadcms/plugin-nested-docs'
+import redirects from '@payloadcms/plugin-redirects'
+import seo from '@payloadcms/plugin-seo';
+import type { GenerateTitle } from '@payloadcms/plugin-seo/types';
+import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
+import dotenv from 'dotenv'
+import path from 'path'
+import { buildConfig } from 'payload/config'
+import Categories from './collections/Categories'
+import JobListings from './collections/Jobs/Jobs'
+import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
+import { Posts } from './collections/Posts'
+import { Products } from './collections/Products'
+import Users from './collections/Users'
+import { Logo } from './components/Logo/Logo'
+import { seed } from './endpoints/seed'
+import { Footer } from './globals/Footer'
+import { Header } from './globals/Header'
+import { Topbar } from './globals/Topbar'
 
-
-/* const generateTitle: GenerateTitle = () => {
+const generateTitle: GenerateTitle = () => {
   return 'Pekarna Mario'
-} */
+} 
 
 const adapter = s3Adapter({
   config: {
@@ -42,7 +41,6 @@ const adapter = s3Adapter({
   bucket: process.env.S3_BUCKET,
 })
 
-
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
 })
@@ -56,7 +54,7 @@ export default buildConfig({
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-/*       beforeDashboard: [BeforeDashboard], */
+      /*       beforeDashboard: [BeforeDashboard], */
       graphics: {
         Logo,
       },
@@ -109,11 +107,11 @@ export default buildConfig({
     nestedDocs({
       collections: ['categories'],
     }),
-/*     seo({
+    seo({
       collections: ['pages', 'posts'],
       generateTitle,
       uploadsCollection: 'media',
-    }), */
+    }),
     FormBuilder({
       // ...
       fields: {
