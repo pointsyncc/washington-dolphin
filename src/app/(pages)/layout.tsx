@@ -39,7 +39,7 @@ export default async function RootLayout({
     <html
       lang="hr"
       suppressHydrationWarning
-      className={`${poppins.variable} ${plusJakartaSans.variable}`}
+      className={`${poppins.variable} ${plusJakartaSans.variable} scroll-smooth`}
     >
       <head>
         <InitTheme />
