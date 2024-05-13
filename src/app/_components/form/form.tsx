@@ -1,3 +1,4 @@
+'use client'
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
@@ -153,7 +154,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={twMerge("text-sm font-medium text-destructive", className)}
+      className={twMerge("text-sm font-medium text-danger  first-letter:capitalize", className)}
       {...props}
     >
       {body}

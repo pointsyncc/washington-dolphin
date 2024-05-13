@@ -1,66 +1,63 @@
 'use client'
-import { Input } from '@/components/form/controls/TextInput';
-import axios from 'axios';
-import { useState, useRef, useEffect } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import Product from '../../components/product/product'
-import { useSearchParams } from 'next/navigation';
+import { Input } from '@/components/form/controls/TextInput'
+import { useRef, useEffect } from 'react'
+import { FaSearch } from 'react-icons/fa'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 
-const SearchForm = () => {
-  const [products, setProducts] = useState([]);
-  const searchParams = useSearchParams();
-  const timeoutId = useRef(null);
+interface Props {
+  placeholder?: string
+  disabled?: boolean
+}
 
-  const searchHandler = (e) => {
-    const params = new URLSearchParams(searchParams);
-    const query = e.target.value;
-
-
-
-    if (timeoutId.current) {
-      clearTimeout(timeoutId.current);
+const SearchForm = ({ placeholder, disabled }: Props) => {
+  const searchParams = useSearchParams()
+  const timeoutId = useRef(null)
+  const pathname = usePathname()
+  const router = useRouter()
+  const params = new URLSearchParams(searchParams)
+  const searchHandler = e => {
+    const query = e.target.value as string
+    if (!query.length) {
+      params.delete('title')
+      router.push(pathname + '?' + params.toString(), {
+        scroll: false,
+      })
     }
 
-    timeoutId.current = setTimeout(async () => {
-      try {
-        const response = await axios.get(`/api/products/search?title=${query}`);
-        params.set('title', query);
-        setProducts(response.data);
-        //set the search query in the url
-      } catch (error) {
-        console.error(error);
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current)
+    }
+    timeoutId.current = setTimeout(() => {
+      if (query) {
+        params.set('title', query)
+        router.push(pathname + '?' + params.toString(), {
+          scroll: false,
+        })
       }
-    }, 500);
-  };
+    }, 300)
+  }
 
   useEffect(() => {
     return () => {
       if (timeoutId.current) {
-        clearTimeout(timeoutId.current);
+        clearTimeout(timeoutId.current)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   return (
     <div className="relative  mx-auto w-[90%]  lg:w-[305px] mt-[25px] lg:mt-0 ">
       <FaSearch className="absolute top-[12px] left-[15px] text-[#223333ad]" />
       <Input
         type="text"
-        className="pl-[40px] text-[#223333ad] rounded-[20px]"
-        placeholder={'Pretraži proizvode...'}
+        className="pl-[40px] text-[#223333ad] rounded-[0px] bg-[#FFFCE3]"
+        placeholder={placeholder ?? 'Pretraži proizvode...'}
+        defaultValue={params.get('title') ? params.get('title') : ''}
+        disabled={disabled}
         onChange={searchHandler}
       />
-{/*        {products.map((product, i) => (
-          <Product
-            title={product.title}
-            description={product.description}
-            energy={product.price}
-            weight={product.weight}
-            key={product.title + i}
-          />
-        ))} */}
     </div>
-  );
-};
+  )
+}
 
-export default SearchForm;
+export default SearchForm

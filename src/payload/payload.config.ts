@@ -1,35 +1,45 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack' // bundler-import
 import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-import
-import { payloadCloud } from '@payloadcms/plugin-cloud'
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
+import FormBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
-import seo from '@payloadcms/plugin-seo'
-import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
+import seo from '@payloadcms/plugin-seo';
+import type { GenerateTitle } from '@payloadcms/plugin-seo/types';
 import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
 import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
-
 import Categories from './collections/Categories'
-import Comments from './collections/Comments'
+import JobListings from './collections/Jobs/Jobs'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
-import { Projects } from './collections/Projects'
+import { Products } from './collections/Products'
 import Users from './collections/Users'
-import BeforeDashboard from './components/BeforeDashboard'
-import BeforeLogin from './components/BeforeLogin'
+import { Logo } from './components/Logo/Logo'
 import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
-import { Settings } from './globals/Settings'
-import { Products } from './collections/Products'
-import { WorkSundays } from './globals/WorkSundays'
-import FormBuilder from '@payloadcms/plugin-form-builder'
+import { Topbar } from './globals/Topbar'
 
 const generateTitle: GenerateTitle = () => {
-  return 'My Website'
-}
+  return 'Pekarna Mario'
+} 
+
+const adapter = s3Adapter({
+  config: {
+    credentials: {
+      accessKeyId: process.env.S3_ACCESS_KEY_ID,
+      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    },
+    region: process.env.S3_REGION,
+    // ... Other S3 configuration
+    endpoint: process.env.S3_ENDPOINT,
+  },
+  bucket: process.env.S3_BUCKET,
+})
 
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
@@ -42,10 +52,12 @@ export default buildConfig({
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
-      beforeLogin: [BeforeLogin],
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-      beforeDashboard: [BeforeDashboard],
+      /*       beforeDashboard: [BeforeDashboard], */
+      graphics: {
+        Logo,
+      },
     },
     webpack: config => ({
       ...config,
@@ -69,8 +81,8 @@ export default buildConfig({
   }),
   // database-adapter-config-end
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments, Products],
-  globals: [Settings, Header, Footer, WorkSundays],
+  collections: [Pages, Posts, Media, Categories, Users, Products, JobListings],
+  globals: [Header, Footer, Topbar],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
@@ -112,10 +124,17 @@ export default buildConfig({
         checkbox: true,
         number: true,
         message: true,
-        payment: false
+        payment: false,
       },
-      redirectRelationships: ['pages'],    
-    }),    
-    payloadCloud(),
+      redirectRelationships: ['pages'],
+    }),
+    cloudStorage({
+      collections: {
+        media: {
+          adapter: adapter, // see docs for the adapter you want to use
+          prefix: 'web-media',
+        },
+      },
+    }),
   ],
 })

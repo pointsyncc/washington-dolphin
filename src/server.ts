@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
 import next from 'next'
 import nextBuild from 'next/dist/build'
+import postmarkTransport from 'nodemailer-postmark-transport'
 import path from 'path'
-
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
@@ -15,6 +15,8 @@ import { seed } from './payload/seed'
 const app = express()
 const PORT = process.env.PORT || 3000
 
+const postmarkApiKey = process.env.POSTMARK_API_KEY
+
 const start = async (): Promise<void> => {
   await payload.init({
     secret: process.env.PAYLOAD_SECRET || '',
@@ -22,6 +24,19 @@ const start = async (): Promise<void> => {
     onInit: () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
     },
+    ...(postmarkApiKey
+      ? {
+          email: {
+            transportOptions: postmarkTransport({
+              auth: {
+                apiKey: postmarkApiKey,
+              },
+            }),
+            fromName: 'Pekarna Mario',
+            fromAddress: 'info@pekarnamario.hr',
+          },
+        }
+      : {}),
   })
 
   if (process.env.PAYLOAD_SEED === 'true') {

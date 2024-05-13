@@ -6,6 +6,9 @@
 
 @layer base {
   :root {
+
+    --body:42, 74%, 91%;
+    --body-foreground:36, 100%, 17%;
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -21,17 +24,19 @@
     --card: 0 0% 98%;
     --card-foreground: 0 0% 35%;
 
-    --primary: 36, 100%, 50%;
-    --primary-foreground: 40, 100%, 58%;
+    --primary: 36 100% 17%;
+    --primary-foreground: 43, 100%, 90%;
 
-    --secondary: 20, 77%, 41%;
-    --secondary-foreground: 27, 80%, 57%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --secondary: 36, 50%, 61%;
+    --secondary-foreground: 36, 50%, 61%;
+
+    --accent: 43 93% 95%;
+    --accent-foreground: 43 93% 95%;
 
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
+    --danger: 353 100% 45%;
 
     --tertiary:221 83.2% 53.3%;
     --tertiary-foreground:0 0% 100%;
@@ -83,8 +88,8 @@
     --muted: 223 47% 11%;
     --muted-foreground: 215.4 16.3% 56.9%;
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 43 93% 95%;
+    --accent-foreground: 43 93% 95%;
 
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
@@ -95,11 +100,11 @@
     --card: 0 0 98%;
     --card-foreground: 213 31% 91%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
+    --primary: 36 100% 17%;
+    --primary-foreground: 43, 100%, 90%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 35 58% 68%;
+    --secondary-foreground: 35 58% 70%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
@@ -116,8 +121,9 @@
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-body text-body-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     font-family: var(--font-poppins);
   }
@@ -204,4 +210,10 @@ p{
   --tw-shadow: inset 0 0 0 1px hsla(0,0%,100%,.05);
   --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+}
+
+@media (max-width: 575px) {
+  p {
+      font-size: 1rem !important;
+  }
 }

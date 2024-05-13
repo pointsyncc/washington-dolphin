@@ -7,10 +7,24 @@ import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding/inde
 
 import { Page } from '@/payload/payload-types'
 import { ContentBlock } from '../../_blocks/Content'
+import { ProductsBlock } from '../../_blocks/ProductsBlock'
+import { History } from '../../_blocks/History'
+import { HomeProducts } from '../../_blocks/HomeProducts'
+import { HomeContact } from 'src/app/_blocks/HomeContact'
+import { HomeHero } from 'src/app/_blocks/HomeHero'
+import { Contact } from 'src/app/_blocks/Contact'
+import { JobListingsBlock } from '../../_blocks/JobListingsBlock'
 
 const blockComponents = {
   galleryBlock: GalleryBock,
+  productsBlock: ProductsBlock,
   content: ContentBlock,
+  history: History,
+  homeProducts: HomeProducts,
+  homeContact: HomeContact,
+  homeHero: HomeHero,
+  contact:Contact,
+  jobListingsBlock: JobListingsBlock
 }
 
 export const Blocks: React.FC<{
@@ -38,12 +52,12 @@ export const Blocks: React.FC<{
             const prevBlockInverted =
               prevBlock && 'invertBackground' in prevBlock && prevBlock?.invertBackground
 
-           /*  const isPrevSame = Boolean(blockIsInverted) === Boolean(prevBlockInverted) */
+            /*  const isPrevSame = Boolean(blockIsInverted) === Boolean(prevBlockInverted) */
 
             let paddingTop: VerticalPaddingOptions = 'large'
             let paddingBottom: VerticalPaddingOptions = 'large'
 
-        /*     if (prevBlock && isPrevSame) {
+            /*     if (prevBlock && isPrevSame) {
               paddingTop = 'none'
             } */
 

@@ -11,3 +11,13 @@ node_modules
 .flaskenv*
 !.env.project
 !.env.vault
+
+
+.yarn/*
+.yarn/install-state.gz
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

@@ -56,6 +56,28 @@ export const POST = `
   }
 `
 
+
+export const JOB_LISTING = `
+  query JobListing($id: String, $draft: Boolean) {
+    JobListings(where: { id: { equals: $id }}, limit: 1, draft: $draft) {
+      docs {
+        id
+        title
+        description
+        shortDescription
+        location
+        deadline
+        salary
+        createdAt
+        form {
+          id
+          title
+        }
+      }
+    }
+  }
+`
+
 export const POST_PREMIUM_CONTENT = `
   query Post($slug: String, $draft: Boolean) {
     Posts(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {
