@@ -58,8 +58,8 @@ export const POST = `
 
 
 export const JOB_LISTING = `
-  query JobListing($id: String, $draft: Boolean) {
-    JobListings(where: { id: { equals: $id }}, limit: 1, draft: $draft) {
+  query JobListings($id: String, $draft: Boolean) {
+    JobListing(where: { id: { equals: $id }}, limit: 1, draft: $draft) {
       docs {
         id
         title
